@@ -29,9 +29,9 @@ projects:
     desc: 论坛
     link: https://community.wvbtech.com/u/zxbmmmmmmmmm
 
-  - icon: user-group
+  - icon: https://poker-sang.github.io/avatar.png
     name: 扑克
-    desc: 南梁
+    desc: xxx
     link: https://poker-sang.github.io/
  
   - icon: user-group
