@@ -30,9 +30,9 @@ projects:
     link: https://community.wvbtech.com/u/zxbmmmmmmmmm
 
   - icon: user-group
-    name: 伙伴名称
-    desc: 伙伴详细介绍
-    link: https://你的伙伴链接
+    name: 扑克
+    desc: 南梁
+    link: https://poker-sang.github.io/
  
   - icon: user-group
     name: 伙伴名称
