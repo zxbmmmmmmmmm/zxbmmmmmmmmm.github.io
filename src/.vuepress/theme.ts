@@ -14,7 +14,7 @@ export default hopeTheme({
   logo: "avatar.png",
   favicon: 'sleep.png',
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "zxbmmmmmmmmm/zxbmmmmmmmmm.github.io",
 
   docsDir: "src",
 
