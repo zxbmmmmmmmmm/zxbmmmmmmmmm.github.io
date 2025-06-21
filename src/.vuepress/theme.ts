@@ -156,6 +156,14 @@ export default hopeTheme({
     //   provider: "Waline",
     //   serverURL: "https://waline-comment.vuejs.press",
     // },
+    comment: {
+      provider: 'Giscus', // Artalk | Giscus | Waline | Twikoo
+      repo: "zxbmmmmmmmmm/zxbmmmmmmmmm.github.io",
+      repoId: "R_kgDOO-ZK8w",
+      category: "General",
+      categoryId: "DIC_kwDOO-ZK884CrzrP",
+      mapping: 'title',
+    },
 
     components: {
       components: ["Badge", "VPCard"],
