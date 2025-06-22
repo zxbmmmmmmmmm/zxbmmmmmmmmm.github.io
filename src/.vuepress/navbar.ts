@@ -18,4 +18,8 @@ export default navbar([
     text: "时间线",
     link: "/timeline/",
   },
+  {
+    text: "留言板",
+    link: "/board",
+  },
 ]);
