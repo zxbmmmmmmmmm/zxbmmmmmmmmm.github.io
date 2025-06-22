@@ -19,25 +19,7 @@ export default hopeTheme({
   docsDir: "src",
 
   // 导航栏
-  navbar: [
-    {
-      text: "文章",
-      link: "/article/",
-    },
-    {
-      text: "分类",
-      link: "/category/",
-    },
-    {
-      text: "标签",
-      link: "/tag/",
-    },
-    {
-      text: "时间线",
-      link: "/timeline/",
-    },
-
-  ],
+  navbar: navbar,
   // 侧边栏
   sidebar: false,
 
