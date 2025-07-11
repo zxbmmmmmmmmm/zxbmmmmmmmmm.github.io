@@ -188,6 +188,11 @@ HelloWorld.SayHello();
 
 
 
+## 源码
+https://github.com/zxbmmmmmmmmm/SourceGeneratorDemo
+
+
+
 ## 引用
 
 [Roslyn 分析器 EnforceExtendedAnalyzerRules 属性的作用](https://blog.lindexi.com/post/Roslyn-分析器-EnforceExtendedAnalyzerRules-属性的作用.html)
