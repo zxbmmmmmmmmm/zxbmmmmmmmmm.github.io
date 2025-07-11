@@ -167,11 +167,11 @@ public class SampleGenerator : IIncrementalGenerator
 
 重新生成解决方案后，以Rider为例，我们可以在项目的`依赖项>.NET 9.0（取决于当前项目的.NET版本）>SourceGeneratorDemo.Generator.SampleGenerator`中找到刚刚生成的`HelloWorld.g.cs`，其内容与刚刚常量中的代码完全一致
 
-![](assets/C#%20源生成器(Source%20Generator)入门/01.png)
+![](assets/CSharp%20源生成器(Source%20Generator)入门/01.png)
 
 若使用Visual Studio 2022，在项目的`依赖项>分析器>SourceGeneratorDemo.Generator>SourceGeneratorDemo.Generator.SampleGenerator`中也可以找到相同文件
 
-![](assets/C#%20源生成器(Source%20Generator)入门/02.png)
+![](assets/CSharp %20源生成器(Source%20Generator)入门/02.png)
 
 
 
@@ -184,7 +184,7 @@ HelloWorld.SayHello();
 
 编译成功即可看到输出
 
-![](assets/C#%20源生成器(Source%20Generator)入门/03.png)
+![](assets/CSharp%20源生成器(Source%20Generator)入门/03.png)
 
 
 
