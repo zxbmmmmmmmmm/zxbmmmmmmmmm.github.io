@@ -171,7 +171,7 @@ public class SampleGenerator : IIncrementalGenerator
 
 若使用Visual Studio 2022，在项目的`依赖项>分析器>SourceGeneratorDemo.Generator>SourceGeneratorDemo.Generator.SampleGenerator`中也可以找到相同文件
 
-![](assets/CSharp %20源生成器(Source%20Generator)入门/02.png)
+![](assets/CSharp%20源生成器(Source%20Generator)入门/02.png)
 
 
 
