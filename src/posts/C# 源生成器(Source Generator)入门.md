@@ -177,3 +177,11 @@ HelloWorld.SayHello();
 ```
 
 编译成功即可看到输出
+
+
+
+## 引用
+
+[Roslyn 分析器 EnforceExtendedAnalyzerRules 属性的作用](https://blog.lindexi.com/post/Roslyn-分析器-EnforceExtendedAnalyzerRules-属性的作用.html)
+
+[源生成器：根据需要自动生成机械重复代码 | 扑克博客](https://poker-sang.github.io/posts/分析器/源生成器：根据需要自动生成机械重复代码.html#创建及使用attribute)
