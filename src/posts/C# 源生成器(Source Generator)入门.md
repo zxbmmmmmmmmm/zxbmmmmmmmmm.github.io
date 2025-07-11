@@ -1,7 +1,6 @@
 ---
 date: 2025-07-11
 title: C# 源生成器(Source Generator)入门
-excerpt: C#9 引入了一个强大的机制：源生成器(Source Generator)。通过创建源生成器，我们可以简化大量重复编写的代码，或是减少反射来获得更强的性能以及AOT支持。本文将介绍如何从零开始创建一个最简单的源生成器
 category:
   - C#
 tag:
@@ -164,11 +163,17 @@ public class SampleGenerator : IIncrementalGenerator
 
 `ReferenceOutputAssembly`阻止源生成器的程序集复制到输出文件夹，因为其只在编译时起作用
 
-***
+
 
 重新生成解决方案后，以Rider为例，我们可以在项目的`依赖项>.NET 9.0（取决于当前项目的.NET版本）>SourceGeneratorDemo.Generator.SampleGenerator`中找到刚刚生成的`HelloWorld.g.cs`，其内容与刚刚常量中的代码完全一致
 
 ![](assets/C#%20源生成器(Source%20Generator)入门/01.png)
+
+若使用Visual Studio 2022，在项目的`依赖项>分析器>SourceGeneratorDemo.Generator>SourceGeneratorDemo.Generator.SampleGenerator`中也可以找到相同文件
+
+![](assets/C#%20源生成器(Source%20Generator)入门/02.png)
+
+
 
 现在我们就可以在Program.cs引用生成的内容了:
 
@@ -178,6 +183,8 @@ HelloWorld.SayHello();
 ```
 
 编译成功即可看到输出
+
+![](assets/C#%20源生成器(Source%20Generator)入门/03.png)
 
 
 
