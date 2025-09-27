@@ -11,7 +11,6 @@ export default defineUserConfig({
     lang: "zh-CN",
     title: "Betta_Fish",
     description: "Betta_Fish 的博客",
-    permalinkPattern: "/:slug",
     theme,
     // 和 PWA 一起启用
     // shouldPrefetch: false,
