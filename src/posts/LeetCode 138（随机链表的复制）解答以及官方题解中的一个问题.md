@@ -2,9 +2,9 @@
 date: 2025-10-07
 title: LeetCode 138（随机链表的复制）解答以及官方题解中的一个问题
 slug: leetcode-138
-permalink: leetcode-138
 category:
   - 算法
+  - C#
 tag:
   - LeetCode
 ---
