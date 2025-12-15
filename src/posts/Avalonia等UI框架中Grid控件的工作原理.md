@@ -394,7 +394,7 @@ graph TD
 
 Star列被解析完毕后，就可以测量 `Group3` 中的元素了，此时再解析Star行即可重新以正确的行高测量 `Group2`
 
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" id="video" controls="" width=400>
+<video style="width: 100%; height: 100%;" id="video" controls="" width=400>
       <source id="mp4" src="@source/posts/assets/Avalonia等UI框架中Grid控件的工作原理/Grid_1.mp4" type="video/mp4">
 </video>
 
@@ -407,7 +407,7 @@ Star列被解析完毕后，就可以测量 `Group3` 中的元素了，此时再
 
 此流程会一直循环，直到**两次`Group2`宽度的测量结果相同**或循环次数 ≥5
 
-<video style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" id="video" controls="" width=400>
+<video style="width: 100%; height: 100%;" id="video" controls="" width=400>
       <source id="mp4" src="@source/posts/assets/Avalonia等UI框架中Grid控件的工作原理/Grid_2.mp4" type="video/mp4">
 </video>
 
