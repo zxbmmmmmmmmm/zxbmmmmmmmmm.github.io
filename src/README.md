@@ -34,10 +34,10 @@ projects:
     desc: xxx
     link: https://poker-sang.github.io/
  
-  - icon: user-group
-    name: 伙伴名称
-    desc: 广告位招租
-    link: https://你的伙伴链接
+  - icon: https://avatars.githubusercontent.com/u/59819050
+    name: Raspberry Kan
+    desc: 树莓怪物
+    link: https://blog.raspberrykan.dev/
 
   - icon: user-group
     name: 伙伴名称
