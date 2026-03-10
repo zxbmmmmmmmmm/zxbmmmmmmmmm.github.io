@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Blog: Dev + Edge",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run docs:dev",
+      "cwd": "${workspaceFolder}",
+      "serverReadyAction": {
+        "action": "debugWithEdge",
+        "pattern": "http://localhost:([0-9]+)",
+        "uriFormat": "http://localhost:%s",
+        "killOnServerStop": true
+      }
+    },
+    {
+      "name": "Blog: Clean Dev + Edge",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run docs:clean-dev",
+      "cwd": "${workspaceFolder}",
+      "serverReadyAction": {
+        "action": "debugWithEdge",
+        "pattern": "http://localhost:([0-9]+)",
+        "uriFormat": "http://localhost:%s",
+        "killOnServerStop": true
+      }
+    }
+  ]
+}
