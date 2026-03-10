@@ -17,6 +17,16 @@ import type {
 
 import "vuepress-theme-hope/styles/blog/article-item.scss";
 
+const getExcerptParagraphs = (excerpt: string, count: number): string => {
+  const paragraphMatches = [...excerpt.matchAll(/<p\b[^>]*>[\s\S]*?<\/p>/gi)]
+    .slice(0, count)
+    .map(([paragraph]) => paragraph.trim());
+
+  if (paragraphMatches.length) return paragraphMatches.join("");
+
+  return excerpt.trim();
+};
+
 export default defineComponent({
   name: "ArticleItem",
 
@@ -54,6 +64,7 @@ export default defineComponent({
     return (): VNode => {
       const { title, type, isEncrypted = false, cover = null, excerpt, sticky } = articleInfo.value;
       const info = pageInfo.value;
+      const excerptPreview = excerpt ? getExcerptParagraphs(excerpt, 2) : null;
 
       return h(
         "div",
@@ -111,10 +122,10 @@ export default defineComponent({
             }),
             h("hr", { class: "vp-article-hr" }),
             slots.articleExcerpt?.({ excerpt }) ??
-            (excerpt
+            (excerptPreview
               ? h("div", {
                 class: "vp-article-excerpt",
-                innerHTML: excerpt,
+                innerHTML: excerptPreview,
               })
               : null),
           ],
