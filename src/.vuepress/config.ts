@@ -16,7 +16,7 @@ export default defineUserConfig({
     description: "Betta_Fish 的博客",
     theme,
     alias: {
-        "@theme-hope/components/blog/ArticleItem": path.resolve(__dirname, "./components/ArticleItem.ts"),
+        "@theme-hope/components/blog/ArticleItem": path.resolve(__dirname, "./components/ArticleItem.vue"),
     }
     // 和 PWA 一起启用
     // shouldPrefetch: false,
