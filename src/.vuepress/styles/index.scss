@@ -113,3 +113,9 @@
 		--vp-article-excerpt-lines: 4;
 	}
 }
+
+@media (min-width: 1440px) {
+	.theme-container.no-sidebar.has-toc .vp-page.custom-page-layout {
+		padding-inline-end: 0 !important;
+	}
+}

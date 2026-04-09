@@ -22,4 +22,8 @@ export default navbar([
     text: "留言板",
     link: "/board",
   },
+  {
+    text: "实验室",
+    link: "/projects/",
+  },
 ]);

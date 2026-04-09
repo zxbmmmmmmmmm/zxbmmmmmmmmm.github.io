@@ -3,6 +3,7 @@ import { defineClientConfig } from "vuepress/client";
 import type { ArticleInfoSlotData } from "vuepress-theme-hope/client";
 import { Blog } from "vuepress-theme-hope/blog";
 import ArticleInfo from "./components/ArticleInfo.vue";
+import CustomPageLayout from "./layouts/CustomPageLayout.js";
 
 export default defineClientConfig({
     layouts: {
@@ -10,5 +11,6 @@ export default defineClientConfig({
             h(Blog, null, {
                 articleInfo: (info: ArticleInfoSlotData) => h(ArticleInfo, { info }),
             }),
+        CustomPageLayout,
     },
 });
