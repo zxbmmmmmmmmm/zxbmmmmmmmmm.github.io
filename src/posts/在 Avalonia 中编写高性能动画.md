@@ -48,7 +48,7 @@ tag:
 简单易读！然而，这种动画有一个重大的缺陷：它运行在 UI 线程上，因此 UI 线程的高负载操作（如 Measure / Arrange）会严重影响动画的流畅程度。反过来，这些动画也会影响 UI 线程上的输入事件等，给用户体验造成很大影响。如果我们调用 `Thread.Sleep()` 模拟 UI 线程卡顿，动画将会完全停止
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画
+      <source id="mp4" src="@source/posts/assets/在Avalonia中编写高性能动画
 /1.mp4" type="video/mp4">
 </video>
 
@@ -102,7 +102,7 @@ AnimateSquare(visual!.Compositor, visual);
 现在再来调用 `Thread.Sleep()` ，你可以发现合成动画依然能正常运行，完全不受 UI 线程影响！
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画
+      <source id="mp4" src="@source/posts/assets/在Avalonia中编写高性能动画
 /2.mp4" type="video/mp4">
 </video>
 
@@ -141,7 +141,7 @@ compositionVisual.ImplicitAnimations = _implicitAnimations;
 ```
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画
+      <source id="mp4" src="@source/posts/assets/在Avalonia中编写高性能动画
 /3.mp4" type="video/mp4">
 </video>
 
