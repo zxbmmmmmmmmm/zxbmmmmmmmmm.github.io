@@ -48,8 +48,7 @@ tag:
 简单易读！然而，这种动画有一个重大的缺陷：它运行在 UI 线程上，因此 UI 线程的高负载操作（如 Measure / Arrange）会严重影响动画的流畅程度。反过来，这些动画也会影响 UI 线程上的输入事件等，给用户体验造成很大影响。如果我们调用 `Thread.Sleep()` 模拟 UI 线程卡顿，动画将会完全停止
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在Avalonia中编写高性能动画
-/1.mp4" type="video/mp4">
+      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画/1.mp4" type="video/mp4">
 </video>
 
 而且，Transition 系统也基于相同的原理。因此，在 Avalonia 中你用 XAML 编写的所有动画，理论上都有上面的缺点！
@@ -102,8 +101,7 @@ AnimateSquare(visual!.Compositor, visual);
 现在再来调用 `Thread.Sleep()` ，你可以发现合成动画依然能正常运行，完全不受 UI 线程影响！
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在Avalonia中编写高性能动画
-/2.mp4" type="video/mp4">
+      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画/2.mp4" type="video/mp4">
 </video>
 
 同样，也可以编写隐式动画，在某个属性变化时自动触发：
@@ -141,8 +139,7 @@ compositionVisual.ImplicitAnimations = _implicitAnimations;
 ```
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在Avalonia中编写高性能动画
-/3.mp4" type="video/mp4">
+      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画/3.mp4" type="video/mp4">
 </video>
 
 然而，合成动画的强大之处远不止于此。
@@ -166,8 +163,7 @@ private void ConfigureGearAnimation(CompositionVisual currentGear, CompositionVi
 只需要对第一个齿轮播放动画，后面所有齿轮都会根据前一个齿轮的运动状态旋转。即使有上千个齿轮，动画也能保持较高帧率运行
 
 <video id="video" controls="" >
-      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画
-/4.mp4" type="video/mp4">
+      <source id="mp4" src="@source/posts/assets/在 Avalonia 中编写高性能动画/4.mp4" type="video/mp4">
 </video>
 
 > 如果觉得字符串表达式写着很恶心，[Avalonia.Labs](https://github.com/AvaloniaUI/Avalonia.Labs) 中的 [ExpressionBuilder](https://github.com/AvaloniaUI/Avalonia.Labs/tree/main/src/Avalonia.Labs.ExpressionBuilder) 能允许你用 C# 代码辅助编写这些表达式
