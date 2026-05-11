@@ -7,7 +7,6 @@ tag:
   - XAML
   - Avalonia
   - Composition
-
 ---
 
 # 在 Avalonia 中编写高性能动画
@@ -72,7 +71,7 @@ flowchart LR
     subgraph 2[渲染线程]
     C --> D([渲染后端])
     D --> E[Skia]
-    D --> F[Valkuan]
+    D --> F[Vulkan]
     D --> G[...]
     end
 ```
@@ -134,7 +133,7 @@ private void EnsureImplicitAnimations()
 ```
 
 ```csharp
-// 元素加载完成后调用 
+// 元素加载完成后调用
 compositionVisual.ImplicitAnimations = _implicitAnimations;
 ```
 
@@ -189,7 +188,7 @@ var xamlOpacity = border1.Opacity; // XAML 控件属性 —— 仍为1
 var visualOpacity = compositionVisul.Opacity; // UI 线程上的 CompositionVisual —— 仍为1
 ```
 
-当然，你也可以自己维护一个定时器来大致估算出当前的动画进度和值
+一个解决方案是维护一个定时器，通过运行时间估算出当前动画进度和值，但仍不能确保与实际渲染的值的完全相同
 
 ## 如何选择？
 
