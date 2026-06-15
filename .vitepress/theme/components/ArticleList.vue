@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { data as posts } from './posts.data'
-import Article from './components/Article.vue'
+import { data as posts } from '../posts.data.ts'
+import Article from './Article.vue'
 
 defineProps<{
     heading?: string

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useData } from 'vitepress'
 import SiteHeader from './components/SiteHeader.vue'
 import SiteFooter from './components/SiteFooter.vue'
-import ArticleList from './ArticleList.vue'
+import ArticleList from './components/ArticleList.vue'
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter } = useData()
