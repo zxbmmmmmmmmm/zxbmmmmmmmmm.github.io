@@ -1,6 +1,7 @@
 {
     "files.exclude": {
         "**/node_modules": true,
-        "**/.vitepress/cache": true
+        "**/.vitepress/cache": true,
+        "**/.vitepress/dist": true
     }
 }

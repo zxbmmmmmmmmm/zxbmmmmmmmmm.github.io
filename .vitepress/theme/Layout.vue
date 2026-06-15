@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useData } from 'vitepress'
 import SiteHeader from './components/SiteHeader.vue'
 import SiteFooter from './components/SiteFooter.vue'
+import ArticleList from './ArticleList.vue'
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter } = useData()
@@ -15,12 +16,7 @@ const isHome = computed(() => Boolean(frontmatter.value.home))
 
     <main class="site-main">
       <section v-if="isHome" class="home-view">
-        <h1>{{ site.title }}</h1>
-        <p>{{ site.description }}</p>
-        <ul>
-          <li><a href="/markdown-examples.html">Markdown Examples</a></li>
-          <li><a href="/api-examples.html">API Examples</a></li>
-        </ul>
+        <ArticleList/>  
       </section>
       <section v-else class="page_view">
         <Content />
