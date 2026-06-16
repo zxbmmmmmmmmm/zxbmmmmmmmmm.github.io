@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps<{
-    text: string
+  text: string
 }>()
 </script>
 <template>
-    <p>{{ text }}</p>
+  <p>{{ text }}</p>
 </template>
