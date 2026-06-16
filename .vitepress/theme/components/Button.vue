@@ -28,5 +28,14 @@ const component = computed(() => {
     :class="[theme]"
     :href="href ? normalizeLink(href) : undefined"
     :rel="props.rel ?? (isExternal ? 'noreferrer' : undefined)"
-  />
+  >
+    <slot>{{ text }}</slot>
+  </component>
 </template>
+
+<style scoped>
+.Button{
+   display: inline-block;
+   text-align: center;
+}
+</style>
