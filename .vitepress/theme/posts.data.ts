@@ -8,14 +8,13 @@ interface Post {
     string: string
   }
   excerpt: string | undefined
-  category: string[]
-  tag: string[]
+  tags: string[]
 }
 
 declare const data: Post[]
 export { data }
 
-export default createContentLoader('posts/*.md', {
+export default createContentLoader('posts/**/*.md', {
   excerpt: true,
   transform(raw): Post[] {
     return raw
@@ -24,8 +23,7 @@ export default createContentLoader('posts/*.md', {
         url,
         excerpt,
         date: formatDate(frontmatter.date),
-        category: normalizeList(frontmatter.category),
-        tag: normalizeList(frontmatter.tag)
+        tags: normalizeList(frontmatter.tag)
       }))
       .sort((a, b) => b.date.time - a.date.time)
   }
@@ -48,4 +46,20 @@ function normalizeList(value: unknown): string[] {
     return [value]
   }
   return []
+}
+
+export function initTags(posts: Post[]): Record<string, Post[]> {
+  const data: Record<string, Post[]> = {}
+  posts.forEach((post) => {
+    post.tags?.forEach((tag) => {
+      data[tag] = data[tag] || []
+      data[tag].push(post)
+    })
+  })
+
+  return Object.fromEntries(
+    Object.entries(data).sort(
+      ([, posts1], [, posts2]) => posts2.length - posts1.length
+    )
+  )
 }

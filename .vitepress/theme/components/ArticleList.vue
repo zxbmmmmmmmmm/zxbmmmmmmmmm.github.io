@@ -15,7 +15,7 @@ defineProps<{
           :title="post.title"
           :date="post.date.string"
           :excerpt="post.excerpt"
-          :tags="post.tag"
+          :tags="post.tags"
         />
       </li>
     </ul>
