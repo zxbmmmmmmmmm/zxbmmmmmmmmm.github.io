@@ -38,4 +38,5 @@ const component = computed(() => {
    display: inline-block;
    text-align: center;
 }
+
 </style>

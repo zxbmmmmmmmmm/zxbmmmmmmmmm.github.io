@@ -26,4 +26,3 @@ const isHome = computed(() => Boolean(frontmatter.value.home))
     <SiteFooter :text="site.description"/>
   </div>
 </template>
-s

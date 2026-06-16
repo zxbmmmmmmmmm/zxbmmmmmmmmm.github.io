@@ -8,9 +8,9 @@ defineProps<{
 }>()
 </script>
 <template>
-  <div class="article-list">
+  <div>
     <h2 v-if="heading">{{ heading }}</h2>
-    <ul>
+    <ul class="article-list">
       <li v-for="post in posts" :key="post.url">
         <Article
           :title="post.title"
@@ -23,3 +23,11 @@ defineProps<{
     </ul>
   </div>
 </template>
+<style scoped>
+.article-list {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+</style>
