@@ -1,15 +1,5 @@
 import { createContentLoader } from 'vitepress'
-
-interface Post {
-  title: string
-  url: string
-  date: {
-    time: number
-    string: string
-  }
-  excerpt: string | undefined
-  tags: string[]
-}
+import type { Post } from './shared/tags'
 
 declare const data: Post[]
 export { data }
@@ -23,7 +13,7 @@ export default createContentLoader('posts/**/*.md', {
         url,
         excerpt,
         date: formatDate(frontmatter.date),
-        tags: normalizeList(frontmatter.tag)
+        tags: normalizeList(frontmatter.tags ?? frontmatter.tag)
       }))
       .sort((a, b) => b.date.time - a.date.time)
   }
@@ -40,26 +30,13 @@ function formatDate(raw: string): Post['date'] {
 
 function normalizeList(value: unknown): string[] {
   if (Array.isArray(value)) {
-    return value.filter((item): item is string => typeof item === 'string')
+    return value
+      .filter((item): item is string => typeof item === 'string')
+      .map((item) => item.trim())
+      .filter(Boolean)
   }
   if (typeof value === 'string' && value.length > 0) {
-    return [value]
+    return [value.trim()].filter(Boolean)
   }
   return []
-}
-
-export function initTags(posts: Post[]): Record<string, Post[]> {
-  const data: Record<string, Post[]> = {}
-  posts.forEach((post) => {
-    post.tags?.forEach((tag) => {
-      data[tag] = data[tag] || []
-      data[tag].push(post)
-    })
-  })
-
-  return Object.fromEntries(
-    Object.entries(data).sort(
-      ([, posts1], [, posts2]) => posts2.length - posts1.length
-    )
-  )
 }
