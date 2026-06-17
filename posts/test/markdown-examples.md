@@ -1,3 +1,12 @@
+---
+title: Markdown
+date: 2026-06-17
+tag:
+  - Test
+---
+Hello Markdown!
+---
+
 # Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
