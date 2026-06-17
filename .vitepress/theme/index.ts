@@ -2,7 +2,8 @@
 import Layout from './Layout.vue'
 import type { Theme } from 'vitepress'
 import TagList from './components/TagList.vue'
-import './style.css'
+import './styles/base.css'
+import './styles/vars.css'
 
 export default {
   Layout,

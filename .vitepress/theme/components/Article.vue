@@ -31,7 +31,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 <style scoped>
 .article {
   display: grid;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 1.5rem;
   border: 1px solid #e5e7eb;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -44,16 +44,13 @@ const getArticleLink = (url: string) => normalizeLink(url)
 }
 
 .article-link {
-  color: #111827;
   text-decoration: none;
 }
 
 .article-link:hover {
-  color: #0f766e;
 }
 
 .article-excerpt {
-  color: #4b5563;
   line-height: 1.75;
 }
 
@@ -79,8 +76,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
   align-items: center;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: #ecfeff;
-  color: #155e75;
   font-size: 0.875rem;
   text-decoration: none;
 }
@@ -91,7 +86,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 
 .article-date {
   margin: 0;
-  color: #6b7280;
+  color: var(--text-outline);
   font-size: 0.875rem;
 }
 
