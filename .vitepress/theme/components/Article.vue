@@ -39,8 +39,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
   gap: 0.5rem;
   padding: 1.5rem;
   color: var(--vp-c-text-1);
-  background: var(--app-surface-color);
-  border: 1px solid var(--app-border-color);
+  background: var(--color-solid-background-fill-secondary);
   border-radius: var(--border-radius-overlay);
   transition:
     transform 0.2s ease,
@@ -56,10 +55,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
 .article-link {
   color: inherit;
   text-decoration: none;
-}
-
-.article-link:hover {
-  color: var(--vp-c-brand-1);
 }
 
 .article-excerpt {
@@ -89,15 +84,19 @@ const getArticleLink = (url: string) => normalizeLink(url)
   align-items: center;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  color: var(--vp-c-brand-1);
   background: var(--app-subtle-fill-color);
   font-size: 0.875rem;
   text-decoration: none;
+  border: 0;
 }
 
 .article-tag:hover {
-  color: var(--vp-c-brand-2);
   background: var(--app-subtle-fill-color-hover);
+}
+
+.article:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--app-shadow-elevation-medium);
 }
 
 .article-date {

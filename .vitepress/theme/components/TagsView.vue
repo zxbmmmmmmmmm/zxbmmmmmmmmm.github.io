@@ -23,7 +23,7 @@ function readTagFromLocation() {
   const tag = getTagFromPath(window.location.pathname)
   activeTag.value = tagGroups.some((group) => group.name === tag)
     ? tag
-    : tagGroups[0]?.name ?? ''
+    : (tagGroups[0]?.name ?? '')
 }
 
 function selectTag(tag: string) {
@@ -78,4 +78,7 @@ onBeforeUnmount(() => {
   gap: 0.75rem;
 }
 
+.tag-button {
+  background: var(--color-control-fill-default);
+}
 </style>

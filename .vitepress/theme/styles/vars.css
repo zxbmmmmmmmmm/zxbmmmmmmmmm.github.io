@@ -17,6 +17,7 @@
 
   --color-control-fill-default: #b6b6b6b3;
   --color-control-fill-secondary: #cdcdcdd1;
+  --color-control-fill-tertiary: #cacacae6;
   --color-control-fill-disabled: #cacaca66;
   --color-control-stroke-default: #00000033;
   --color-control-stroke-on-accent-default: #ffffff;
@@ -75,14 +76,15 @@
     --color-text-on-accent-fill-selected-text: #ffffff;
     --color-text-on-accent-fill-primary: #ffffff;
 
-    --color-solid-background-fill-base: #1d1d1d;
-    --color-solid-background-fill-secondary: #000000;
+    --color-solid-background-fill-base: #000000;
+    --color-solid-background-fill-secondary: #1d1d1d;
     --color-surface-fill-default: #000000;
     --color-surface-fill-secondary: #00000000;
     --color-overlay-fill-default: #000000a6;
 
     --color-control-fill-default: #00000000;
     --color-control-fill-secondary: #ffffff21;
+    --color-control-fill-tertiary: #ffffff4d;
     --color-control-fill-disabled: #00000000;
     --color-control-stroke-default: #ffffff;
     --color-control-stroke-on-accent-default: #ffffff;
@@ -115,13 +117,14 @@ html.dark {
   --color-text-on-accent-fill-primary: #ffffff;
 
   --color-solid-background-fill-base: #1d1d1d;
-  --color-solid-background-fill-secondary: #000000;
+  --color-solid-background-fill-secondary: #131313;
   --color-surface-fill-default: #000000;
   --color-surface-fill-secondary: #00000000;
   --color-overlay-fill-default: #000000a6;
 
   --color-control-fill-default: #00000000;
   --color-control-fill-secondary: #ffffff21;
+  --color-control-fill-tertiary: #ffffff4d;
   --color-control-fill-disabled: #00000000;
   --color-control-stroke-default: #ffffff;
   --color-control-stroke-on-accent-default: #ffffff;
@@ -162,6 +165,7 @@ html.dark {
 
     --color-control-fill-default: ButtonFace;
     --color-control-fill-secondary: ButtonFace;
+    --color-control-fill-tertiary: ButtonFace;
     --color-control-fill-disabled: ButtonFace;
     --color-control-stroke-default: ButtonText;
     --color-control-stroke-on-accent-default: HighlightText;

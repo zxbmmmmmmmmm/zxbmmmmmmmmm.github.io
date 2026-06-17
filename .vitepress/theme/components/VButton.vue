@@ -36,17 +36,16 @@ const component = computed(() => {
 <style scoped>
 .Button {
   display: inline-block;
-  padding: 0.45rem 0.85rem;
+  padding: 0.45rem 1rem;
   color: var(--vp-c-text-1);
   text-align: center;
-  background: var(--color-control-fill-default);
-  border: 1px solid var(--color-control-stroke-default);
+  background: var(--color-control-fill-secondary);
   border-radius: var(--border-radius-control);
 }
 
 .Button:hover {
   color: var(--vp-c-text-1);
-  background: var(--color-control-fill-secondary);
+  background: var(--color-control-fill-tertiary);
 }
 
 .Button.accent {
