@@ -22,6 +22,7 @@
   html {
     line-height: 1.4;
     font-size: 16px;
+    color-scheme: light;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -40,6 +41,7 @@
     font-weight: 400;
     color: var(--vp-c-text-1);
     background-color: var(--vp-c-bg);
+    accent-color: var(--color-accent);
     font-synthesis: style;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -101,8 +103,17 @@
   }
 
   a {
-    color: inherit;
+    color: var(--vp-c-brand-1);
     text-decoration: inherit;
+  }
+
+  a:hover {
+    color: var(--vp-c-brand-2);
+  }
+
+  ::selection {
+    color: var(--color-text-on-accent-fill-selected-text);
+    background-color: var(--color-accent);
   }
 
   ol,
@@ -170,8 +181,8 @@
 
   button:focus,
   button:focus-visible {
-    outline: 1px dotted;
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: 2px solid var(--app-focus-color);
+    outline-offset: 2px;
   }
 
   button:focus:not(:focus-visible) {
@@ -259,6 +270,25 @@
 
   vite-error-overlay {
     z-index: 9999;
+  }
+
+  @media (forced-colors: active) {
+    html {
+      forced-color-adjust: auto;
+    }
+
+    a {
+      color: LinkText;
+    }
+
+    a:hover {
+      color: Highlight;
+    }
+
+    ::selection {
+      color: HighlightText;
+      background-color: Highlight;
+    }
   }
 
   mjx-container {

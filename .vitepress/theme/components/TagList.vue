@@ -61,3 +61,35 @@ onBeforeUnmount(() => {
     <p v-else>暂无标签。</p>
   </div>
 </template>
+
+<style scoped>
+.tag-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.tag-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag-list button {
+  padding: 0.45rem 0.8rem;
+  color: var(--vp-c-text-2);
+  background: var(--color-control-fill-default);
+  border: 1px solid var(--color-control-stroke-default);
+  border-radius: 6px;
+}
+
+.tag-list button:hover {
+  color: var(--vp-c-text-1);
+  background: var(--color-control-fill-secondary);
+}
+
+.tag-list button[aria-pressed='true'] {
+  color: var(--color-text-on-accent-fill-primary);
+  background: var(--color-accent);
+  border-color: var(--color-control-stroke-on-accent-default);
+}
+</style>

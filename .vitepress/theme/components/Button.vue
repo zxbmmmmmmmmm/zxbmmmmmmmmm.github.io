@@ -34,9 +34,29 @@ const component = computed(() => {
 </template>
 
 <style scoped>
-.Button{
-   display: inline-block;
-   text-align: center;
+.Button {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  color: var(--vp-c-text-1);
+  text-align: center;
+  background: var(--color-control-fill-default);
+  border: 1px solid var(--color-control-stroke-default);
+  border-radius: 6px;
 }
 
+.Button:hover {
+  color: var(--vp-c-text-1);
+  background: var(--color-control-fill-secondary);
+}
+
+.Button.accent {
+  color: var(--color-text-on-accent-fill-primary);
+  background: var(--color-accent);
+  border-color: var(--color-control-stroke-on-accent-default);
+}
+
+.Button.accent:hover {
+  color: var(--color-text-on-accent-fill-primary);
+  background: var(--color-accent-hover);
+}
 </style>

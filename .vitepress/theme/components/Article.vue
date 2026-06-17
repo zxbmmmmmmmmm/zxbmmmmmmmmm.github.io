@@ -33,7 +33,9 @@ const getArticleLink = (url: string) => normalizeLink(url)
   display: grid;
   gap: 0.5rem;
   padding: 1.5rem;
-  border: 1px solid #e5e7eb;
+  color: var(--vp-c-text-1);
+  background: var(--app-surface-color);
+  border: 1px solid var(--app-border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -44,13 +46,16 @@ const getArticleLink = (url: string) => normalizeLink(url)
 }
 
 .article-link {
+  color: inherit;
   text-decoration: none;
 }
 
 .article-link:hover {
+  color: var(--vp-c-brand-1);
 }
 
 .article-excerpt {
+  color: var(--vp-c-text-2);
   line-height: 1.75;
 }
 
@@ -76,17 +81,20 @@ const getArticleLink = (url: string) => normalizeLink(url)
   align-items: center;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
+  color: var(--vp-c-brand-1);
+  background: var(--app-subtle-fill-color);
   font-size: 0.875rem;
   text-decoration: none;
 }
 
 .article-tag:hover {
-  background: #cffafe;
+  color: var(--vp-c-brand-2);
+  background: var(--app-subtle-fill-color-hover);
 }
 
 .article-date {
   margin: 0;
-  color: var(--text-outline);
+  color: var(--app-muted-text-color);
   font-size: 0.875rem;
 }
 
