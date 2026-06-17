@@ -4,4 +4,4 @@ title: Tags
 
 # Tags
 
-<TagList />
+<TagsView />
