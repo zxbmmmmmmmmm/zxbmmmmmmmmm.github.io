@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getTagLink } from '../shared/tags'
 import { normalizeLink } from '../shared/utils'
+import VButton from './VButton.vue'
 
 defineProps<{
   title: string
@@ -26,7 +27,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
     <div v-if="excerpt" class="article-excerpt" v-html="excerpt"></div>
     <ul v-if="tags?.length" class="article-tags">
       <li v-for="tag in tags" :key="tag" class="article-tag-item">
-        <a :href="getTagLink(tag)" class="article-tag">{{ tag }}</a>
+        <VButton class="article-tag" :text="tag" :href="getTagLink(tag)" />
       </li>
     </ul>
   </article>
