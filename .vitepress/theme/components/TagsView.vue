@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useData, useRouter, withBase } from 'vitepress'
-import { data as posts } from '../posts.data'
-import { getTagFromPath, getTagGroups, getTagLink } from '../shared/tags'
+import { data as posts } from '../posts.data.ts'
+import { getTagFromPath, getTagGroups, getTagLink } from '../shared/tags.ts'
 import ArticleList from './ArticleList.vue'
+import VButton from './VButton.vue'
 
 const { params } = useData()
 const router = useRouter()
@@ -44,13 +45,15 @@ onBeforeUnmount(() => {
   <div class="tag-list">
     <ul>
       <li v-for="tag in tagGroups" :key="tag.name">
-        <button
+        <VButton
           type="button"
+          class="tag-button"
+          :theme="tag.name === activeTag ? 'accent' : 'default'"
           :aria-pressed="tag.name === activeTag"
           @click="selectTag(tag.name)"
         >
           {{ tag.name }} ({{ tag.count }})
-        </button>
+        </VButton>
       </li>
     </ul>
 
@@ -58,7 +61,7 @@ onBeforeUnmount(() => {
       <ArticleList :posts="activeTagPosts" />
     </section>
 
-    <p v-else>暂无标签。</p>
+    <p v-else>暂无标签</p>
   </div>
 </template>
 
@@ -74,22 +77,4 @@ onBeforeUnmount(() => {
   gap: 0.75rem;
 }
 
-.tag-list button {
-  padding: 0.45rem 0.8rem;
-  color: var(--vp-c-text-2);
-  background: var(--color-control-fill-default);
-  border: 1px solid var(--color-control-stroke-default);
-  border-radius: 6px;
-}
-
-.tag-list button:hover {
-  color: var(--vp-c-text-1);
-  background: var(--color-control-fill-secondary);
-}
-
-.tag-list button[aria-pressed='true'] {
-  color: var(--color-text-on-accent-fill-primary);
-  background: var(--color-accent);
-  border-color: var(--color-control-stroke-on-accent-default);
-}
 </style>

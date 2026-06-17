@@ -79,11 +79,14 @@
   --color-system-fill-neutral-background: #00000006;
   --color-system-fill-solid-attention-background: #f7f7f7;
   --color-system-fill-solid-neutral-background: #f3f3f3;
-  --color-accent: #0078d4;
-  --color-accent-hover: #106ebe;
-  --color-accent-active: #005a9e;
+  --color-accent: #2b94a2;
+  --color-accent-hover: #1d8f9b;
+  --color-accent-active: #098a94;
   --color-control-alt-fill-quaternary: var(--color-control-alt-fill-quarternary);
   --color-solid-background-fill-quaternary: var(--color-solid-background-fill-quarternary);
+  
+  --border-radius-control: 4px;
+  --border-radius-overlay: 8px;
 
   --vp-font-family-base: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --vp-font-family-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
@@ -279,9 +282,9 @@ html.dark {
   --color-system-fill-neutral-background: #ffffff08;
   --color-system-fill-solid-attention-background: #2e2e2e;
   --color-system-fill-solid-neutral-background: #2e2e2e;
-  --color-accent: #60cdff;
-  --color-accent-hover: #6bdaff;
-  --color-accent-active: #38bdf8;
+  --color-accent: #54cbef;
+  --color-accent-hover: #5AD9FF;
+  --color-accent-active: #5AD9FF;
 }
 
 @media (forced-colors: active) {

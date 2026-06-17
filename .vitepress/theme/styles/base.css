@@ -165,6 +165,7 @@
     padding: 0;
     line-height: inherit;
     color: inherit;
+    border-radius: var(--border-radius-control);
   }
 
   button {
@@ -216,6 +217,14 @@
   input::placeholder,
   textarea::placeholder {
     color: var(--vp-c-text-3);
+  }
+
+  :where(.vp-doc, .page_view) :is(.custom-block, div[class*='language-'], pre, table) {
+    border-radius: var(--border-radius-overlay);
+  }
+
+  :where(.vp-doc, .page_view) :is(.custom-block, div[class*='language-']) {
+    overflow: hidden;
   }
 
   input::-webkit-outer-spin-button,

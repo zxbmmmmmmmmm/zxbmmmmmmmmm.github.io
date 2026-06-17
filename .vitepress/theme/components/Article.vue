@@ -36,6 +36,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
   color: var(--vp-c-text-1);
   background: var(--app-surface-color);
   border: 1px solid var(--app-border-color);
+  border-radius: var(--border-radius-overlay);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -101,7 +102,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
 @media (max-width: 640px) {
   .article {
     padding: 1.25rem;
-    border-radius: 0.875rem;
   }
 
   .article-title {

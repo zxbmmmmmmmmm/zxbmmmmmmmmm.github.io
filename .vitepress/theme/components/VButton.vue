@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { EXTERNAL_URL_RE } from './../shared/utils'
-import { normalizeLink } from './../shared/utils'
+import { EXTERNAL_URL_RE } from '../shared/utils'
+import { normalizeLink } from '../shared/utils'
 
 interface Props {
   text?: string
@@ -41,7 +41,7 @@ const component = computed(() => {
   text-align: center;
   background: var(--color-control-fill-default);
   border: 1px solid var(--color-control-stroke-default);
-  border-radius: 6px;
+  border-radius: var(--border-radius-control);
 }
 
 .Button:hover {
