@@ -15,16 +15,20 @@ const getArticleLink = (url: string) => normalizeLink(url)
 <template>
   <article class="article">
     <h1 class="article-title">
-      <a v-if="url" :href="getArticleLink(url)" class="article-link">{{ title }}</a>
+      <a v-if="url" :href="getArticleLink(url)" class="article-link">{{
+        title
+      }}</a>
       <template v-else>{{ title }}</template>
     </h1>
+    <div class="article-meta">
+      <p class="article-date">{{ date }}</p>
+    </div>
     <div v-if="excerpt" class="article-excerpt" v-html="excerpt"></div>
     <ul v-if="tags?.length" class="article-tags">
       <li v-for="tag in tags" :key="tag" class="article-tag-item">
         <a :href="getTagLink(tag)" class="article-tag">{{ tag }}</a>
       </li>
     </ul>
-    <p class="article-date">{{ date }}</p>
   </article>
 </template>
 
@@ -37,7 +41,9 @@ const getArticleLink = (url: string) => normalizeLink(url)
   background: var(--app-surface-color);
   border: 1px solid var(--app-border-color);
   border-radius: var(--border-radius-overlay);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .article-title {
@@ -96,7 +102,12 @@ const getArticleLink = (url: string) => normalizeLink(url)
 .article-date {
   margin: 0;
   color: var(--app-muted-text-color);
-  font-size: 0.875rem;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 @media (max-width: 640px) {
