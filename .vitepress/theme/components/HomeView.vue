@@ -8,3 +8,8 @@ import { data as posts } from '../posts.data'
     <ArticleList :posts="posts" />
   </div>
 </template>
+<style scoped>
+.layout{
+  padding: 1rem
+}
+</style>

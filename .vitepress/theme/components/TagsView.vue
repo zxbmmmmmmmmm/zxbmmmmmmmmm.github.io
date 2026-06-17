@@ -42,7 +42,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="tag-list">
+  <div class="layout">
     <ul>
       <li v-for="tag in tagGroups" :key="tag.name">
         <VButton
@@ -66,12 +66,13 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.tag-list {
+.layout {
   display: grid;
   gap: 1.5rem;
+  padding: 1rem;
 }
 
-.tag-list ul {
+.layout ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
