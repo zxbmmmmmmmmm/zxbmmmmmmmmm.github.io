@@ -30,7 +30,7 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 24px;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--vp-c-divider);
 }

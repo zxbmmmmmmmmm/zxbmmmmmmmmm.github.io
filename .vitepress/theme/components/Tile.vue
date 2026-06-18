@@ -3,7 +3,6 @@ import VButton from './VButton.vue'
 interface Props {
   text?: string
   theme?: 'default' | 'accent'
-  size?: 'small' | 'medium' | 'wide' | 'large'
 }
 const props = withDefaults(defineProps<Props>(), {
   text: 'Text',
@@ -12,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 </script>
 <template>
-  <VButton type="button" class="tile-button" :class="[size]" :theme="theme">
+  <VButton type="button" class="tile-button" :theme="theme">
     <slot class="tile-content">11</slot>
     <p class="tile-text">{{ text }}</p>
   </VButton>
@@ -36,25 +35,5 @@ const props = withDefaults(defineProps<Props>(), {
   position: absolute;
   right: 0.4rem;
   bottom: 0.2rem;
-}
-
-.tile-button.small {
-  width: 50px;
-  height: 50px;
-  .tile-text {
-    display: none;
-  }
-}
-.tile-button.medium {
-  width: 100px;
-  height: 100px;
-}
-.tile-button.wide {
-  width: 200px;
-  height: 100px;
-}
-.tile-button.large {
-  width: 200px;
-  height: 200px;
 }
 </style>

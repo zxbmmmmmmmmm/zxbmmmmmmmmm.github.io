@@ -4,5 +4,12 @@ defineProps<{
 }>()
 </script>
 <template>
-  <p>{{ text }}</p>
+  <div class="layout">
+    <p>{{ text }}</p>
+  </div>
 </template>
+<style scoped>
+.layout {
+  padding-left: 32px;
+}
+</style>
