@@ -7,10 +7,10 @@ import { data as posts } from '../posts.data'
 <template>
   <div class="layout">
     <div class="home-view-header">
-      <Tile class="tile-1" theme="accent"> 11 </Tile>
-      <Tile class="tile-2" theme="accent"> 11 </Tile>
-      <Tile class="tile-3" theme="accent"> 11 </Tile>
-      <Tile class="tile-4" theme="accent"> 11 </Tile>
+      <Tile class="tile-1" text="所有文章" theme="accent"> 11 </Tile>
+      <Tile class="tile-2" text="标签"  theme="accent"> 11 </Tile>
+      <Tile class="tile-3" text="友链" theme="accent"> 11 </Tile>
+      <Tile class="tile-4" text="项目" theme="accent"> 11 </Tile>
       <div class="about-card">
         <img
           class="avatar"

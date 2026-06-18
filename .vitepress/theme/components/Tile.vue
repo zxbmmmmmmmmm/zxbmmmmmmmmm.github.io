@@ -17,19 +17,26 @@ const props = withDefaults(defineProps<Props>(), {
   </VButton>
 </template>
 <style scoped>
+
 .tile-button {
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 垂直居中 */
-  align-items: center; /* 水平居中 */
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
+
+.tile-button:active {
+  transform: scale(0.95);
+}
+
 .tile-content {
   grid-area: 1 / 1 / 2 / 2;
   align-self: center;
   justify-self: center;
 }
+
 .tile-text {
   font-size: 0.8rem;
   position: absolute;
