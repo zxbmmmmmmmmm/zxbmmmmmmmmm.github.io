@@ -32,15 +32,18 @@
   --color-focus-stroke-outer: #000000;
   --color-focus-stroke-inner: #ffffff;
 
-  --color-accent: #4617b4;
-  --color-accent-hover: #5f37be;
-  --color-accent-active: #7241e4;
+  --color-accent: #098a94;
+  --color-accent-hover: #0aa5a9;
+  --color-accent-active: #0cc0c5;
 
   --border-radius-control: 0px;
   --border-radius-overlay: 0px;
 
-  --vp-font-family-base: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --vp-font-family-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --vp-font-family-base:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --vp-font-family-mono:
+    ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
   --vp-c-bg: var(--color-solid-background-fill-base);
   --vp-c-bg-alt: var(--color-solid-background-fill-secondary);
   --vp-c-bg-soft: var(--color-card-background-fill-default);
@@ -99,9 +102,9 @@
     --color-focus-stroke-outer: #ffffff;
     --color-focus-stroke-inner: #000000;
 
-    --color-accent: #5b2ec5;
-    --color-accent-hover: #724bcd;
-    --color-accent-active: #8152ef;
+    --color-accent: #098a94;
+    --color-accent-hover: #0aa5a9;
+    --color-accent-active: #0cc0c5;
   }
 }
 
@@ -139,9 +142,9 @@ html.dark {
   --color-focus-stroke-outer: #ffffff;
   --color-focus-stroke-inner: #000000;
 
-  --color-accent: #5b2ec5;
-  --color-accent-hover: #724bcd;
-  --color-accent-active: #8152ef;
+  --color-accent: #098a94;
+  --color-accent-hover: #0aa5a9;
+  --color-accent-active: #0cc0c5;
 }
 
 @media (forced-colors: active) {

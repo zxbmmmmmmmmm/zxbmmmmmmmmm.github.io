@@ -41,6 +41,8 @@ const component = computed(() => {
   text-align: center;
   background: var(--color-control-fill-secondary);
   border-radius: var(--border-radius-control);
+  transition: 
+    transform 0.2s ease;
 }
 
 .Button:hover {
@@ -57,5 +59,9 @@ const component = computed(() => {
 .Button.accent:hover {
   color: var(--color-text-on-accent-fill-primary);
   background: var(--color-accent-hover);
+}
+
+.Button:active{
+  transform: scale(0.9);
 }
 </style>

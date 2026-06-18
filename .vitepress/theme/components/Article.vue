@@ -3,7 +3,7 @@ import { getTagLink } from '../shared/tags'
 import { normalizeLink } from '../shared/utils'
 import VButton from './VButton.vue'
 
-defineProps<{
+const props = defineProps<{
   title: string
   url?: string
   date: string
@@ -14,12 +14,10 @@ defineProps<{
 const getArticleLink = (url: string) => normalizeLink(url)
 </script>
 <template>
-  <article class="article">
+  <article class="article" role="button">
+    <a v-if="url" :href="getArticleLink(url)" class="card-overlay"></a>
     <h1 class="article-title">
-      <a v-if="url" :href="getArticleLink(url)" class="article-link">{{
-        title
-      }}</a>
-      <template v-else>{{ title }}</template>
+      <p>{{ title }}</p>
     </h1>
     <div class="article-meta">
       <p class="article-date">{{ date }}</p>
@@ -35,6 +33,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 
 <style scoped>
 .article {
+  position: relative;
   display: grid;
   gap: 0.5rem;
   padding: 1.5rem;
@@ -44,6 +43,11 @@ const getArticleLink = (url: string) => normalizeLink(url)
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+.article:has(.card-overlay:active):not(:has(.article-tag:active))
+{
+  transform: scale(0.99);
 }
 
 .article-title {
@@ -77,6 +81,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 
 .article-tag-item {
   margin: 0;
+  z-index: 2;
 }
 
 .article-tag {
@@ -94,7 +99,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
   background: var(--app-subtle-fill-color-hover);
 }
 
-.article:hover {
+.article:hover:not(:active):not(:has(.card-overlay:active)) {
   transform: translateY(-2px);
   box-shadow: var(--app-shadow-elevation-medium);
 }
@@ -108,6 +113,15 @@ const getArticleLink = (url: string) => normalizeLink(url)
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 @media (max-width: 640px) {
