@@ -13,50 +13,52 @@ import Projects from '../icons/8/Projects.vue'
 
 <template>
   <div class="layout">
-    <div class="home-view-header">
-      <Tile class="tile-1" text="所有文章" theme="accent">
-        <Bookmark />
-      </Tile>
-      <Tile class="tile-2" text="标签" theme="accent">
-        <Tags />
-      </Tile>
-      <Tile class="tile-3" text="友链" theme="accent">
-        <People />
-      </Tile>
-      <Tile class="tile-4" text="项目" theme="accent">
-        <Projects />
-      </Tile>
-      <div class="about-card">
-        <img
-          class="avatar"
-          src="https://avatars.githubusercontent.com/u/96322503?v=4"
-          alt="Avatar"
-        />
-        <div class="about-content-layer">
-          <div class="about-content">
-            <h2>Betta_Fish</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam
-            </p>
-            <ul>
-              <li class="social-buttons">
-                <VButton
-                  href="https://github.com/zxbmmmmmmmmm"
-                  class="social-button"
-                >
-                  <Github />
-                  Github
-                </VButton>
-              </li>
-            </ul>
+    <div class="content">
+      <div class="home-view-header">
+        <Tile class="tile-1" text="所有文章" theme="accent">
+          <Bookmark />
+        </Tile>
+        <Tile class="tile-2" text="标签" theme="accent">
+          <Tags />
+        </Tile>
+        <Tile class="tile-3" text="友链" theme="accent">
+          <People />
+        </Tile>
+        <Tile class="tile-4" text="项目" theme="accent">
+          <Projects />
+        </Tile>
+        <div class="about-card">
+          <img
+            class="avatar"
+            src="https://avatars.githubusercontent.com/u/96322503?v=4"
+            alt="Avatar"
+          />
+          <div class="about-content-layer">
+            <div class="about-content">
+              <h2>Betta_Fish</h2>
+              <p class="about-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam
+              </p>
+              <ul>
+                <li class="social-buttons">
+                  <VButton
+                    href="https://github.com/zxbmmmmmmmmm"
+                    class="social-button"
+                  >
+                    <Github />
+                    Github
+                  </VButton>
+                </li>
+              </ul>
+            </div>
+            <ArrowRight class="arrow-icon" />
           </div>
-          <ArrowRight class="arrow-icon" />
         </div>
       </div>
+      <ArticleList class="article-list" :posts="posts" />
     </div>
-    <ArticleList :posts="posts" />
   </div>
 </template>
 <style scoped>
@@ -65,6 +67,12 @@ import Projects from '../icons/8/Projects.vue'
   display: grid;
   gap: 24px;
 }
+.content {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+}
+
 .home-view-header {
   display: grid;
   gap: 12px;
@@ -72,15 +80,19 @@ import Projects from '../icons/8/Projects.vue'
   grid-template-rows: repeat(2, 108px);
   grid-auto-rows: auto;
 }
+
 .tile-1 {
   grid-column: 2 / 4;
 }
+
 .tile-3 {
   grid-row: 2;
 }
+
 .tile-4 {
   grid-column: 3 / 5;
 }
+
 .about-card {
   grid-column: 1;
   grid-row: 1 / 3;
@@ -88,17 +100,30 @@ import Projects from '../icons/8/Projects.vue'
   display: flex;
   position: relative;
   transition: transform 0.2s ease;
+  overflow: hidden;
 }
+
 .about-card:hover {
   transform: translateY(-2px);
 }
+
 .about-card:active:not(:has(.social-button:active)) {
   transform: scale(0.99);
 }
+
+.about-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
 .avatar {
   height: 100%;
   object-fit: cover;
 }
+
 .about-content-layer {
   padding: 20px 24px;
   background-color: var(--color-secondary);
@@ -107,12 +132,16 @@ import Projects from '../icons/8/Projects.vue'
   color: var(--color-on-secondary);
   position: relative;
 }
+
 .about-content {
   position: relative;
   display: grid;
+  grid-template-rows: max-content minmax(0, 1fr) max-content;
   z-index: 1;
+  height: 100%;
   gap: 0.4rem;
 }
+
 .arrow-icon {
   position: absolute;
   right: 16px;
@@ -121,17 +150,108 @@ import Projects from '../icons/8/Projects.vue'
   width: 96px;
   color: var(--color-on-secondary);
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.2;
   pointer-events: none;
 }
+
 .social-buttons {
   margin-top: 1rem;
 }
+
 .social-button {
   font-size: 1rem;
   display: inline-flex;
   gap: 12px;
   padding: 0.5rem 1rem;
   align-items: center;
+  background: var(--color-surface-container);
+  color: var(--color-on-surface);
+}
+
+html.dark .social-button:not(:hover) {
+  background: #ffffff16;
+  color: #ffffff;
+}
+
+.article-list {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+html.dark .about-content-layer {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+@media (max-width: 840px) {
+  .home-view-header {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 216px repeat(2, 108px);
+  }
+  .tile-1 {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+  .tile-2 {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .tile-3 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .tile-4 {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+  .about-card {
+    grid-column: 1 / 4;
+    grid-row: 1;
+  }
+  .avatar {
+    display: none;
+  }
+}
+@media (min-width: 1200px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1200px) auto minmax(0, 1fr);
+    align-items: start;
+  }
+  .home-view-header {
+    grid-column: 3;
+    grid-template-columns: repeat(3, 108px);
+    grid-template-rows: 216px repeat(2, 108px);
+  }
+  .article-list {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: none;
+    margin-inline: 0;
+  }
+  .tile-1 {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+  .tile-2 {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .tile-3 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .tile-4 {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+  .about-card {
+    grid-column: 1 / 4;
+    grid-row: 1;
+  }
+  .avatar {
+    display: none;
+  }
 }
 </style>
