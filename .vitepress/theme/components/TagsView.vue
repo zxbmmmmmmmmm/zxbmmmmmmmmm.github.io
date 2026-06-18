@@ -79,6 +79,6 @@ onBeforeUnmount(() => {
 }
 
 .tag-button {
-  background: var(--color-control-fill-default);
+  background: var(--color-surface-container);
 }
 </style>

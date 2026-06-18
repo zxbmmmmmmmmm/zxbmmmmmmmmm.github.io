@@ -39,7 +39,7 @@ const component = computed(() => {
   padding: 0.45rem 1rem;
   color: var(--vp-c-text-1);
   text-align: center;
-  background: var(--color-control-fill-secondary);
+  background: var(--color-surface-container-high);
   border-radius: var(--border-radius-control);
   transition: 
     transform 0.2s ease;
@@ -47,18 +47,18 @@ const component = computed(() => {
 
 .Button:hover {
   color: var(--vp-c-text-1);
-  background: var(--color-control-fill-tertiary);
+  background: var(--color-surface-container-highest);
 }
 
 .Button.accent {
-  color: var(--color-text-on-accent-fill-primary);
-  background: var(--color-accent);
-  border-color: var(--color-control-stroke-on-accent-default);
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border-color: var(--color-on-primary);
 }
 
 .Button.accent:hover {
-  color: var(--color-text-on-accent-fill-primary);
-  background: var(--color-accent-hover);
+  color: var(--color-on-primary);
+  background: var(--color-inverse-primary);
 }
 
 .Button:active{

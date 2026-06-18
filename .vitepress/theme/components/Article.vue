@@ -36,9 +36,9 @@ const getArticleLink = (url: string) => normalizeLink(url)
   position: relative;
   display: grid;
   gap: 0.5rem;
-  padding: 1.5rem;
+  padding: 1.75rem;
   color: var(--vp-c-text-1);
-  background: var(--color-solid-background-fill-secondary);
+  background: var(--color-surface-variant);
   border-radius: var(--border-radius-overlay);
   transition:
     transform 0.2s ease,
@@ -89,14 +89,14 @@ const getArticleLink = (url: string) => normalizeLink(url)
   align-items: center;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: var(--app-subtle-fill-color);
+  background: var(--color-surface-container-highest);
   font-size: 0.875rem;
   text-decoration: none;
   border: 0;
 }
 
 .article-tag:hover {
-  background: var(--app-subtle-fill-color-hover);
+  background: var(--color-outline-variant);
 }
 
 .article:hover:not(:active):not(:has(.card-overlay:active)) {
@@ -106,7 +106,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 
 .article-date {
   margin: 0;
-  color: var(--app-muted-text-color);
+  color: var(--vp-c-text-3);
 }
 
 .article-meta {

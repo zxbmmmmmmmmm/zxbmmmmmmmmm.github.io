@@ -1,40 +1,61 @@
 :root {
   color-scheme: light;
 
-  --color-text-fill-primary: #000000de;
-  --color-text-fill-secondary: #00000099;
-  --color-text-fill-tertiary: #00000066;
-  --color-text-fill-disabled: #00000066;
-  --color-text-fill-inverse: #ffffff;
-  --color-text-on-accent-fill-selected-text: #ffffff;
-  --color-text-on-accent-fill-primary: #ffffff;
+  --color-primary: #098a94;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d0f8fb;
+  --color-on-primary-container: #002023;
+  --color-inverse-primary: #0aa5a9;
 
-  --color-solid-background-fill-base: #ffffff;
-  --color-solid-background-fill-secondary: #f0f0f0;
-  --color-surface-fill-default: #ffffff;
-  --color-surface-fill-secondary: #ffffffcc;
-  --color-overlay-fill-default: #000000a6;
+  --color-secondary: #526365;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d5e7e9;
+  --color-on-secondary-container: #0f1f21;
 
-  --color-control-fill-default: #b6b6b6b3;
-  --color-control-fill-secondary: #cdcdcdd1;
-  --color-control-fill-tertiary: #cacacae6;
-  --color-control-fill-disabled: #cacaca66;
-  --color-control-stroke-default: #00000033;
-  --color-control-stroke-on-accent-default: #ffffff;
+  --color-tertiary: #5a5d7e;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #e0e0ff;
+  --color-on-tertiary-container: #171936;
 
-  --color-subtle-fill-secondary: #00000021;
-  --color-subtle-fill-tertiary: #0000004d;
-  --color-card-background-fill-default: var(--color-surface-fill-secondary);
-  --color-card-background-fill-secondary: var(--color-surface-fill-default);
-  --color-card-stroke-default: #00000045;
-  --color-card-stroke-default-solid: #212121;
-  --color-divider-stroke-default: #00000033;
-  --color-focus-stroke-outer: #000000;
-  --color-focus-stroke-inner: #ffffff;
+  --color-background: #eaedee;
+  --color-on-background: #000000de;
+  --color-surface: #ffffff;
+  --color-on-surface: #000000de;
+  --color-surface-variant: #ffffff;
+  --color-on-surface-variant: #00000099;
+  --color-surface-tint: var(--color-primary);
+  --color-inverse-surface: #212121;
+  --color-inverse-on-surface: #ffffff;
 
-  --color-accent: #098a94;
-  --color-accent-hover: #0aa5a9;
-  --color-accent-active: #0cc0c5;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #410002;
+
+  --color-outline: #0000002e;
+  --color-outline-variant: #0000001f;
+  --color-scrim: #000000a6;
+
+  --color-surface-bright: var(--color-surface);
+  --color-surface-dim: #eef1f4;
+  --color-surface-container: #ffffff;
+  --color-surface-container-high: #eef1f4;
+  --color-surface-container-highest: #e4e8ec;
+  --color-surface-container-low: #ffffff;
+  --color-surface-container-lowest: var(--color-surface);
+
+  --color-primary-fixed: var(--color-primary-container);
+  --color-primary-fixed-dim: #9beef3;
+  --color-on-primary-fixed: var(--color-on-primary-container);
+  --color-on-primary-fixed-variant: #004f56;
+  --color-secondary-fixed: var(--color-secondary-container);
+  --color-secondary-fixed-dim: #b9cbcd;
+  --color-on-secondary-fixed: var(--color-on-secondary-container);
+  --color-on-secondary-fixed-variant: #3b4b4d;
+  --color-tertiary-fixed: var(--color-tertiary-container);
+  --color-tertiary-fixed-dim: #c3c4eb;
+  --color-on-tertiary-fixed: var(--color-on-tertiary-container);
+  --color-on-tertiary-fixed-variant: #424666;
 
   --border-radius-control: 0px;
   --border-radius-overlay: 0px;
@@ -44,107 +65,52 @@
     sans-serif;
   --vp-font-family-mono:
     ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
-  --vp-c-bg: var(--color-solid-background-fill-base);
-  --vp-c-bg-alt: var(--color-solid-background-fill-secondary);
-  --vp-c-bg-soft: var(--color-card-background-fill-default);
-  --vp-c-bg-elv: var(--color-surface-fill-default);
-  --vp-c-text-1: var(--color-text-fill-primary);
-  --vp-c-text-2: var(--color-text-fill-secondary);
-  --vp-c-text-3: var(--color-text-fill-tertiary);
-  --vp-c-border: var(--color-card-stroke-default);
-  --vp-c-divider: var(--color-divider-stroke-default);
-  --vp-c-gutter: var(--color-divider-stroke-default);
-  --vp-c-brand-1: var(--color-accent);
-  --vp-c-brand-2: var(--color-accent-hover);
-  --vp-c-brand-3: var(--color-accent-active);
-  --app-surface-color: var(--color-card-background-fill-default);
-  --app-surface-color-secondary: var(--color-card-background-fill-secondary);
-  --app-border-color: var(--color-card-stroke-default);
-  --app-border-color-strong: var(--color-card-stroke-default-solid);
-  --app-muted-text-color: var(--color-text-fill-tertiary);
-  --app-subtle-fill-color: var(--color-subtle-fill-secondary);
-  --app-subtle-fill-color-hover: var(--color-subtle-fill-tertiary);
-  --app-focus-color: var(--color-focus-stroke-outer);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-
-    --color-text-fill-primary: #ffffffde;
-    --color-text-fill-secondary: #ffffff99;
-    --color-text-fill-tertiary: #ffffff66;
-    --color-text-fill-disabled: #ffffff66;
-    --color-text-fill-inverse: #000000;
-    --color-text-on-accent-fill-selected-text: #ffffff;
-    --color-text-on-accent-fill-primary: #ffffff;
-
-    --color-solid-background-fill-base: #000000;
-    --color-solid-background-fill-secondary: #1d1d1d;
-    --color-surface-fill-default: #000000;
-    --color-surface-fill-secondary: #00000000;
-    --color-overlay-fill-default: #000000a6;
-
-    --color-control-fill-default: #00000000;
-    --color-control-fill-secondary: #ffffff21;
-    --color-control-fill-tertiary: #ffffff4d;
-    --color-control-fill-disabled: #00000000;
-    --color-control-stroke-default: #ffffff;
-    --color-control-stroke-on-accent-default: #ffffff;
-
-    --color-subtle-fill-secondary: #ffffff21;
-    --color-subtle-fill-tertiary: #ffffff4d;
-    --color-card-background-fill-default: var(--color-surface-fill-secondary);
-    --color-card-background-fill-secondary: var(--color-surface-fill-default);
-    --color-card-stroke-default: #ffffff;
-    --color-card-stroke-default-solid: #ffffff;
-    --color-divider-stroke-default: #7a7a7a;
-    --color-focus-stroke-outer: #ffffff;
-    --color-focus-stroke-inner: #000000;
-
-    --color-accent: #098a94;
-    --color-accent-hover: #0aa5a9;
-    --color-accent-active: #0cc0c5;
-  }
+  --vp-c-bg: var(--color-background);
+  --vp-c-bg-alt: var(--color-surface-container-high);
+  --vp-c-bg-soft: var(--color-surface-container-low);
+  --vp-c-bg-elv: var(--color-surface);
+  --vp-c-text-1: var(--color-on-surface);
+  --vp-c-text-2: var(--color-on-surface-variant);
+  --vp-c-text-3: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
+  --vp-c-border: var(--color-outline);
+  --vp-c-divider: var(--color-outline-variant);
+  --vp-c-gutter: var(--color-outline-variant);
+  --vp-c-brand-1: var(--color-primary);
+  --vp-c-brand-2: var(--color-inverse-primary);
+  --vp-c-brand-3: var(--color-primary-container);
 }
 
 html.dark {
   color-scheme: dark;
 
-  --color-text-fill-primary: #ffffffde;
-  --color-text-fill-secondary: #ffffff99;
-  --color-text-fill-tertiary: #ffffff66;
-  --color-text-fill-disabled: #ffffff66;
-  --color-text-fill-inverse: #000000;
-  --color-text-on-accent-fill-selected-text: #ffffff;
-  --color-text-on-accent-fill-primary: #ffffff;
-
-  --color-solid-background-fill-base: #1d1d1d;
-  --color-solid-background-fill-secondary: #131313;
-  --color-surface-fill-default: #000000;
-  --color-surface-fill-secondary: #00000000;
-  --color-overlay-fill-default: #000000a6;
-
-  --color-control-fill-default: #00000000;
-  --color-control-fill-secondary: #ffffff21;
-  --color-control-fill-tertiary: #ffffff4d;
-  --color-control-fill-disabled: #00000000;
-  --color-control-stroke-default: #ffffff;
-  --color-control-stroke-on-accent-default: #ffffff;
-
-  --color-subtle-fill-secondary: #ffffff21;
-  --color-subtle-fill-tertiary: #ffffff4d;
-  --color-card-background-fill-default: var(--color-surface-fill-secondary);
-  --color-card-background-fill-secondary: var(--color-surface-fill-default);
-  --color-card-stroke-default: #ffffff;
-  --color-card-stroke-default-solid: #ffffff;
-  --color-divider-stroke-default: #7a7a7a;
-  --color-focus-stroke-outer: #ffffff;
-  --color-focus-stroke-inner: #000000;
-
-  --color-accent: #098a94;
-  --color-accent-hover: #0aa5a9;
-  --color-accent-active: #0cc0c5;
+  --color-primary-container: #004f56;
+  --color-on-primary-container: #d0f8fb;
+  --color-inverse-primary: #0cc0c5;
+  --color-secondary: #b9cbcd;
+  --color-on-secondary: #243336;
+  --color-secondary-container: #3b4b4d;
+  --color-on-secondary-container: #d5e7e9;
+  --color-tertiary: #c3c4eb;
+  --color-on-tertiary: #2c2f4d;
+  --color-tertiary-container: #424666;
+  --color-on-tertiary-container: #e0e0ff;
+  --color-background: #1d1d1d;
+  --color-on-background: #ffffffde;
+  --color-surface: #000000;
+  --color-on-surface: #ffffffde;
+  --color-surface-variant: #131313;
+  --color-on-surface-variant: #ffffff99;
+  --color-inverse-surface: #ffffff;
+  --color-inverse-on-surface: #000000;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+  --color-outline: #ffffff;
+  --color-outline-variant: #7a7a7a;
+  --color-surface-container: #0d0d0d;
+  --color-surface-container-highest: #ffffff21;
+  --color-surface-container-low: #00000000;
 }
 
 @media (forced-colors: active) {
@@ -152,61 +118,37 @@ html.dark {
   html.dark {
     color-scheme: light dark;
 
-    --color-text-fill-primary: CanvasText;
-    --color-text-fill-secondary: CanvasText;
-    --color-text-fill-tertiary: GrayText;
-    --color-text-fill-disabled: GrayText;
-    --color-text-fill-inverse: Canvas;
-    --color-text-on-accent-fill-selected-text: HighlightText;
-    --color-text-on-accent-fill-primary: HighlightText;
-
-    --color-solid-background-fill-base: Canvas;
-    --color-solid-background-fill-secondary: Canvas;
-    --color-surface-fill-default: Canvas;
-    --color-surface-fill-secondary: Canvas;
-    --color-overlay-fill-default: Canvas;
-
-    --color-control-fill-default: ButtonFace;
-    --color-control-fill-secondary: ButtonFace;
-    --color-control-fill-tertiary: ButtonFace;
-    --color-control-fill-disabled: ButtonFace;
-    --color-control-stroke-default: ButtonText;
-    --color-control-stroke-on-accent-default: HighlightText;
-
-    --color-subtle-fill-secondary: ButtonFace;
-    --color-subtle-fill-tertiary: Highlight;
-    --color-card-background-fill-default: Canvas;
-    --color-card-background-fill-secondary: Canvas;
-    --color-card-stroke-default: CanvasText;
-    --color-card-stroke-default-solid: CanvasText;
-    --color-divider-stroke-default: CanvasText;
-    --color-focus-stroke-outer: CanvasText;
-    --color-focus-stroke-inner: Canvas;
-
-    --color-accent: Highlight;
-    --color-accent-hover: Highlight;
-    --color-accent-active: ButtonText;
-
-    --vp-c-bg: Canvas;
-    --vp-c-bg-alt: Canvas;
-    --vp-c-bg-soft: Canvas;
-    --vp-c-bg-elv: Canvas;
-    --vp-c-text-1: CanvasText;
-    --vp-c-text-2: CanvasText;
+    --color-primary: Highlight;
+    --color-on-primary: HighlightText;
+    --color-primary-container: Highlight;
+    --color-on-primary-container: HighlightText;
+    --color-inverse-primary: LinkText;
+    --color-secondary: ButtonText;
+    --color-on-secondary: ButtonFace;
+    --color-secondary-container: ButtonFace;
+    --color-on-secondary-container: ButtonText;
+    --color-tertiary: ButtonText;
+    --color-on-tertiary: ButtonFace;
+    --color-tertiary-container: ButtonFace;
+    --color-on-tertiary-container: ButtonText;
+    --color-background: Canvas;
+    --color-on-background: CanvasText;
+    --color-surface: Canvas;
+    --color-on-surface: CanvasText;
+    --color-surface-variant: Canvas;
+    --color-on-surface-variant: CanvasText;
+    --color-inverse-surface: CanvasText;
+    --color-inverse-on-surface: Canvas;
+    --color-error: CanvasText;
+    --color-on-error: Canvas;
+    --color-error-container: CanvasText;
+    --color-on-error-container: Canvas;
+    --color-outline: CanvasText;
+    --color-outline-variant: CanvasText;
+    --color-scrim: Canvas;
+    --color-surface-container: Canvas;
+    --color-surface-container-highest: ButtonFace;
+    --color-surface-container-low: Canvas;
     --vp-c-text-3: GrayText;
-    --vp-c-border: CanvasText;
-    --vp-c-divider: CanvasText;
-    --vp-c-gutter: CanvasText;
-    --vp-c-brand-1: LinkText;
-    --vp-c-brand-2: Highlight;
-    --vp-c-brand-3: ButtonText;
-    --app-surface-color: Canvas;
-    --app-surface-color-secondary: Canvas;
-    --app-border-color: CanvasText;
-    --app-border-color-strong: CanvasText;
-    --app-muted-text-color: GrayText;
-    --app-subtle-fill-color: ButtonFace;
-    --app-subtle-fill-color-hover: Highlight;
-    --app-focus-color: CanvasText;
   }
 }

@@ -41,7 +41,7 @@
     font-weight: 400;
     color: var(--vp-c-text-1);
     background-color: var(--vp-c-bg);
-    accent-color: var(--color-accent);
+    accent-color: var(--color-primary);
     font-synthesis: style;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -112,8 +112,8 @@
   }
 
   ::selection {
-    color: var(--color-text-on-accent-fill-selected-text);
-    background-color: var(--color-accent);
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
   }
 
   ol,
@@ -182,7 +182,7 @@
 
   button:focus,
   button:focus-visible {
-    outline: 2px solid var(--app-focus-color);
+    outline: 2px solid var(--color-on-surface);
     outline-offset: 2px;
   }
 
