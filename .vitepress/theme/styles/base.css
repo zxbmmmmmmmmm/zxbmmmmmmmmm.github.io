@@ -63,7 +63,41 @@
     margin: 0;
     line-height: 24px;
     font-size: 16px;
-    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 2em;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.75em;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1.5em;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: 1.25em;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  h6 {
+    font-size: 1.2em;
+    line-height: 1.2;
+    font-weight: 600;
   }
 
   p {
@@ -219,7 +253,8 @@
     color: var(--vp-c-text-3);
   }
 
-  :where(.vp-doc, .page_view) :is(.custom-block, div[class*='language-'], pre, table) {
+  :where(.vp-doc, .page_view)
+    :is(.custom-block, div[class*='language-'], pre, table) {
     border-radius: var(--border-radius-overlay);
   }
 

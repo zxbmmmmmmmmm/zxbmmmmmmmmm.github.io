@@ -62,7 +62,7 @@ import { data as posts } from '../posts.data'
   object-fit: cover;
 }
 .about-content {
-  padding: 12px;
+  padding: 20px 24px;
   background-color: var(--color-secondary);
   color: var(--color-on-secondary);
 }
