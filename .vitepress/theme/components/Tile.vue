@@ -25,10 +25,13 @@ const props = withDefaults(defineProps<Props>(), {
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: transform 0.2s ease;
 }
-
+.tile-button:hover {
+  transform: translateY(-2px);
+}
 .tile-button:active {
-  transform: scale(0.95);
+  transform: scale(0.99);
 }
 
 .tile-content {

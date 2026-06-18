@@ -2,27 +2,41 @@
 import ArticleList from './ArticleList.vue'
 import Tile from './Tile.vue'
 import { data as posts } from '../posts.data'
+import ArrowRight from '../icons/8/ArrowRight.vue'
+import VButton from './VButton.vue'
+import Github from '../icons/Github.vue'
 </script>
 
 <template>
   <div class="layout">
     <div class="home-view-header">
       <Tile class="tile-1" text="所有文章" theme="accent"> 11 </Tile>
-      <Tile class="tile-2" text="标签"  theme="accent"> 11 </Tile>
+      <Tile class="tile-2" text="标签" theme="accent"> 11 </Tile>
       <Tile class="tile-3" text="友链" theme="accent"> 11 </Tile>
-      <Tile class="tile-4" text="项目" theme="accent"> 11 </Tile>
+      <Tile class="tile-4" text="项目" theme="accent"> 111 </Tile>
       <div class="about-card">
         <img
           class="avatar"
           src="https://avatars.githubusercontent.com/u/96322503?v=4"
           alt="Avatar"
         />
-        <div class="about-content">
-          <h2>About Me</h2>
-          <p>
-            Hi, I'm a passionate developer who loves to explore new technologies
-            and share knowledge through blogging.
-          </p>
+        <div class="about-content-layer">
+          <div class="about-content">
+            <h2>Betta_Fish</h2>
+            <p>
+              Hi, I'm a passionate developer who loves to explore new
+              technologies and share knowledge through blogging.
+            </p>
+            <ul>
+              <li class="social-buttons">
+                <VButton href="https://github.com/zxbmmmmmmmmm" class="social-button">
+                  <Github/>
+                  Github
+                </VButton>
+              </li>
+            </ul>
+          </div>
+          <ArrowRight class="arrow-icon" />
         </div>
       </div>
     </div>
@@ -56,14 +70,52 @@ import { data as posts } from '../posts.data'
   grid-row: 1 / 3;
   background-color: var(--color-surface);
   display: flex;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.about-card:hover {
+  transform: translateY(-2px);
+}
+.about-card:active:not(:has(.social-button:active)) {
+  transform: scale(0.99);
 }
 .avatar {
   height: 100%;
   object-fit: cover;
 }
-.about-content {
+.about-content-layer {
   padding: 20px 24px;
   background-color: var(--color-secondary);
+  width: 100%;
+  height: 100%;
   color: var(--color-on-secondary);
+  position: relative;
+}
+.about-content {
+  position: relative;
+  display: grid;
+  z-index: 1;
+  gap: 0.4rem;
+}
+.arrow-icon {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  height: 96px;
+  width: 96px;
+  color: var(--color-on-secondary);
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.social-buttons {
+  margin-top: 1rem;
+}
+.social-button {
+  font-size: 1rem;
+  display: inline-flex;
+  gap: 12px;
+  padding: 0.5rem 1rem;
+  align-items: center;
 }
 </style>
