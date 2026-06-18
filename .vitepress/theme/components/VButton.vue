@@ -41,13 +41,17 @@ const component = computed(() => {
   text-align: center;
   background: var(--color-surface-container-high);
   border-radius: var(--border-radius-control);
-  transition: 
-    transform 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .Button:hover {
   color: var(--vp-c-text-1);
   background: var(--color-surface-container-highest);
+}
+
+.Button :deep(svg) {
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 .Button.accent {
@@ -61,7 +65,7 @@ const component = computed(() => {
   background: var(--color-inverse-primary);
 }
 
-.Button:active{
+.Button:active {
   transform: scale(0.96);
 }
 </style>

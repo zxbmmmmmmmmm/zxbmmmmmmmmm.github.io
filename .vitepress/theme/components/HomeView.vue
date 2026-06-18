@@ -5,15 +5,27 @@ import { data as posts } from '../posts.data'
 import ArrowRight from '../icons/8/ArrowRight.vue'
 import VButton from './VButton.vue'
 import Github from '../icons/Github.vue'
+import People from '../icons/8/People.vue'
+import Tags from '../icons/8/Tags.vue'
+import Bookmark from '../icons/8/Bookmark.vue'
+import Projects from '../icons/8/Projects.vue'
 </script>
 
 <template>
   <div class="layout">
     <div class="home-view-header">
-      <Tile class="tile-1" text="所有文章" theme="accent"> 11 </Tile>
-      <Tile class="tile-2" text="标签" theme="accent"> 11 </Tile>
-      <Tile class="tile-3" text="友链" theme="accent"> 11 </Tile>
-      <Tile class="tile-4" text="项目" theme="accent"> 111 </Tile>
+      <Tile class="tile-1" text="所有文章" theme="accent">
+        <Bookmark />
+      </Tile>
+      <Tile class="tile-2" text="标签" theme="accent">
+        <Tags />
+      </Tile>
+      <Tile class="tile-3" text="友链" theme="accent">
+        <People />
+      </Tile>
+      <Tile class="tile-4" text="项目" theme="accent">
+        <Projects />
+      </Tile>
       <div class="about-card">
         <img
           class="avatar"
@@ -24,13 +36,17 @@ import Github from '../icons/Github.vue'
           <div class="about-content">
             <h2>Betta_Fish</h2>
             <p>
-              Hi, I'm a passionate developer who loves to explore new
-              technologies and share knowledge through blogging.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam
             </p>
             <ul>
               <li class="social-buttons">
-                <VButton href="https://github.com/zxbmmmmmmmmm" class="social-button">
-                  <Github/>
+                <VButton
+                  href="https://github.com/zxbmmmmmmmmm"
+                  class="social-button"
+                >
+                  <Github />
                   Github
                 </VButton>
               </li>

@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 <template>
   <VButton type="button" class="tile-button" :theme="theme">
-    <slot class="tile-content">11</slot>
+    <slot class="tile-content"></slot>
     <p class="tile-text">{{ text }}</p>
   </VButton>
 </template>
