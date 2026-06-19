@@ -2,14 +2,13 @@
   display: flex;
   max-width: calc(768px + 256px + 64px);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 24px;
 }
 
 .page_view {
   flex: 1;
   min-width: 0;
   max-width: 768px;
-  padding: 48px 24px;
 }
 
 .post-aside {

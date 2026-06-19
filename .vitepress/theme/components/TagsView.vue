@@ -74,7 +74,6 @@ onBeforeUnmount(() => {
 .layout {
   display: grid;
   gap: 1.5rem;
-  padding: 1rem;
 }
 
 .layout ul {

@@ -14,7 +14,6 @@ const isHome = computed(() => Boolean(frontmatter.value.home))
 <template>
   <div class="layout">
     <SiteHeader :title="site.title"/>
-
     <main class="site-main">
       <section v-if="isHome" class="home-view">
         <HomeView />

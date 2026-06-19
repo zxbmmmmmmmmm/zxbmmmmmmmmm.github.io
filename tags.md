@@ -2,6 +2,4 @@
 title: Tags
 ---
 
-# Tags
-
 <TagsView />
