@@ -3,9 +3,8 @@ import { computed } from 'vue'
 import { useData } from 'vitepress'
 import SiteHeader from './components/SiteHeader.vue'
 import SiteFooter from './components/SiteFooter.vue'
-import ArticleList from './components/ArticleList.vue'
 import HomeView from './components/HomeView.vue'
-import PostOutline from './components/PostOutline.vue'
+import PostLayout from './components/PostLayout.vue'
 
 // https://vitepress.dev/reference/runtime-api#usedata
 const { site, frontmatter } = useData()
@@ -20,14 +19,7 @@ const isHome = computed(() => Boolean(frontmatter.value.home))
       <section v-if="isHome" class="home-view">
         <HomeView />
       </section>
-      <section v-else class="post-page">
-        <div class="page_view">
-          <Content />
-        </div>
-        <aside class="post-aside">
-          <PostOutline />
-        </aside>
-      </section>
+      <PostLayout v-else />
     </main>
     <SiteFooter :text="site.description"/>
   </div>
