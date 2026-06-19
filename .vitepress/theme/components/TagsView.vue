@@ -2,15 +2,21 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useData, useRouter, withBase } from 'vitepress'
 import { data as posts } from '../posts.data.ts'
-import { getTagFromPath, getTagGroups, getTagLink } from '../shared/tags.ts'
+import {
+  findTagBySlug,
+  getTagGroups,
+  getTagLink,
+  getTagSlugFromPath
+} from '../shared/tags.ts'
 import ArticleList from './ArticleList.vue'
 import VButton from './VButton.vue'
 
 const { params } = useData()
 const router = useRouter()
 const tagGroups = getTagGroups(posts)
+const allTagNames = tagGroups.map((group) => group.name)
 const initialTag =
-  typeof params.value?.tag === 'string' ? params.value.tag : tagGroups[0]?.name
+  typeof params.value?.name === 'string' ? params.value.name : tagGroups[0]?.name
 const activeTag = ref(initialTag ?? '')
 
 const activeTagPosts = computed(() => {
@@ -20,10 +26,9 @@ const activeTagPosts = computed(() => {
 function readTagFromLocation() {
   if (typeof window === 'undefined') return
 
-  const tag = getTagFromPath(window.location.pathname)
-  activeTag.value = tagGroups.some((group) => group.name === tag)
-    ? tag
-    : (tagGroups[0]?.name ?? '')
+  const slug = getTagSlugFromPath(window.location.pathname)
+  const matched = findTagBySlug(allTagNames, slug)
+  activeTag.value = matched ?? (tagGroups[0]?.name ?? '')
 }
 
 function selectTag(tag: string) {

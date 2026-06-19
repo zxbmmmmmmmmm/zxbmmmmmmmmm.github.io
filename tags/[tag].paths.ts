@@ -1,11 +1,13 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
+import { slugifyTag } from '../.vitepress/theme/shared/tags'
 
 export default {
   paths() {
     return getTags().map((tag) => ({
       params: {
-        tag
+        tag: slugifyTag(tag),
+        name: tag
       }
     }))
   }

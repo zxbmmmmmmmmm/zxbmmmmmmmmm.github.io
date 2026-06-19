@@ -44,11 +44,23 @@ export function getTopTags(posts: Post[], limit = 3): TagGroup[] {
   return getTagGroups(posts).slice(0, limit)
 }
 
-export function getTagLink(tag: string): string {
-  return `/tags/${encodeURIComponent(tag)}`
+export function slugifyTag(tag: string): string {
+  return tag
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, (c) => `_${c.charCodeAt(0).toString(16)}_`)
 }
 
-export function getTagFromPath(pathname: string): string {
+export function getTagLink(tag: string): string {
+  return `/tags/${slugifyTag(tag)}`
+}
+
+export function getTagSlugFromPath(pathname: string): string {
   const match = pathname.match(/\/tags\/([^/?#]+?)\/?$/)
-  return match ? decodeURIComponent(match[1].replace(/\.html$/, '')) : ''
+  return match ? match[1].replace(/\.html$/, '') : ''
+}
+
+export function findTagBySlug(tags: string[], slug: string): string | undefined {
+  return tags.find((tag) => slugifyTag(tag) === slug)
 }
