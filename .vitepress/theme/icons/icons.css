@@ -1,0 +1,6 @@
+:root {
+  /* clipboard (Segoe MDL2)*/
+  --vp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='64 0 896 1024'%3E%3Cg fill='rgba(255,255,255,1)' stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M960,402.5L960,1024L320,1024L320,832L64,832L64,0L493.5,0L685.5,192L749.5,192ZM768,384L850.5,384L768,301.5ZM320,192L594.5,192L466.5,64L128,64L128,768L320,768ZM896,448L704,448L704,256L384,256L384,960L896,960Z'/%3E%3C/g%3E%3C/svg%3E");
+  /* clipboard-check */
+  --vp-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='106 234 813 580'%3E%3Cg fill='rgba(255,255,255,1)' stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M918.5,278.5L384,813.5L105.5,534.5L150.5,489.5L384,722.5L873.5,233.5Z'/%3E%3C/g%3E%3C/svg%3E");
+}

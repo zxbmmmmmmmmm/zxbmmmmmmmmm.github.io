@@ -56,6 +56,11 @@ const getArticleLink = (url: string) => normalizeLink(url)
   line-height: 1.2;
 }
 
+.article-title p {
+  margin: 0;
+  line-height: inherit;
+}
+
 .article-link {
   color: inherit;
   text-decoration: none;

@@ -5,6 +5,7 @@ import TagsView from './components/TagsView.vue'
 import './styles/base.css'
 import './styles/vars.css'
 import './styles/post.css'
+import './icons/icons.css'
 
 export default {
   Layout,

@@ -40,7 +40,8 @@
   --color-surface-dim: #eef1f4;
   --color-surface-container: #ffffff;
   --color-surface-container-high: #eef1f4;
-  --color-surface-container-highest: #e4e8ec;
+  --color-surface-container-higher: #e4e8ec;
+  --color-surface-container-highest: #d0d4d8;
   --color-surface-container-low: #ffffff;
   --color-surface-container-lowest: var(--color-surface);
 
@@ -110,6 +111,7 @@ html.dark {
   --color-outline-variant: #7a7a7a;
   --color-surface-container: #0d0d0d;
   --color-surface-container-high: #1a1a1a;
+  --color-surface-container-higher: #2c2c2c;
   --color-surface-container-highest: #ffffff21;
   --color-surface-container-low: #00000000;
 }

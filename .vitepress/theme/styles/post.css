@@ -216,7 +216,6 @@
 }
 
 .page_view :not(pre) > code {
-  border-radius: 4px;
   padding: 3px 6px;
   background-color: var(--vp-code-bg, var(--vp-c-bg-soft));
   transition: color 0.25s, background-color 0.5s;
@@ -233,15 +232,26 @@
 .page_view .vp-block {
   position: relative;
   margin: 16px -24px;
-  background-color: var(--vp-code-block-bg, var(--vp-c-bg-elv));
+  padding-top: 36px;
+  background-color: var(--color-surface-container-higher);
   overflow-x: auto;
-  transition: background-color 0.5s;
+  transition: background-color 0.25s;
+}
+
+.page_view div[class*='language-']::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  background: var(--color-surface-container-highest);
+  z-index: 1;
 }
 
 @media (min-width: 640px) {
   .page_view div[class*='language-'],
   .page_view .vp-block {
-    border-radius: 8px;
     margin: 16px 0;
   }
 }
@@ -270,43 +280,37 @@
 .page_view [class*='language-'] > button.copy {
   direction: ltr;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0;
+  right: 0;
   z-index: 3;
-  border: 1px solid var(--vp-code-copy-code-border-color, var(--vp-c-divider));
-  border-radius: 4px;
-  width: 40px;
-  height: 40px;
-  background-color: var(--vp-code-copy-code-bg, var(--vp-c-bg-soft));
-  opacity: 0;
+  border: none;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  opacity: 1;
   cursor: pointer;
   background-image: var(--vp-icon-copy);
   background-position: 50%;
-  background-size: 20px;
+  background-size: 14px;
   background-repeat: no-repeat;
-  transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
+  transition: background-color 0.25s;
 }
 
-.page_view [class*='language-']:hover > button.copy,
-.page_view [class*='language-'] > button.copy:focus {
-  opacity: 1;
+.page_view [class*='language-'] > button.copy:hover {
+  background-color: var(--color-surface-container-highest);
 }
 
 .page_view [class*='language-'] > span.lang {
   position: absolute;
-  top: 2px;
-  right: 8px;
+  top: 0;
+  left: 12px;
+  right: auto;
+  height: 36px;
   z-index: 2;
-  font-size: 12px;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
   user-select: none;
-  color: var(--vp-code-lang-color, var(--vp-c-text-3));
-  transition: color 0.4s, opacity 0.4s;
-}
-
-.page_view [class*='language-']:hover > button.copy + span.lang,
-.page_view [class*='language-'] > button.copy:focus + span.lang {
-  opacity: 0;
+  opacity: 1;
 }
 
 .page_view .custom-block {

@@ -29,5 +29,10 @@ defineProps<{
   gap: 1rem;
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.article-list li + li {
+  margin-top: 0;
 }
 </style>

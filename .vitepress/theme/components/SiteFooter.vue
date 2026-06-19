@@ -5,7 +5,6 @@ defineProps<{
 </script>
 <template>
   <div class="layout">
-    <p>{{ text }}</p>
   </div>
 </template>
 <style scoped>
