@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress'
 import TagsView from './components/TagsView.vue'
 import './styles/base.css'
 import './styles/vars.css'
+import './styles/post.css'
 
 export default {
   Layout,

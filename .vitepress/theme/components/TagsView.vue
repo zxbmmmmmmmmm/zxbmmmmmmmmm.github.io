@@ -81,6 +81,13 @@ onBeforeUnmount(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.layout li + li {
+  margin-top: 0;
 }
 
 .tag-button {

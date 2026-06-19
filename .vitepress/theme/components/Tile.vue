@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
   position: relative;
   transition: transform 0.2s ease;
   padding: 32px;
+  user-select: none;
 }
 .tile-button:hover {
   transform: translateY(-2px);
