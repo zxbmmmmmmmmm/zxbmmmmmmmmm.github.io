@@ -286,18 +286,28 @@
   border: none;
   width: 36px;
   height: 36px;
-  background-color: transparent;
+  background-color: var(--vp-c-text-2);
+  background-image: none;
+  -webkit-mask-image: var(--vp-icon-copy);
+  mask-image: var(--vp-icon-copy);
+  -webkit-mask-position: 50%;
+  mask-position: 50%;
+  -webkit-mask-size: 14px;
+  mask-size: 14px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   opacity: 1;
   cursor: pointer;
-  background-image: var(--vp-icon-copy);
-  background-position: 50%;
-  background-size: 14px;
-  background-repeat: no-repeat;
   transition: background-color 0.25s;
 }
 
 .page_view [class*='language-'] > button.copy:hover {
-  background-color: var(--color-surface-container-highest);
+  background-color: var(--vp-c-text-1);
+}
+
+.page_view [class*='language-'] > button.copy.copied {
+  -webkit-mask-image: var(--vp-icon-copied);
+  mask-image: var(--vp-icon-copied);
 }
 
 .page_view [class*='language-'] > span.lang {

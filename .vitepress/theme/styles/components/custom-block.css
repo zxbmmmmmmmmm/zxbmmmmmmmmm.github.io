@@ -1,0 +1,37 @@
+.custom-block {
+  padding: 16px 16px 8px;
+  line-height: 24px;
+  background-color: var(--color-surface-container-higher);
+}
+
+
+.custom-block.details {
+  background-color: transparent;
+}
+
+.custom-block.info{
+  background-color: var(--color-primary-container);
+}
+
+.custom-block.warning{
+  background-color: var(--color-warning-container);
+}
+
+.custom-block.danger {
+  background-color: var(--color-error-container);
+}
+
+.custom-block-title {
+  font-weight: 600;
+}
+
+.custom-block p + p {
+  margin: 8px 0;
+}
+
+.custom-block.details summary {
+  margin: 0 0 8px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}

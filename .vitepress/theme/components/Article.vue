@@ -94,7 +94,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
   align-items: center;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: var(--color-surface-container-highest);
+  background: var(--color-surface-container-higher);
   font-size: 0.875rem;
   text-decoration: none;
   border: 0;
