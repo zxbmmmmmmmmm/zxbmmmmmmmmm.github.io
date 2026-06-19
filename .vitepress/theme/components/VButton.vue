@@ -39,7 +39,7 @@ const component = computed(() => {
   padding: 0.45rem 1rem;
   color: var(--vp-c-text-1);
   text-align: center;
-  background: var(--color-surface-container-high);
+  background: var(--color-surface-container-higher);
   border-radius: var(--border-radius-control);
   transition: transform 0.2s ease;
 }
@@ -67,5 +67,8 @@ const component = computed(() => {
 
 .Button:active {
   transform: scale(0.96);
+}
+.Button{
+  text-decoration: none;
 }
 </style>
