@@ -29,7 +29,7 @@ const { frontmatter } = useData()
         </div>
       </div>
 
-      <Content class="post-content" />
+      <Content class="post-content" :class="{ 'has-bg': frontmatter.date }"/>
     </div>
     <aside class="post-aside">
       <PostOutline />
@@ -51,12 +51,18 @@ const { frontmatter } = useData()
 .post-view {
   min-height: calc(100dvh - var(--header-height));
 }
-.post-header {
+.post-header.has-bg {
   padding: 48px 48px 16px 48px;
 }
+.post-header:not(.has-bg) {
+  padding: 48px 48px 0px 48px;
+}
 
-.post-content {
+.post-content.has-bg {
   padding: 24px 48px 48px 48px;
+}
+.post-content:not(.has-bg) {
+  padding: 12px 48px 48px 48px;
 }
 .post-header.has-bg {
   background: var(--color-primary);

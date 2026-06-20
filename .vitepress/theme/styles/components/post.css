@@ -1,6 +1,6 @@
 .post-page {
   display: flex;
-  max-width: calc(1024px + 64px);
+  max-width: calc(1024px);
   margin: 0 auto;
 }
 
@@ -12,7 +12,8 @@
 
 .post-aside {
   flex-shrink: 0;
-  padding: 32px 32PX 32px 32px;
+  padding: 32px 32px 32px 32px;
+  width: 256px;
 }
 
 @media (max-width: calc(1024px)) {
