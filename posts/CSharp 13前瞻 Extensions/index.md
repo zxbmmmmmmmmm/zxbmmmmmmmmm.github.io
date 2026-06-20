@@ -12,6 +12,8 @@ category:
 参考 [文档](https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) 了解更多
 :::
 
+---
+
 从C#3开始，`拓展方法`这一特性就得到了广泛的应用。
 
 此功能允许你能够使用实例方法的语法调用某个静态方法，以下是一个获取/创建文件的静态方法:
@@ -49,7 +51,7 @@ var result = forecasts.Where(p => p.MaxTemperature > 30).GroupBy(p => p.WeatherT
 我们可以拓展**属性、索引器（有参属性）、静态成员甚至运算符**等内容
 
 > **注意:**`extensions`功能尚未正式进入C#13的预览版，以下示例根据[语言提案](https://github.com/dotnet/csharplang/blob/main/proposals/extensions.md)/[Build 2024演示](https://build.microsoft.com/en-US/sessions/689e5104-72e9-4d02-bb52-77676d1ec5bc)中的相关内容编写，正式版语法可能有所不同
-> 
+>
 > 目前的Roslyn实现在[feature/roles](https://github.com/dotnet/roslyn/tree/features/roles)分支，可以自行编译尝试
 
 ## 示例1：隐式拓展
@@ -83,10 +85,10 @@ public implicit extension DailyWeatherExtension for DailyWeather
     public int AverageTemperature => (int)Math.Round(HourlyForecasts.Average(p => p.Temperature));
 
     //拓展索引器:获取/修改某小时预报
-    public HourlyWeather this[int index] 
-    { 
+    public HourlyWeather this[int index]
+    {
         get => HourlyForecasts[index];
-        set => HourlyForecasts[index] = value;        
+        set => HourlyForecasts[index] = value;
     }
 
     //拓展运算符:通过比较最高温大小支持">"/"<"运算符
@@ -112,7 +114,7 @@ public implicit extension DailyWeatherExtension for DailyWeather
 ```csharp
 public async void PrintInfo(DailyWeather weather)
 {
-    Console.WriteLine(weather.AverageTemperature);    
+    Console.WriteLine(weather.AverageTemperature);
     var weatherToday = await DailyWeather.GetWeatherToday();
     if(weather > weatherToday)
     {
@@ -121,7 +123,7 @@ public async void PrintInfo(DailyWeather weather)
 }
 ```
 
- 这些“拓展”似乎就是类中真实存在的成员！原先需要继承才能部分实现的功能，使用一个`extension`即可完美解决
+这些“拓展”似乎就是类中真实存在的成员！原先需要继承才能部分实现的功能，使用一个`extension`即可完美解决
 
 ## 示例2：显式拓展
 
@@ -131,36 +133,36 @@ public async void PrintInfo(DailyWeather weather)
 
 ```json
 {
-    "type": "clear",
-    "tempMax": 32,
-    "tempMin": 20,
-    "hourly": [
-        {
-            "time": "2024-06-09T00:00",
-            "type": "cloudy",
-            "temp": 20
-        },
-        {
-            "time": "2024-06-09T06:00",
-            "type": "clear",
-            "temp": 24
-        },
-        {
-            "time": "2024-06-09T12:00",
-            "type": "clear",
-            "temp": 32
-        },
-        {
-            "time": "2024-06-09T18:00",
-            "type": "cloudy",
-            "temp": 26
-        },
-        {
-            "time": "2024-06-09T23:00",
-            "type": "rain",
-            "temp": 21
-        }
-    ]
+  "type": "clear",
+  "tempMax": 32,
+  "tempMin": 20,
+  "hourly": [
+    {
+      "time": "2024-06-09T00:00",
+      "type": "cloudy",
+      "temp": 20
+    },
+    {
+      "time": "2024-06-09T06:00",
+      "type": "clear",
+      "temp": 24
+    },
+    {
+      "time": "2024-06-09T12:00",
+      "type": "clear",
+      "temp": 32
+    },
+    {
+      "time": "2024-06-09T18:00",
+      "type": "cloudy",
+      "temp": 26
+    },
+    {
+      "time": "2024-06-09T23:00",
+      "type": "rain",
+      "temp": 21
+    }
+  ]
 }
 ```
 
