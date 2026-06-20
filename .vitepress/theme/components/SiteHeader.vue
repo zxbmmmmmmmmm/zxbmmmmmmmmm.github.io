@@ -16,6 +16,8 @@ defineProps<{
   <header class="site-header">
     <a class="site-logo" href="/">{{ title }}</a>
     <ul v-if="tags.length">
+      <a href="/tags">Tags</a>
+      <a href="/projects">Projects</a>
       <li v-for="tag in tags" :key="tag.name">
         <a :href="getTagLink(tag.name)">
           {{ tag.name }}

@@ -51,9 +51,10 @@ const { frontmatter } = useData()
 .post-view {
   min-height: calc(100dvh - var(--header-height));
 }
-.post-header{
+.post-header {
   padding: 48px 48px 16px 48px;
 }
+
 .post-content {
   padding: 0px 48px 48px 48px;
 }
@@ -72,6 +73,8 @@ const { frontmatter } = useData()
   .post-content {
     padding: 0 24px 24px 24px;
   }
+  .post-header:not(.has-bg) {
+    padding:20px 24px 4px 24px;
+  }
 }
-
 </style>

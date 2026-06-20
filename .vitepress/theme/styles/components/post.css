@@ -1,13 +1,13 @@
 .post-page {
   display: flex;
-  max-width: calc(768px + 256px + 64px);
+  max-width: calc(1024px + 256px + 64px);
   margin: 0 auto;
 }
 
 .post-view {
   flex: 1;
   min-width: 0;
-  max-width: 768px;
+  max-width: 1024px;
 }
 
 .post-aside {
@@ -48,16 +48,11 @@
 
 .post-view h2 {
   margin: 48px 0 16px;
-  border-top: 1px solid var(--vp-c-divider);
-  padding-top: 24px;
   letter-spacing: -0.02em;
   line-height: 32px;
   font-size: 24px;
 }
 
-.post-view h2 .header-anchor {
-  top: 24px;
-}
 
 .post-view h3 {
   margin: 32px 0 0;
@@ -105,8 +100,11 @@
 }
 
 .post-view p,
-.post-view img,
 .post-view summary {
+  margin: 16px 0;
+}
+
+.post-view :not(.project-card) > img {
   margin: 16px 0;
 }
 

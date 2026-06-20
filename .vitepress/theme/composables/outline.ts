@@ -62,7 +62,7 @@ export function useActiveAnchor(
 
     let activeLink: string | null = null
     for (const { link, top } of headers) {
-      if (top > scrollY + 128) break
+      if (top > scrollY + 256) break
       activeLink = link
     }
     activateLink(activeLink)
