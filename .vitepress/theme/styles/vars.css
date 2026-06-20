@@ -63,6 +63,7 @@
   --color-on-tertiary-fixed: var(--color-on-tertiary-container);
   --color-on-tertiary-fixed-variant: #424666;
 
+  --header-height: 56px;
   --border-radius-control: 0px;
   --border-radius-overlay: 0px;
 

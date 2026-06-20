@@ -37,7 +37,7 @@ useActiveAnchor(container, marker)
 <style scoped>
 .outline {
   position: sticky;
-  top: 24px;
+  top: calc(var(--header-height) + 16px);
 }
 
 .outline-content {

@@ -27,12 +27,15 @@ defineProps<{
 
 <style scoped>
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--vp-c-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .site-logo {

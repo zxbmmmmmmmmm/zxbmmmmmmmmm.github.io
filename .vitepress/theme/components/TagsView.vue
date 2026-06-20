@@ -92,4 +92,7 @@ onBeforeUnmount(() => {
 .tag-button {
   background: var(--color-surface-container);
 }
+.page-view{
+  background: var(--color-surface-variant);
+}
 </style>

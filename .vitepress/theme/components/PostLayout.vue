@@ -3,26 +3,33 @@ import { useData, Content } from 'vitepress'
 import PostOutline from './PostOutline.vue'
 import VButton from './VButton.vue'
 import { getTagLink } from '../shared/tags'
+import { formatDate } from '../shared/utils.ts'
 
 const { frontmatter } = useData()
 </script>
 
 <template>
   <section class="post-page">
-    <div class="page_view">
-      <h1 v-if="frontmatter.title" class="post-title">
-        {{ frontmatter.title }}
-      </h1>
-      <div v-if="frontmatter.tag?.length" class="post-tags">
-        <VButton
-          class="tag-button"
-          v-for="tag in frontmatter.tag"
-          :key="tag"
-          :text="tag"
-          :href="getTagLink(tag)"
-        />
+    <div class="post-view" :class="{ 'has-bg': frontmatter.date }">
+      <div class="post-header" :class="{ 'has-bg': frontmatter.date }">
+        <h1 v-if="frontmatter.title" class="post-title">
+          {{ frontmatter.title }}
+        </h1>
+        <p v-if="frontmatter.date">
+          {{ formatDate(new Date(frontmatter.date)) }}
+        </p>
+        <div v-if="frontmatter.tag?.length" class="post-tags">
+          <VButton
+            class="tag-button"
+            v-for="tag in frontmatter.tag"
+            :key="tag"
+            :text="tag"
+            :href="getTagLink(tag)"
+          />
+        </div>
       </div>
-      <Content />
+
+      <Content class="post-content" />
     </div>
     <aside class="post-aside">
       <PostOutline />
@@ -41,4 +48,30 @@ const { frontmatter } = useData()
   gap: 0.5rem;
   margin-bottom: 2rem;
 }
+.post-view {
+  min-height: calc(100dvh - var(--header-height));
+}
+.post-header{
+  padding: 48px 48px 16px 48px;
+}
+.post-content {
+  padding: 0px 48px 48px 48px;
+}
+.post-header.has-bg {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.post-view.has-bg {
+  background: var(--color-surface-variant);
+}
+.tag-button {
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+}
+@media (max-width: 720px) {
+  .post-content {
+    padding: 0 24px 24px 24px;
+  }
+}
+
 </style>
