@@ -313,6 +313,7 @@
   z-index: 2;
   display: flex;
   align-items: center;
+  -webkit-user-select: none;
   user-select: none;
   opacity: 1;
 }
