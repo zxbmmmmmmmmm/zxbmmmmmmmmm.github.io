@@ -56,7 +56,7 @@ const { frontmatter } = useData()
 }
 
 .post-content {
-  padding: 0px 48px 48px 48px;
+  padding: 24px 48px 48px 48px;
 }
 .post-header.has-bg {
   background: var(--color-primary);

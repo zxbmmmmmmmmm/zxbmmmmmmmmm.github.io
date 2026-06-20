@@ -1,22 +1,21 @@
 .post-page {
   display: flex;
-  max-width: calc(1024px + 256px + 64px);
+  max-width: calc(1024px + 64px);
   margin: 0 auto;
 }
 
 .post-view {
   flex: 1;
   min-width: 0;
-  max-width: 1024px;
+  max-width: calc(1024px);
 }
 
 .post-aside {
   flex-shrink: 0;
-  width: 224px;
-  padding: 48px 0 48px 32px;
+  padding: 32px 32PX 32px 32px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: calc(1024px)) {
   .post-aside {
     display: none;
   }

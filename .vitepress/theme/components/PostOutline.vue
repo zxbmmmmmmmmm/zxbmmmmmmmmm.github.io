@@ -37,7 +37,7 @@ useActiveAnchor(container, marker)
 <style scoped>
 .outline {
   position: sticky;
-  top: calc(var(--header-height) + 16px);
+  top: calc(var(--header-height) + 32px);
 }
 
 .outline-content {
@@ -51,12 +51,16 @@ useActiveAnchor(container, marker)
   margin: 0;
   position: relative;
   z-index: 1;
+  gap:  1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .outline-link {
   display: block;
   line-height: 32px;
   font-weight: 400;
+  font-size: 1.2rem;
   color: var(--vp-c-text-2);
   white-space: nowrap;
   overflow: hidden;
