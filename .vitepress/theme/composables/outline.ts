@@ -11,7 +11,7 @@ const resolvedHeaders: { element: HTMLHeadingElement; link: string }[] = []
 
 export function getHeaders(): OutlineItem[] {
   resolvedHeaders.length = 0
-  return [...document.querySelectorAll('.page_view h2, .page_view h3')]
+  return [...document.querySelectorAll('.post-content h2, .post-content h3')]
     .filter((el): el is HTMLHeadingElement => !!el.id)
     .map((el) => {
       const item = {
@@ -64,7 +64,7 @@ export function useActiveAnchor(
     for (const { link, top } of headers) {
       if (top > scrollY + 128) break
       activeLink = link
-    }0
+    }
     activateLink(activeLink)
   }
 

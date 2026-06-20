@@ -231,7 +231,7 @@
   position: relative;
   margin: 16px -24px;
   padding-top: 36px;
-  background-color: var(--color-surface-container-higher);
+  background-color: var(--color-surface-container-high);
   overflow-x: auto;
   transition: background-color 0.25s;
 }
@@ -243,7 +243,7 @@
   left: 0;
   right: 0;
   height: 36px;
-  background: var(--color-surface-container-highest);
+  background: var(--color-surface-container-higher);
   z-index: 1;
 }
 
