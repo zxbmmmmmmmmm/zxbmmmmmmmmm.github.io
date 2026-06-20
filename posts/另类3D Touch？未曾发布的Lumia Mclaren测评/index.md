@@ -2,15 +2,11 @@
 date: 2021-03-25
 title: 另类3D Touch？未曾发布的Lumia Mclaren测评
 excerpt: 没错，就是那个被巨硬砍掉的项目
-category:
-  - 手机
 tag:
-  - WindowsPhone
+  - 数码
+  - Windows Phone
 ---
 
-# 另类3D Touch？未曾发布的Lumia Mclaren测评
-
-*** 
 
  ![](/01.jpg)  
  ![](/02.jpg)

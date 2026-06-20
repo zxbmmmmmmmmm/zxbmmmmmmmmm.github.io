@@ -2,14 +2,11 @@
 date: 2025-09-27
 title: BindingList的应用与改进
 slug: application-and-improvement-of-bindinglist
-category:
-  - C#
 tag:
+  - C#
   - XAML
   - Avalonia
 ---
-
-# BindingList的应用与改进
 
 在编写UI的过程中，我们通常使用`ObservableCollection`来监听列表的变化。然而，`ObservableCollection`只能在**添加/移动/移除元素**时通知界面，这意味着元素内部更改时，`ObservableCollection`是无法通知的
 
@@ -17,7 +14,7 @@ tag:
 
 `BindingList`作用是将列表中元素内部的更改"转发"到外部。由于需要监听每个元素内部的属性更改，**`BindingList`中的所有元素必须实现`INotifyPropertyChanged`**
 
-
+---
 
 ## 使用
 

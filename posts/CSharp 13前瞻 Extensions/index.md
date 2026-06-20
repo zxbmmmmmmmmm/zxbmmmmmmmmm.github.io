@@ -5,7 +5,12 @@ category:
   - C#
 ---
 
-# C# 13前瞻:Extensions
+::: warning 此文章已过时
+
+在 C# 14 中，本文章所介绍的 `Roles&Extensions` 功能已被 `扩展成员` 取代
+
+参考 [文档](https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) 了解更多
+:::
 
 从C#3开始，`拓展方法`这一特性就得到了广泛的应用。
 

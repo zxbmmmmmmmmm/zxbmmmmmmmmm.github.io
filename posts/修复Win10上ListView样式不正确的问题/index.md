@@ -1,13 +1,10 @@
 ---
 date: 2024-06-22
 title: UWP开发:修复Win10上ListView样式不正确的问题
-category:
-  - C#
 tag:
+  - C#
   - UWP
 ---
-
-# UWP开发:修复Win10上ListView样式不正确的问题
 
 在Windows 11下，使用WinUI2.6以上版本的`ListView`长这样：
 ![](/01.png)
@@ -17,7 +14,7 @@ tag:
 
 这疑似是Win10上未使用正确的资源造成的。
 
-***
+---
 
 为了解决此问题，我们可以在`App.xaml`中的`App.Resources`中添加以下样式（从VS Blender复制），并将其作为`ListViewItem`的默认样式即可
 注：此处使用了条件XAML语句，这样在Win11上就可以使用自带的样式（似乎多一点动画），将`contract13NotPresent`删去问题也不大

@@ -1,19 +1,19 @@
 ---
 date: 2025-08-07
 title: 为Avalonia应用自动生成StyledProperty和DirectProperty
-category:
-  - C#
 tag:
+  - C#
   - Avalonia
   - Roslyn
   - 源生成器
 ---
 
-# 为Avalonia应用自动生成StyledProperty和DirectProperty
-
 最近学习了源生成器，遂仿照[CommunityToolkit/Windows](https://github.com/CommunityToolkit/Windows)中的DependencyPropertyGenerator写了个生成器，可自动生成Avalonia中的`StyledProperty`和`DirectProperty`
 
+---
+
 NuGet：https://www.nuget.org/packages/PropertyGenerator.Avalonia
+
 Github：https://github.com/zxbmmmmmmmmm/PropertyGenerator
 
 ## 先决条件

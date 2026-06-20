@@ -1,20 +1,17 @@
 ---
 date: 2023-11-26
 title: 在WPF/MAUI中使用x:Bind
-category:
-  - C#
 tag:
+  - C#
   - WPF
   - MAUI
 ---
-
-# 在WPF/MAUI中使用x:Bind
 
 最近逛GitHub的时候的时候，偶然看到了[CompiledBindings](https://github.com/levitali/CompiledBindings)这个库，据说可以实现和UWP中x:Bind一样的效果
 
 原理也是在编译时生成相关代码，性能应该比自带的Binding好些
 
-***
+---
 
 ## 使用
 

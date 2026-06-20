@@ -1,19 +1,18 @@
 ---
 date: 2026-5-11
 title: 在 Avalonia 中编写高性能动画
-category:
-  - C#
 tag:
+  - C#
   - XAML
   - Avalonia
   - Composition
 ---
 
-# 在 Avalonia 中编写高性能动画
-
 在 Avalonia 框架中，我们通常使用 XAML 编写动画。然而，实际上 Avalonia 中还存在另一套鲜为人知（？）的动画系统——Composition Animation（合成动画）
 
 本文将介绍如何在 Avalonia 中编写合成动画，以及它相比普通 XAML 动画的优点
+
+---
 
 ## XAML 动画
 

@@ -1,11 +1,16 @@
 ---
 date: 2025-12-14
 title: Avalonia源码解读：Grid（网格控件）
-category:
-  - C#
 tag:
+  - C#
   - XAML
   - Avalonia
+
+---
+
+在各类XAML UI框架中，`Grid` 是一种非常灵活且常用的布局控件，它可以创建复杂的用户界面布局。`Grid` 允许开发者通过定义行和列来组织界面元素，每个元素可以精确地放置在网格的特定区域内
+
+本文以 Avalonia 框架为例，讲解 `Grid` 控件的工作原理
 
 ---
 

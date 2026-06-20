@@ -2,15 +2,16 @@
 date: 2026-04-09
 title: 为 Avalonia 启用平滑滚动与缩放
 slug: enable-smooth-scroll-for-avalonia
-category:
-  - C#
 tag:
+  - C#
   - XAML
   - Avalonia
 ---
+
 在 Avalonia 中，`ScrollViewer` 在鼠标滚轮下是没有平滑滚动的，看起来非常生硬。同时， `ScrollViewer` 也不支持平移、缩放等操作，这使得社区不得不使用为 [PanAndZoom](https://github.com/wieslawsoltes/PanAndZoom) 等第三方控件
 
 为此，我编写了 [SmoothScroll.Avalonia](https://github.com/zxbmmmmmmmmm/SmoothScroll.Avalonia) 库，可以为应用中的所有 `ScrollViewer` 一键启用平滑滚动支持。同时，库中提供的 `ScrollView` 控件（继承自 `ScrollViewer`）还增加了平移和缩放功能
+
 ---
 
 在 Avalonia 中，`ScrollViewer` 在鼠标滚轮下是没有平滑滚动的，看起来非常生硬。同时， `ScrollViewer` 也不支持平移、缩放等操作，这使得社区不得不使用为 [PanAndZoom](https://github.com/wieslawsoltes/PanAndZoom) 等第三方控件
