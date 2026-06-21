@@ -208,12 +208,13 @@
 
 .post-view :not(pre, h1, h2, h3, h4, h5, h6) > code {
   font-size: var(--vp-code-font-size, 0.875em);
-  color: var(--vp-code-color, var(--vp-c-brand-1));
+  background: var(--color-surface-container-highest);
+  border-radius: 4px;
 }
 
 .post-view :not(pre) > code {
   padding: 3px 6px;
-  background-color: var(--vp-code-bg, var(--vp-c-bg-soft));
+  margin: 0 4px;
   transition: color 0.25s, background-color 0.5s;
 }
 
