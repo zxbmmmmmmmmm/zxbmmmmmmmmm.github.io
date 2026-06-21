@@ -12,7 +12,7 @@ category:
 参考 [文档](https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) 了解更多
 :::
 
----
+---+
 
 从C#3开始，`拓展方法`这一特性就得到了广泛的应用。
 

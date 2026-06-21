@@ -1,9 +1,8 @@
 ---
 date: 2022-04-04
 title: Lumia Honjo/650XL：微软移动在中低端的最后失败
-category:
-  - 手机
 tag:
+  - 数码
   - Windows Phone
 ---
 

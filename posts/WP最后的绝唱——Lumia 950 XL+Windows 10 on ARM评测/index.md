@@ -1,13 +1,14 @@
 ---
 date: 2021-01-29
 title: WP最后的绝唱——Lumia 950 XL+Windows 10 on ARM评测
-excerpt: 本人去年年底斥资七百大洋从闲鱼购入一台二手国行双卡版Lumia 950XL，现来做一个简单评测
-category:
-  - 手机
 tag:
+  - 数码
   - Windows Phone
 ---
 
+本人去年年底斥资七百大洋从闲鱼购入一台二手国行双卡版Lumia 950XL，现来做一个简单评测
+
+---
 # WP最后的绝唱——Lumia 950 XL+Windows 10 on ARM评测
 
 ## 包装

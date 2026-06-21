@@ -9,8 +9,6 @@ tag:
   - LeetCode
 ---
 
-# LeetCode 138（随机链表的复制）解答以及官方题解中的一个问题
-
 > https://leetcode.cn/problems/copy-list-with-random-pointer
 >
 > 给你一个长度为 `n` 的链表，每个节点包含一个额外增加的随机指针 `random` ，该指针可以指向链表中的任何节点或空节点。
