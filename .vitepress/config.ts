@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs'
 import { dirname, join, relative } from 'node:path'
+import { vsLight, vsDark } from './shiki-themes'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,8 +13,8 @@ export default defineConfig({
   },
   markdown: {
     theme: {
-      light: 'github-light',
-      dark: 'github-dark'
+      light: vsLight,
+      dark: vsDark
     },
     config(md) {
       md.core.ruler.after('inline', 'post-local-assets', (state) => {
