@@ -10,11 +10,37 @@ import {
 import { dirname, join, relative } from 'node:path'
 import { vsLight, vsDark } from './shiki-themes'
 
+const scrollableMermaidDiagram = { useMaxWidth: false }
+
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
   title: "Betta_Fish's Blog",
   description: "Betta_Fish's Blog",
   ignoreDeadLinks: ['./692041'],
+  mermaid: {
+    architecture: scrollableMermaidDiagram,
+    block: scrollableMermaidDiagram,
+    c4: scrollableMermaidDiagram,
+    class: scrollableMermaidDiagram,
+    er: scrollableMermaidDiagram,
+    eventmodeling: scrollableMermaidDiagram,
+    flowchart: scrollableMermaidDiagram,
+    gantt: scrollableMermaidDiagram,
+    gitGraph: scrollableMermaidDiagram,
+    ishikawa: scrollableMermaidDiagram,
+    journey: scrollableMermaidDiagram,
+    kanban: scrollableMermaidDiagram,
+    mindmap: scrollableMermaidDiagram,
+    packet: scrollableMermaidDiagram,
+    pie: scrollableMermaidDiagram,
+    quadrantChart: scrollableMermaidDiagram,
+    requirement: scrollableMermaidDiagram,
+    sankey: scrollableMermaidDiagram,
+    sequence: scrollableMermaidDiagram,
+    state: scrollableMermaidDiagram,
+    timeline: scrollableMermaidDiagram,
+    xyChart: scrollableMermaidDiagram
+  },
   vite: {
     plugins: [copyPostAssets()],
     optimizeDeps: {

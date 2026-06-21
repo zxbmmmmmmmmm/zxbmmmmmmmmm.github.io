@@ -172,6 +172,17 @@
   overflow-x: auto;
 }
 
+.post-view .mermaid {
+  margin: 16px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.post-view .mermaid > svg {
+  display: inline-block;
+  max-width: none;
+}
+
 .post-view tr {
   background-color: var(--color-surface-container-higher);
   border-top: 1px solid var(--vp-c-divider);
