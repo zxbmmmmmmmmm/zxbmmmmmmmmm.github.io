@@ -3,6 +3,7 @@ import Layout from './Layout.vue'
 import type { Theme } from 'vitepress'
 import TagsView from './components/TagsView.vue'
 import ProjectsView from './components/ProjectsView.vue'
+import Mermaid from 'vitepress-plugin-mermaid/Mermaid.vue'
 import './styles/base.css'
 import './styles/vars.css'
 import './styles/components/custom-block.css'
@@ -14,5 +15,6 @@ export default {
   enhanceApp({ app }) {
     app.component('TagsView', TagsView)
     app.component('ProjectsView', ProjectsView)
+    app.component('Mermaid', Mermaid)
   }
 } satisfies Theme

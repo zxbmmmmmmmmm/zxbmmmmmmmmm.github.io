@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import {
   copyFileSync,
   existsSync,
@@ -10,12 +11,15 @@ import { dirname, join, relative } from 'node:path'
 import { vsLight, vsDark } from './shiki-themes'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: "Betta_Fish's Blog",
   description: "Betta_Fish's Blog",
   ignoreDeadLinks: ['./692041'],
   vite: {
-    plugins: [copyPostAssets()]
+    plugins: [copyPostAssets()],
+    optimizeDeps: {
+      include: ['mermaid']
+    }
   },
   markdown: {
     theme: {
@@ -55,7 +59,7 @@ export default defineConfig({
       })
     }
   }
-})
+}))
 
 function rewriteAssetAttributes(
   token: { attrs: [string, string][] | null; content?: string },
