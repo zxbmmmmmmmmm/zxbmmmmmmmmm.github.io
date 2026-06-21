@@ -172,13 +172,13 @@
   overflow-x: auto;
 }
 
-.post-view .mermaid {
+.post-view .mermaid:not(.mermaid-viewer) {
   margin: 16px 0;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-.post-view .mermaid > svg {
+.post-view .mermaid:not(.mermaid-viewer) > svg {
   display: inline-block;
   max-width: none;
 }
