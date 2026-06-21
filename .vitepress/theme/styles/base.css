@@ -19,6 +19,10 @@
     box-sizing: border-box;
   }
 
+  :root{
+    text-autospace: normal;
+  }
+
   html {
     line-height: 1.4;
     font-size: 16px;
