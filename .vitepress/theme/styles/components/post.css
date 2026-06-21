@@ -267,7 +267,6 @@
   min-width: 100%;
   line-height: var(--vp-code-line-height, 1.7);
   font-size: var(--vp-code-font-size, 0.875em);
-  color: var(--vp-code-block-color, var(--vp-c-text-1));
   transition: color 0.5s;
 }
 
@@ -329,4 +328,20 @@
 
 .post-view .custom-block p:first-child {
   margin: 0;
+}
+
+html:not(.dark) .shiki span {
+  color: var(--shiki-light, inherit);
+  text-decoration: var(--shiki-light-text-decoration, inherit);
+  font-weight: var(--shiki-light-font-weight, inherit);
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark, inherit);
+  text-decoration: var(--shiki-dark-text-decoration, inherit);
+  font-weight: var(--shiki-dark-font-weight, inherit);
+}
+
+.shiki span {
+  unicode-bidi: isolate;
 }

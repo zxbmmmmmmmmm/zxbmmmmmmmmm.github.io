@@ -11,6 +11,10 @@ export default defineConfig({
     plugins: [copyPostAssets()]
   },
   markdown: {
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark'
+    },
     config(md) {
       md.core.ruler.after('inline', 'post-local-assets', (state) => {
         const env = state.env as { path?: string; relativePath?: string }
