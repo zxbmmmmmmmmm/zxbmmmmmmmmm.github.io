@@ -184,7 +184,7 @@
 
 .post-view th,
 .post-view td {
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid transparent;
   padding: 8px 16px;
 }
 
@@ -192,8 +192,7 @@
   text-align: left;
   font-size: 14px;
   font-weight: 600;
-  color: var(--vp-c-text-2);
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--color-primary-container);
 }
 
 .post-view td {
