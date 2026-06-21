@@ -173,13 +173,13 @@
 }
 
 .post-view tr {
-  background-color: var(--vp-c-bg);
+  background-color: var(--color-surface-container-higher);
   border-top: 1px solid var(--vp-c-divider);
   transition: background-color 0.5s;
 }
 
 .post-view tr:nth-child(2n) {
-  background-color: var(--vp-c-bg-soft);
+  background-color: var(--color-surface-container-high);
 }
 
 .post-view th,
