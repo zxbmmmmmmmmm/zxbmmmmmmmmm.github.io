@@ -1,5 +1,11 @@
 import { defineConfig } from 'vitepress'
-import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs'
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  statSync
+} from 'node:fs'
 import { dirname, join, relative } from 'node:path'
 import { vsLight, vsDark } from './shiki-themes'
 
@@ -16,6 +22,7 @@ export default defineConfig({
       light: vsLight,
       dark: vsDark
     },
+    languageAlias: { 'xaml': 'xml' },
     config(md) {
       md.core.ruler.after('inline', 'post-local-assets', (state) => {
         const env = state.env as { path?: string; relativePath?: string }
@@ -79,10 +86,8 @@ function rewriteAssetAttributes(
 }
 
 function isPostAssetPath(url: string): boolean {
-  return (
-    /^\/(?!\/)[^?#]+\.(?:apng|avif|bmp|gif|ico|jpe?g|png|svg|tiff?|webp|mp4|m4v|mov|webm|ogv|mp3|m4a|ogg|oga|wav|aac|flac|vtt|pdf)(?:[?#].*)?$/i.test(
-      url
-    )
+  return /^\/(?!\/)[^?#]+\.(?:apng|avif|bmp|gif|ico|jpe?g|png|svg|tiff?|webp|mp4|m4v|mov|webm|ogv|mp3|m4a|ogg|oga|wav|aac|flac|vtt|pdf)(?:[?#].*)?$/i.test(
+    url
   )
 }
 
