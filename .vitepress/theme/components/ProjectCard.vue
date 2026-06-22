@@ -106,5 +106,4 @@ defineProps<{
 }
 .layout li + li {
   margin-top: 0;
-}
-</style>
+}</style>

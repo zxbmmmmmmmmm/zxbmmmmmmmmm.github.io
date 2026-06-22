@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import BaseMermaid from 'vitepress-plugin-mermaid/Mermaid.vue'
+import ZoomIn from '../icons/10/ZoomIn.vue'
+import VButton from './VButton.vue'
+import ZoomOut from '../icons/10/ZoomOut.vue'
+import FitPage from '../icons/10/FitPage.vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -24,9 +28,12 @@ const content = ref<HTMLElement | null>(null)
 const scale = ref(1)
 const naturalWidth = ref(1)
 const naturalHeight = ref(1)
+const viewportWidth = ref(1)
+const viewportHeight = ref(1)
 const isDragging = ref(false)
 
-let resizeObserver: ResizeObserver | null = null
+let contentResizeObserver: ResizeObserver | null = null
+let viewportResizeObserver: ResizeObserver | null = null
 let mutationObserver: MutationObserver | null = null
 let dragState = {
   pointerId: -1,
@@ -41,20 +48,39 @@ const zoomLabel = computed(() => `${Math.round(scale.value * 100)}%`)
 const viewportStyle = computed(() => ({
   height: `${Math.max(120, Math.ceil(naturalHeight.value))}px`
 }))
+const scaledWidth = computed(() => naturalWidth.value * scale.value)
+const scaledHeight = computed(() => naturalHeight.value * scale.value)
+const dragPaddingX = computed(() => Math.max(80, viewportWidth.value * 0.5))
+const dragPaddingY = computed(() => Math.max(80, viewportHeight.value * 0.5))
+const stageWidth = computed(() =>
+  Math.max(viewportWidth.value, scaledWidth.value + dragPaddingX.value * 2)
+)
+const stageHeight = computed(() =>
+  Math.max(viewportHeight.value, scaledHeight.value + dragPaddingY.value * 2)
+)
+const contentLeft = computed(() =>
+  Math.max(0, (stageWidth.value - scaledWidth.value) / 2)
+)
+const contentTop = computed(() =>
+  Math.max(0, (stageHeight.value - scaledHeight.value) / 2)
+)
 const stageStyle = computed(() => ({
-  width: `${Math.max(1, Math.ceil(naturalWidth.value * scale.value))}px`,
-  height: `${Math.max(1, Math.ceil(naturalHeight.value * scale.value))}px`
+  width: `${Math.max(1, Math.ceil(stageWidth.value))}px`,
+  height: `${Math.max(1, Math.ceil(stageHeight.value))}px`
 }))
 const contentStyle = computed(() => ({
+  left: `${contentLeft.value}px`,
+  top: `${contentTop.value}px`,
   transform: `scale(${scale.value})`
 }))
 
 onMounted(() => {
   syncSize()
+  syncViewportSize()
 
   if (content.value) {
-    resizeObserver = new ResizeObserver(syncSize)
-    resizeObserver.observe(content.value)
+    contentResizeObserver = new ResizeObserver(syncSize)
+    contentResizeObserver.observe(content.value)
 
     mutationObserver = new MutationObserver(syncSize)
     mutationObserver.observe(content.value, {
@@ -63,10 +89,16 @@ onMounted(() => {
       attributes: true
     })
   }
+
+  if (viewport.value) {
+    viewportResizeObserver = new ResizeObserver(syncViewportSize)
+    viewportResizeObserver.observe(viewport.value)
+  }
 })
 
 onBeforeUnmount(() => {
-  resizeObserver?.disconnect()
+  contentResizeObserver?.disconnect()
+  viewportResizeObserver?.disconnect()
   mutationObserver?.disconnect()
 })
 
@@ -74,8 +106,25 @@ function syncSize() {
   const element = content.value
   if (!element) return
 
+  const wasUnmeasured = naturalWidth.value === 1 && naturalHeight.value === 1
   naturalWidth.value = Math.max(1, element.scrollWidth, element.offsetWidth)
   naturalHeight.value = Math.max(1, element.scrollHeight, element.offsetHeight)
+
+  nextTick(() => {
+    syncViewportSize()
+
+    if (wasUnmeasured) {
+      centerViewport()
+    }
+  })
+}
+
+function syncViewportSize() {
+  const element = viewport.value
+  if (!element) return
+
+  viewportWidth.value = Math.max(1, element.clientWidth)
+  viewportHeight.value = Math.max(1, element.clientHeight)
 }
 
 function clampScale(value: number) {
@@ -85,14 +134,20 @@ function clampScale(value: number) {
 function setScale(value: number, anchor?: { x: number; y: number }) {
   const element = viewport.value
   const previousScale = scale.value
+  const previousLeft = contentLeft.value
+  const previousTop = contentTop.value
   const nextScale = clampScale(value)
 
   if (nextScale === previousScale) return
 
   const anchorX = anchor?.x ?? (element?.clientWidth ?? 0) / 2
   const anchorY = anchor?.y ?? (element?.clientHeight ?? 0) / 2
-  const contentX = element ? (element.scrollLeft + anchorX) / previousScale : 0
-  const contentY = element ? (element.scrollTop + anchorY) / previousScale : 0
+  const contentX = element
+    ? (element.scrollLeft + anchorX - previousLeft) / previousScale
+    : naturalWidth.value / 2
+  const contentY = element
+    ? (element.scrollTop + anchorY - previousTop) / previousScale
+    : naturalHeight.value / 2
 
   scale.value = nextScale
 
@@ -100,8 +155,8 @@ function setScale(value: number, anchor?: { x: number; y: number }) {
     syncSize()
 
     if (!element) return
-    element.scrollLeft = contentX * nextScale - anchorX
-    element.scrollTop = contentY * nextScale - anchorY
+    element.scrollLeft = contentLeft.value + contentX * nextScale - anchorX
+    element.scrollTop = contentTop.value + contentY * nextScale - anchorY
   })
 }
 
@@ -113,23 +168,51 @@ function zoomOut() {
   setScale(scale.value / SCALE_STEP)
 }
 
+function toggleFit() {
+  const fittedScale = Math.min(
+    1,
+    viewport.value ? viewport.value.clientWidth / naturalWidth.value : 1
+  )
+
+  if (Math.abs(scale.value - fittedScale) < 0.01) {
+    resetZoom()
+  } else {
+    fitToWidth();
+  }
+}
+
 function resetZoom() {
-  scale.value = 1
-
-  nextTick(() => {
-    const element = viewport.value
-    if (!element) return
-
-    element.scrollLeft = 0
-    element.scrollTop = 0
-  })
+  setScale(1, getViewportCenter())
 }
 
 function fitToWidth() {
   const element = viewport.value
   if (!element || !naturalWidth.value) return
 
-  setScale(Math.min(1, element.clientWidth / naturalWidth.value))
+  setScale(
+    Math.min(1, element.clientWidth / naturalWidth.value),
+    getViewportCenter()
+  )
+}
+
+function getViewportCenter() {
+  const element = viewport.value
+
+  return {
+    x: (element?.clientWidth ?? 0) / 2,
+    y: (element?.clientHeight ?? 0) / 2
+  }
+}
+
+function centerViewport() {
+  const element = viewport.value
+  if (!element) return
+
+  element.scrollLeft = Math.max(0, (stageWidth.value - element.clientWidth) / 2)
+  element.scrollTop = Math.max(
+    0,
+    (stageHeight.value - element.clientHeight) / 2
+  )
 }
 
 function onPointerDown(event: PointerEvent) {
@@ -154,7 +237,11 @@ function onPointerDown(event: PointerEvent) {
 function onPointerMove(event: PointerEvent) {
   const element = viewport.value
 
-  if (!element || !isDragging.value || event.pointerId !== dragState.pointerId) {
+  if (
+    !element ||
+    !isDragging.value ||
+    event.pointerId !== dragState.pointerId
+  ) {
     return
   }
 
@@ -175,14 +262,16 @@ function stopDragging(event: PointerEvent) {
 }
 
 function isToolbarTarget(target: EventTarget | null) {
-  return target instanceof Element && Boolean(target.closest('.mermaid-toolbar'))
+  return (
+    target instanceof Element && Boolean(target.closest('.mermaid-toolbar'))
+  )
 }
 </script>
 
 <template>
   <figure :class="rootClass">
     <div class="mermaid-toolbar" aria-label="Mermaid controls">
-      <button
+      <VButton
         type="button"
         class="mermaid-tool-button"
         title="缩小"
@@ -190,27 +279,14 @@ function isToolbarTarget(target: EventTarget | null) {
         :disabled="scale <= MIN_SCALE"
         @click="zoomOut"
       >
-        <span aria-hidden="true">-</span>
-      </button>
-      <button
-        type="button"
-        class="mermaid-tool-button mermaid-tool-button-reset"
-        title="重置缩放"
-        aria-label="重置缩放"
-        @click="resetZoom"
-      >
-        <span aria-hidden="true">1:1</span>
-      </button>
-      <button
-        type="button"
-        class="mermaid-tool-button mermaid-tool-button-fit"
-        title="适应宽度"
-        aria-label="适应宽度"
-        @click="fitToWidth"
-      >
-        <span aria-hidden="true"></span>
-      </button>
-      <button
+        <ZoomOut />
+      </VButton>
+      <VButton @click="toggleFit">
+        <span class="mermaid-zoom-label" aria-live="polite">{{
+          zoomLabel
+        }}</span>
+      </VButton>
+      <VButton
         type="button"
         class="mermaid-tool-button"
         title="放大"
@@ -218,9 +294,8 @@ function isToolbarTarget(target: EventTarget | null) {
         :disabled="scale >= MAX_SCALE"
         @click="zoomIn"
       >
-        <span aria-hidden="true">+</span>
-      </button>
-      <span class="mermaid-zoom-label" aria-live="polite">{{ zoomLabel }}</span>
+        <ZoomIn />
+      </VButton>
     </div>
 
     <div
@@ -244,10 +319,14 @@ function isToolbarTarget(target: EventTarget | null) {
 </template>
 
 <style scoped>
+
+.mermaid-viewport{
+  scrollbar-width: none;
+}
+
 .mermaid-viewer {
   position: relative;
   margin: 16px 0;
-  border: 1px solid var(--vp-c-divider);
   background: var(--color-surface-container-high);
   overflow: hidden;
 }
@@ -257,28 +336,14 @@ function isToolbarTarget(target: EventTarget | null) {
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
-  padding: 6px 8px;
   color: var(--vp-c-text-1);
   background: var(--color-surface-container-higher);
-  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .mermaid-tool-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  color: inherit;
-  background: transparent;
-  border-radius: var(--border-radius-control);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.mermaid-tool-button:hover:not(:disabled) {
-  background: var(--color-surface-container-higher);
+  height: 100%;
+  width: 36px;
+  padding: 8px;
 }
 
 .mermaid-tool-button:disabled {
@@ -286,43 +351,11 @@ function isToolbarTarget(target: EventTarget | null) {
   cursor: default;
 }
 
-.mermaid-tool-button-reset {
-  font-size: 11px;
-}
-
-.mermaid-tool-button-fit > span {
-  position: relative;
-  display: block;
-  width: 14px;
-  height: 10px;
-  border: 1.5px solid currentColor;
-}
-
-.mermaid-tool-button-fit > span::before,
-.mermaid-tool-button-fit > span::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 4px;
-  border-top: 1.5px solid currentColor;
-}
-
-.mermaid-tool-button-fit > span::before {
-  left: -3px;
-}
-
-.mermaid-tool-button-fit > span::after {
-  right: -3px;
-}
-
 .mermaid-zoom-label {
-  min-width: 40px;
-  padding: 0 4px;
-  font-size: 12px;
-  line-height: 28px;
   text-align: center;
   color: var(--vp-c-text-2);
   user-select: none;
+  font-size: 0.9rem;
 }
 
 .mermaid-viewport {

@@ -1,0 +1,14 @@
+<template>
+  <svg
+    height="100%"
+    viewBox="0 128 1024 768"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <path
+      d="M832,448L832,320L704,320L704,256L896,256L896,448ZM192,320L192,448L128,448L128,256L320,256L320,320ZM896,576L896,768L704,768L704,704L832,704L832,576ZM320,704L320,768L128,768L128,576L192,576L192,704ZM0,128L1024,128L1024,896L0,896ZM960,832L960,192L64,192L64,832Z"
+      fill-opacity="1"
+    ></path>
+  </svg>
+</template>
