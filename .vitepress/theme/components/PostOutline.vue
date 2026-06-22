@@ -42,7 +42,7 @@ useActiveAnchor(container, marker)
 
 .outline-content {
   position: relative;
-  padding-left: 16px;
+  padding-left: 8px;
 }
 
 .outline-list {
@@ -51,20 +51,15 @@ useActiveAnchor(container, marker)
   margin: 0;
   position: relative;
   z-index: 1;
-  gap:  1rem;
+  gap:  1.25rem;
   display: flex;
   flex-direction: column;
 }
 
 .outline-link {
   display: block;
-  line-height: 32px;
-  font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--vp-c-text-2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   text-decoration: none;
   transition: color 0.25s;
 }

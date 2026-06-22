@@ -1,13 +1,13 @@
 .post-page {
   display: flex;
-  max-width: calc(1024px);
+  max-width: calc(1200px);
   margin: 0 auto;
 }
 
 .post-view {
   flex: 1;
   min-width: 0;
-  max-width: calc(1024px);
+  max-width: calc(1200px);
 }
 
 .post-aside {
@@ -16,7 +16,7 @@
   width: 256px;
 }
 
-@media (max-width: calc(1024px)) {
+@media (max-width: calc(1120px)) {
   .post-aside {
     display: none;
   }
