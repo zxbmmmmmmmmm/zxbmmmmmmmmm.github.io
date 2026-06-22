@@ -4,7 +4,6 @@ import BaseMermaid from 'vitepress-plugin-mermaid/Mermaid.vue'
 import ZoomIn from '../icons/10/ZoomIn.vue'
 import VButton from './VButton.vue'
 import ZoomOut from '../icons/10/ZoomOut.vue'
-import FitPage from '../icons/10/FitPage.vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -22,6 +21,7 @@ const props = withDefaults(
 const MIN_SCALE = 0.25
 const MAX_SCALE = 3
 const SCALE_STEP = 1.2
+const FIT_EPSILON = 1
 
 const viewport = ref<HTMLElement | null>(null)
 const content = ref<HTMLElement | null>(null)
@@ -35,6 +35,7 @@ const isDragging = ref(false)
 let contentResizeObserver: ResizeObserver | null = null
 let viewportResizeObserver: ResizeObserver | null = null
 let mutationObserver: MutationObserver | null = null
+let hasAppliedInitialFit = false
 let dragState = {
   pointerId: -1,
   x: 0,
@@ -50,13 +51,23 @@ const viewportStyle = computed(() => ({
 }))
 const scaledWidth = computed(() => naturalWidth.value * scale.value)
 const scaledHeight = computed(() => naturalHeight.value * scale.value)
-const dragPaddingX = computed(() => Math.max(80, viewportWidth.value * 0.5))
-const dragPaddingY = computed(() => Math.max(80, viewportHeight.value * 0.5))
+const canFullyDisplay = computed(
+  () =>
+    scaledWidth.value <= viewportWidth.value + FIT_EPSILON &&
+    scaledHeight.value <= viewportHeight.value + FIT_EPSILON
+)
 const stageWidth = computed(() =>
-  Math.max(viewportWidth.value, scaledWidth.value + dragPaddingX.value * 2)
+  canFullyDisplay.value
+    ? viewportWidth.value
+    : Math.max(viewportWidth.value, scaledWidth.value)
 )
 const stageHeight = computed(() =>
-  Math.max(viewportHeight.value, scaledHeight.value + dragPaddingY.value * 2)
+  canFullyDisplay.value
+    ? viewportHeight.value
+    : Math.max(
+        viewportHeight.value,
+        scaledHeight.value
+      )
 )
 const contentLeft = computed(() =>
   Math.max(0, (stageWidth.value - scaledWidth.value) / 2)
@@ -113,7 +124,7 @@ function syncSize() {
   nextTick(() => {
     syncViewportSize()
 
-    if (wasUnmeasured) {
+    if (applyInitialFit() || wasUnmeasured || canFullyDisplay.value) {
       centerViewport()
     }
   })
@@ -125,6 +136,12 @@ function syncViewportSize() {
 
   viewportWidth.value = Math.max(1, element.clientWidth)
   viewportHeight.value = Math.max(1, element.clientHeight)
+
+  nextTick(() => {
+    if (applyInitialFit() || canFullyDisplay.value) {
+      centerViewport()
+    }
+  })
 }
 
 function clampScale(value: number) {
@@ -155,6 +172,12 @@ function setScale(value: number, anchor?: { x: number; y: number }) {
     syncSize()
 
     if (!element) return
+
+    if (canFullyDisplay.value) {
+      centerViewport()
+      return
+    }
+
     element.scrollLeft = contentLeft.value + contentX * nextScale - anchorX
     element.scrollTop = contentTop.value + contentY * nextScale - anchorY
   })
@@ -169,15 +192,12 @@ function zoomOut() {
 }
 
 function toggleFit() {
-  const fittedScale = Math.min(
-    1,
-    viewport.value ? viewport.value.clientWidth / naturalWidth.value : 1
-  )
+  const fittedScale = getFitScale()
 
   if (Math.abs(scale.value - fittedScale) < 0.01) {
     resetZoom()
   } else {
-    fitToWidth();
+    fitToWidth()
   }
 }
 
@@ -189,10 +209,26 @@ function fitToWidth() {
   const element = viewport.value
   if (!element || !naturalWidth.value) return
 
-  setScale(
-    Math.min(1, element.clientWidth / naturalWidth.value),
-    getViewportCenter()
+  setScale(getFitScale(), getViewportCenter())
+}
+
+function getFitScale() {
+  const element = viewport.value
+
+  return clampScale(
+    Math.min(1, element ? element.clientWidth / naturalWidth.value : 1)
   )
+}
+
+function applyInitialFit() {
+  if (hasAppliedInitialFit || naturalWidth.value <= 1) return false
+
+  const element = viewport.value
+  if (!element || element.clientWidth <= 1) return false
+
+  hasAppliedInitialFit = true
+  scale.value = getFitScale()
+  return true
 }
 
 function getViewportCenter() {
@@ -208,6 +244,10 @@ function centerViewport() {
   const element = viewport.value
   if (!element) return
 
+  if (canFullyDisplay.value) {
+    isDragging.value = false
+  }
+
   element.scrollLeft = Math.max(0, (stageWidth.value - element.clientWidth) / 2)
   element.scrollTop = Math.max(
     0,
@@ -216,7 +256,7 @@ function centerViewport() {
 }
 
 function onPointerDown(event: PointerEvent) {
-  if (event.button !== 0 || isToolbarTarget(event.target)) return
+  if (event.button !== 0 || canFullyDisplay.value || isToolbarTarget(event.target)) return
 
   const element = viewport.value
   if (!element) return
@@ -239,6 +279,7 @@ function onPointerMove(event: PointerEvent) {
 
   if (
     !element ||
+    canFullyDisplay.value ||
     !isDragging.value ||
     event.pointerId !== dragState.pointerId
   ) {
@@ -301,7 +342,7 @@ function isToolbarTarget(target: EventTarget | null) {
     <div
       ref="viewport"
       class="mermaid-viewport"
-      :class="{ 'is-dragging': isDragging }"
+      :class="{ 'is-dragging': isDragging, 'is-centered': canFullyDisplay }"
       :style="viewportStyle"
       @pointerdown="onPointerDown"
       @pointermove="onPointerMove"
@@ -369,6 +410,11 @@ function isToolbarTarget(target: EventTarget | null) {
 
 .mermaid-viewport.is-dragging {
   cursor: grabbing;
+}
+
+.mermaid-viewport.is-centered {
+  cursor: default;
+  touch-action: auto;
 }
 
 .mermaid-stage {
