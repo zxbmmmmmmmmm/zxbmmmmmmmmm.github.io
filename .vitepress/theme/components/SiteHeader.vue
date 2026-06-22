@@ -18,9 +18,16 @@ let timer: ReturnType<typeof setTimeout> | null = null
 function onScroll() {
   const y = window.scrollY
   if (y > lastY) {
-    if (!timer) timer = setTimeout(() => { hidden.value = true; timer = null }, 300)
+    if (!timer)
+      timer = setTimeout(() => {
+        hidden.value = true
+        timer = null
+      }, 300)
   } else {
-    if (timer) { clearTimeout(timer); timer = null }
+    if (timer) {
+      clearTimeout(timer)
+      timer = null
+    }
     hidden.value = false
   }
   lastY = y
@@ -36,6 +43,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     <ul v-if="tags.length">
       <a href="/tags">标签</a>
       <a href="/projects">项目</a>
+      <a href="/friends">友链</a>
+
       <li v-for="tag in tags" :key="tag.name">
         <a :href="getTagLink(tag.name)">
           {{ tag.name }}

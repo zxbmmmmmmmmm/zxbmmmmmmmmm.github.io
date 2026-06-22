@@ -104,7 +104,7 @@
   margin: 16px 0;
 }
 
-.post-view :not(.project-card) > img {
+.post-view :not(.card) > img {
   margin: 16px 0;
 }
 

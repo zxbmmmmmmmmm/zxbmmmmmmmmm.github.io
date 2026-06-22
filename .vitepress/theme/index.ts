@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress'
 import TagsView from './components/TagsView.vue'
 import ProjectsView from './components/ProjectsView.vue'
 import MermaidViewer from './components/MermaidViewer.vue'
+import FriendsView from './components/FriendsView.vue'
 import './styles/base.css'
 import './styles/vars.css'
 import './styles/components/custom-block.css'
@@ -16,5 +17,6 @@ export default {
     app.component('TagsView', TagsView)
     app.component('ProjectsView', ProjectsView)
     app.component('Mermaid', MermaidViewer)
+    app.component('FriendsView', FriendsView)
   }
 } satisfies Theme

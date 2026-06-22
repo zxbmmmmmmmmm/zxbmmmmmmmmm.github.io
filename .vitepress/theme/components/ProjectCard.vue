@@ -11,7 +11,7 @@ defineProps<{
 }>()
 </script>
 <template>
-  <article class="project-card" role="button">
+  <article class="card project-card" role="button">
     <a
       v-if="repository"
       :href="repository"
@@ -60,7 +60,7 @@ defineProps<{
 .project-header-image {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 196px;
   object-fit: cover;
   margin: 0;
 }
