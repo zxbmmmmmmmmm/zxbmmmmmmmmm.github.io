@@ -1,9 +1,8 @@
 ---
 date: 2023-06-23
 title: 【UWP/XAML】合并资源字典时出现 Error HRESULT E_FAIL
-category:
-  - C#
 tag:
+  - C#
   - UWP
   - XAML
 ---
