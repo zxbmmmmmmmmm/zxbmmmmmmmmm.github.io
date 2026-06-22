@@ -1,8 +1,6 @@
 ---
 date: 2022-07-04
 title: 【教程】将你的Windows Phone升级到16212
-category:
-  - 手机
 tag:
   - Windows Phone
   - Beta
