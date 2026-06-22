@@ -35,6 +35,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 .article {
   position: relative;
   display: grid;
+  min-width: 0;
   gap: 0.5rem;
   padding: 1.75rem;
   color: var(--vp-c-text-1);
@@ -69,6 +70,8 @@ const getArticleLink = (url: string) => normalizeLink(url)
 .article-excerpt {
   color: var(--vp-c-text-2);
   line-height: 1.75;
+  overflow-x: clip;
+  min-width: 0;
 }
 
 .article-excerpt :deep(p) {
