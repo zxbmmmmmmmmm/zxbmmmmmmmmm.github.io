@@ -36,13 +36,7 @@ let contentResizeObserver: ResizeObserver | null = null
 let viewportResizeObserver: ResizeObserver | null = null
 let mutationObserver: MutationObserver | null = null
 let hasAppliedInitialFit = false
-let dragState = {
-  pointerId: -1,
-  x: 0,
-  y: 0,
-  scrollLeft: 0,
-  scrollTop: 0
-}
+let dragState = { pointerId: -1, x: 0, y: 0, scrollLeft: 0, scrollTop: 0 }
 
 const rootClass = computed(() => [props.class, 'mermaid-viewer'])
 const zoomLabel = computed(() => `${Math.round(scale.value * 100)}%`)
@@ -64,10 +58,7 @@ const stageWidth = computed(() =>
 const stageHeight = computed(() =>
   canFullyDisplay.value
     ? viewportHeight.value
-    : Math.max(
-        viewportHeight.value,
-        scaledHeight.value
-      )
+    : Math.max(viewportHeight.value, scaledHeight.value)
 )
 const contentLeft = computed(() =>
   Math.max(0, (stageWidth.value - scaledWidth.value) / 2)
@@ -244,19 +235,12 @@ function centerViewport() {
   const element = viewport.value
   if (!element) return
 
-  if (canFullyDisplay.value) {
-    isDragging.value = false
-  }
-
   element.scrollLeft = Math.max(0, (stageWidth.value - element.clientWidth) / 2)
-  element.scrollTop = Math.max(
-    0,
-    (stageHeight.value - element.clientHeight) / 2
-  )
+  element.scrollTop = Math.max(0, (stageHeight.value - element.clientHeight) / 2)
 }
 
 function onPointerDown(event: PointerEvent) {
-  if (event.button !== 0 || canFullyDisplay.value || isToolbarTarget(event.target)) return
+  if (event.pointerType !== 'mouse' || event.button !== 0 || canFullyDisplay.value) return
 
   const element = viewport.value
   if (!element) return
@@ -269,43 +253,25 @@ function onPointerDown(event: PointerEvent) {
     scrollLeft: element.scrollLeft,
     scrollTop: element.scrollTop
   }
-
   element.setPointerCapture(event.pointerId)
   event.preventDefault()
 }
 
 function onPointerMove(event: PointerEvent) {
-  const element = viewport.value
+  if (!isDragging.value || event.pointerId !== dragState.pointerId) return
 
-  if (
-    !element ||
-    canFullyDisplay.value ||
-    !isDragging.value ||
-    event.pointerId !== dragState.pointerId
-  ) {
-    return
-  }
+  const element = viewport.value
+  if (!element) return
 
   element.scrollLeft = dragState.scrollLeft - (event.clientX - dragState.x)
   element.scrollTop = dragState.scrollTop - (event.clientY - dragState.y)
 }
 
 function stopDragging(event: PointerEvent) {
-  const element = viewport.value
+  if (event.pointerId !== dragState.pointerId) return
 
-  if (element?.hasPointerCapture(event.pointerId)) {
-    element.releasePointerCapture(event.pointerId)
-  }
-
-  if (event.pointerId === dragState.pointerId) {
-    isDragging.value = false
-  }
-}
-
-function isToolbarTarget(target: EventTarget | null) {
-  return (
-    target instanceof Element && Boolean(target.closest('.mermaid-toolbar'))
-  )
+  viewport.value?.releasePointerCapture(event.pointerId)
+  isDragging.value = false
 }
 </script>
 
@@ -342,13 +308,12 @@ function isToolbarTarget(target: EventTarget | null) {
     <div
       ref="viewport"
       class="mermaid-viewport"
-      :class="{ 'is-dragging': isDragging, 'is-centered': canFullyDisplay }"
+      :class="{ 'is-dragging': isDragging, 'is-draggable': !canFullyDisplay }"
       :style="viewportStyle"
       @pointerdown="onPointerDown"
       @pointermove="onPointerMove"
       @pointerup="stopDragging"
       @pointercancel="stopDragging"
-      @lostpointercapture="stopDragging"
     >
       <div class="mermaid-stage" :style="stageStyle">
         <div ref="content" class="mermaid-content" :style="contentStyle">
@@ -360,11 +325,6 @@ function isToolbarTarget(target: EventTarget | null) {
 </template>
 
 <style scoped>
-
-.mermaid-viewport{
-  scrollbar-width: none;
-}
-
 .mermaid-viewer {
   position: relative;
   margin: 16px 0;
@@ -403,18 +363,15 @@ function isToolbarTarget(target: EventTarget | null) {
   min-height: 120px;
   max-height: 72vh;
   overflow: auto;
+  scrollbar-width: none;
+}
+
+.mermaid-viewport.is-draggable {
   cursor: grab;
-  overscroll-behavior: contain;
-  touch-action: none;
 }
 
 .mermaid-viewport.is-dragging {
   cursor: grabbing;
-}
-
-.mermaid-viewport.is-centered {
-  cursor: default;
-  touch-action: auto;
 }
 
 .mermaid-stage {
