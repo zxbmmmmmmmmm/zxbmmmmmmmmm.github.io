@@ -3,6 +3,7 @@ import VButton from './VButton.vue'
 interface Props {
   text?: string
   theme?: 'default' | 'accent'
+  href?: string
 }
 const props = withDefaults(defineProps<Props>(), {
   text: 'Text',
@@ -11,7 +12,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 </script>
 <template>
-  <VButton type="button" class="tile-button" :theme="theme">
+  <VButton type="button" class="tile-button" :theme="theme" :href="href">
     <slot class="tile-content"></slot>
     <p class="tile-text">{{ text }}</p>
   </VButton>

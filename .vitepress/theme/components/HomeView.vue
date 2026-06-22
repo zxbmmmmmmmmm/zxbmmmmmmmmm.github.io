@@ -16,13 +16,13 @@ import Projects from '../icons/8/Projects.vue'
         <Tile class="tile-1" text="所有文章" theme="accent">
           <Bookmark />
         </Tile>
-        <Tile class="tile-2" text="标签" theme="accent">
+        <Tile class="tile-2" text="标签" theme="accent" href="/tags">
           <Tags />
         </Tile>
-        <Tile class="tile-3" text="友链" theme="accent">
+        <Tile class="tile-3" text="友链" theme="accent" href="/friends">
           <People />
         </Tile>
-        <Tile class="tile-4" text="项目" theme="accent">
+        <Tile class="tile-4" text="项目" theme="accent" href="/projects">
           <Projects />
         </Tile>
         <AboutCard class="about-card" />
