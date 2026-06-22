@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { data as posts } from '../posts.data'
 import { getTagLink, getTopTags } from '../shared/tags'
 
@@ -10,10 +10,28 @@ const tags = computed(() => {
 defineProps<{
   title: string
 }>()
+
+const hidden = ref(false)
+let lastY = 0
+let timer: ReturnType<typeof setTimeout> | null = null
+
+function onScroll() {
+  const y = window.scrollY
+  if (y > lastY) {
+    if (!timer) timer = setTimeout(() => { hidden.value = true; timer = null }, 300)
+  } else {
+    if (timer) { clearTimeout(timer); timer = null }
+    hidden.value = false
+  }
+  lastY = y
+}
+
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'header-hidden': hidden }">
     <a class="site-logo" href="/">{{ title }}</a>
     <ul v-if="tags.length">
       <a href="/tags">标签</a>
@@ -64,6 +82,15 @@ defineProps<{
   .site-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+@media (max-height: 900px) {
+  .site-header {
+    transition: transform 0.3s ease;
+  }
+
+  .site-header.header-hidden {
+    transform: translateY(-100%);
   }
 }
 </style>
