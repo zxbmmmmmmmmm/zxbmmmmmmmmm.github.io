@@ -76,11 +76,13 @@ const { frontmatter } = useData()
   color: var(--color-on-surface);
 }
 @media (max-width: 720px) {
-  .post-content {
+  .post-content.has-bg,
+  .post-content:not(.has-bg) {
     padding: 0 24px 24px 24px;
   }
+  .post-header.has-bg,
   .post-header:not(.has-bg) {
-    padding:20px 24px 4px 24px;
+    padding: 24px 24px 4px 24px;
   }
 }
 </style>
