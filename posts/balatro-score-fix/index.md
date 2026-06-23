@@ -1,9 +1,9 @@
 ---
 title: 修复《小丑牌》爆机后出牌闪退的问题
-date: 2025-6-24
+date: 2026-6-24
 tag:
-  -游戏
-  -Lua
+  - 游戏
+  - Lua
 ---
 
 最近玩小丑牌有点上头，想打个无尽39底注爆机玩玩。结果在二十多底注左右的时候不小心打爆了一次，结果后续一旦出牌就直接闪退，感觉丢掉玩了这么久的存档也不太好，遂尝试修复
@@ -31,11 +31,11 @@ function check_and_set_high_score(score, amt) --出牌时，传入score的值为
     G.GAME.round_scores[score].amt = math.floor(amt)
   end
   if  G.GAME.seeded  then return end
-  if score == 'hand' and G.SETTINGS.COMP and ((not G.SETTINGS.COMP.score) or (G.SETTINGS.COMP.score < math.floor(amt))) then 
+  if score == 'hand' and G.SETTINGS.COMP and ((not G.SETTINGS.COMP.score) or (G.SETTINGS.COMP.score < math.floor(amt))) then
     G.SETTINGS.COMP.score = amt
     send_score(math.floor(amt))
   end
-  if G.PROFILES[G.SETTINGS.profile].high_scores[score] and math.floor(amt) > G.PROFILES[G.SETTINGS.profile].high_scores[score].amt then 
+  if G.PROFILES[G.SETTINGS.profile].high_scores[score] and math.floor(amt) > G.PROFILES[G.SETTINGS.profile].high_scores[score].amt then
     if G.GAME.round_scores[score] then G.GAME.round_scores[score].high_score = true end
     	G.PROFILES[G.SETTINGS.profile].high_scores[score].amt = math.floor(amt)
     G:save_settings()
@@ -57,7 +57,7 @@ function check_and_set_high_score(score, amt)
     end
   end
   if  G.GAME.seeded  then return end
-  if score == 'hand' and G.SETTINGS.COMP and ((not G.SETTINGS.COMP.score) or (G.SETTINGS.COMP.score < math.floor(amt))) then 
+  if score == 'hand' and G.SETTINGS.COMP and ((not G.SETTINGS.COMP.score) or (G.SETTINGS.COMP.score < math.floor(amt))) then
     G.SETTINGS.COMP.score = amt
     send_score(math.floor(amt))
   end
@@ -71,7 +71,7 @@ end
 
 将源文件的函数替换后，在39注之前就不用再去控分防止爆机导致存档损坏了——随意爆机！
 
-***
+---
 
 在这附一张前两天打的39注爆机：
 
