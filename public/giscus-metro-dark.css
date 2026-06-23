@@ -1,0 +1,93 @@
+main {
+  --color-canvas-default: #222222;
+  --color-canvas-overlay: #2a2a2a;
+  --color-canvas-inset: #111111;
+  --color-canvas-subtle: #333333;
+  --color-fg-default: #dedede;
+  --color-fg-muted: #9e9e9e;
+  --color-fg-subtle: #616161;
+  --color-border-default: #333333;
+  --color-border-muted: #2a2a2a;
+  --color-neutral-muted: #ffffff26;
+  --color-accent-fg: #098a94;
+  --color-accent-emphasis: #098a94;
+  --color-accent-muted: #098a9440;
+  --color-accent-subtle: #004f56;
+  --color-success-fg: #81c784;
+  --color-attention-fg: #ffcc80;
+  --color-attention-muted: #ffcc8040;
+  --color-attention-subtle: #3d2700;
+  --color-danger-fg: #ffb4ab;
+  --color-danger-muted: #ffb4ab40;
+  --color-danger-subtle: #93000a;
+  --color-primer-shadow-inset: 0 0 #0000;
+  --color-btn-text: #dedede;
+  --color-btn-bg: #333333;
+  --color-btn-border: #444444;
+  --color-btn-shadow: 0 0 #0000;
+  --color-btn-inset-shadow: 0 0 #0000;
+  --color-btn-hover-bg: #3d3d3d;
+  --color-btn-hover-border: #555555;
+  --color-btn-active-bg: #2a2a2a;
+  --color-btn-active-border: #666666;
+  --color-btn-selected-bg: #222222;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #098a94;
+  --color-btn-primary-border: #098a9400;
+  --color-btn-primary-shadow: 0 0 #0000;
+  --color-btn-primary-inset-shadow: 0 0 #0000;
+  --color-btn-primary-hover-bg: #0aa5a9;
+  --color-btn-primary-hover-border: #098a9400;
+  --color-btn-primary-selected-bg: #098a94;
+  --color-btn-primary-selected-shadow: 0 0 #0000;
+  --color-btn-primary-disabled-text: #ffffff80;
+  --color-btn-primary-disabled-bg: #098a9499;
+  --color-btn-primary-disabled-border: #098a9400;
+  --color-action-list-item-default-hover-bg: #ffffff10;
+  --color-segmented-control-bg: #ffffff15;
+  --color-segmented-control-button-bg: #333333;
+  --color-segmented-control-button-selected-border: #616161;
+  --color-prettylights-syntax-comment: #9e9e9e;
+  --color-prettylights-syntax-constant: #4dd0e1;
+  --color-prettylights-syntax-entity: #c3c4eb;
+  --color-prettylights-syntax-storage-modifier-import: #dedede;
+  --color-prettylights-syntax-entity-tag: #81c784;
+  --color-prettylights-syntax-keyword: #ef9a9a;
+  --color-prettylights-syntax-string: #80cbc4;
+  --color-prettylights-syntax-variable: #ffcc80;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #ffb4ab;
+  --color-prettylights-syntax-invalid-illegal-text: #dedede;
+  --color-prettylights-syntax-invalid-illegal-bg: #93000a;
+  --color-prettylights-syntax-carriage-return-text: #dedede;
+  --color-prettylights-syntax-carriage-return-bg: #93000a;
+  --color-prettylights-syntax-string-regexp: #81c784;
+  --color-prettylights-syntax-markup-list: #ffcc80;
+  --color-prettylights-syntax-markup-heading: #4dd0e1;
+  --color-prettylights-syntax-markup-italic: #dedede;
+  --color-prettylights-syntax-markup-bold: #dedede;
+  --color-prettylights-syntax-markup-deleted-text: #ffb4ab;
+  --color-prettylights-syntax-markup-deleted-bg: #93000a;
+  --color-prettylights-syntax-markup-inserted-text: #81c784;
+  --color-prettylights-syntax-markup-inserted-bg: #1b4721;
+  --color-prettylights-syntax-markup-changed-text: #ffcc80;
+  --color-prettylights-syntax-markup-changed-bg: #3d2700;
+  --color-prettylights-syntax-markup-ignored-text: #616161;
+  --color-prettylights-syntax-markup-ignored-bg: #2a2a2a;
+  --color-prettylights-syntax-meta-diff-range: #c3c4eb;
+  --color-prettylights-syntax-brackethighlighter-angle: #616161;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #333333;
+  --color-prettylights-syntax-constant-other-reference-link: #80cbc4;
+  --color-social-reaction-bg-hover: #333333;
+  --color-social-reaction-bg-reacted-hover: #004f56;
+  --color-scale-gray-7: #333333;
+  --color-scale-blue-8: #004f56;
+}
+main .pagination-loader-container { background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg); }
+main .gsc-loading-image { background-image: url(https://github.githubassets.com/images/mona-loading-dimmed.gif); }
+.gsc-reactions-count { display: none; }
+.gsc-timeline { flex-direction: column-reverse; }
+.gsc-header { padding-bottom: 1rem; }
+.gsc-comments > .gsc-header { order: 1; }
+.gsc-comments > .gsc-comment-box { margin-bottom: 1rem; order: 2; }
+.gsc-comments > .gsc-timeline { order: 3; }
+.gsc-homepage-bg { background-color: #141414; }

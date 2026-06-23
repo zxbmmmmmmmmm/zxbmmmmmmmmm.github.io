@@ -4,6 +4,7 @@ import PostOutline from './PostOutline.vue'
 import VButton from './VButton.vue'
 import { getTagLink } from '../shared/tags'
 import { formatDate } from '../shared/utils.ts'
+import GiscusComments from './GiscusComments.vue'
 
 const { frontmatter } = useData()
 </script>
@@ -30,6 +31,7 @@ const { frontmatter } = useData()
       </div>
 
       <Content class="post-content" :class="{ 'has-bg': frontmatter.date }"/>
+      <GiscusComments class="comments"/>
     </div>
     <aside class="post-aside">
       <PostOutline />
@@ -58,6 +60,9 @@ const { frontmatter } = useData()
   padding: 48px 48px 0px 48px;
 }
 
+.comments{
+  margin: 48px;
+}
 .post-content.has-bg {
   padding: 24px 48px 48px 48px;
 }
@@ -79,6 +84,9 @@ const { frontmatter } = useData()
   .post-content.has-bg,
   .post-content:not(.has-bg) {
     padding: 0 24px 24px 24px;
+  }
+  .comments{
+    margin: 24px;
   }
   .post-header.has-bg,
   .post-header:not(.has-bg) {

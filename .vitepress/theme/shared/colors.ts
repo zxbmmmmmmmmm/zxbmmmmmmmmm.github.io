@@ -1,0 +1,31 @@
+export const light = {
+  accent:       '#098a94',
+  accentHover:  '#0aa5a9',
+  accentTint:   '#d0f8fb',
+  bgPage:       '#f0f2f3',
+  bgCard:       '#ffffff',
+  bgElevated:   '#e8eaeb',
+  bgSubtle:     '#dedede',
+  bgSunken:     '#ffffff',
+  text:         '#212121',
+  textMuted:    '#757575',
+  textFaint:    '#9e9e9e',
+  border:       '#c9cbcc',
+  divider:      '#dedede',
+} as const;
+
+export const dark = {
+  accent:       '#098a94',
+  accentHover:  '#0aa5a9',
+  accentTint:   '#004f56',
+  bgPage:       '#141414',
+  bgCard:       '#222222',
+  bgElevated:   '#2a2a2a',
+  bgSubtle:     '#333333',
+  bgSunken:     '#111111',
+  text:         '#dedede',
+  textMuted:    '#9e9e9e',
+  textFaint:    '#616161',
+  border:       '#333333',
+  divider:      '#2a2a2a',
+} as const;
