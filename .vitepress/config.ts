@@ -14,7 +14,7 @@ const scrollableMermaidDiagram = { useMaxWidth: false }
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
-  title: "Betta_Fish's Blog",
+  title: "Betta_Fish",
   description: "Betta_Fish's Blog",
   ignoreDeadLinks: ['./692041'],
   mermaid: {

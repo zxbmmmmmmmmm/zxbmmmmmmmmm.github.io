@@ -11,8 +11,8 @@ defineProps<{ friend: Friend }>()
 </script>
 <template>
   <article class="card friend-card">
-    <a :href="friend.link" class="card-overlay" />
     <img class="avatar" :src="friend.avatar" />
+    <a :href="friend.link" class="card-overlay" />
     <div class="friend-content">
       <h1 class="friend-name">{{ friend.name }}</h1>
       <p>{{ friend.description }}</p>
@@ -55,7 +55,6 @@ defineProps<{ friend: Friend }>()
   margin: 0;
 }
 .card-overlay {
-  position: absolute;
   inset: 0;
   z-index: 1;
 }

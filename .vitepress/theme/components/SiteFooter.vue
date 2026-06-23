@@ -1,5 +1,12 @@
 <script setup lang="ts">
+import { getTagLink, getTopTags } from '../shared/tags'
+import { data as posts } from '../posts.data'
+
+import { computed, ref, onMounted, onUnmounted } from 'vue'
+
 defineProps<{ text: string }>()
+const tags = computed(() => getTopTags(posts))
+
 const year = new Date().getFullYear()
 </script>
 
@@ -14,9 +21,17 @@ const year = new Date().getFullYear()
         <div class="footer-nav-group">
           <h3 class="footer-nav-title">导航</h3>
           <ul>
-            <li><a href="/tags">标签</a></li>
+            <li><a href="/tags">所有标签</a></li>
             <li><a href="/projects">项目</a></li>
             <li><a href="/friends">友链</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <h3 class="footer-nav-title">标签</h3>
+          <ul>
+            <li v-for="tag in tags" :key="tag.name">
+              <a :href="getTagLink(tag.name)">{{ tag.name }}</a>
+            </li>
           </ul>
         </div>
         <div class="footer-nav-group">

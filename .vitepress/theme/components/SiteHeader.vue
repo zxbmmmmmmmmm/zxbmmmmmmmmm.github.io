@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
-import { data as posts } from '../posts.data'
-import { getTagLink, getTopTags } from '../shared/tags'
-
-const tags = computed(() => getTopTags(posts))
+import { ref, onMounted, onUnmounted } from 'vue'
 
 defineProps<{ title: string }>()
 
@@ -14,9 +10,16 @@ let timer: ReturnType<typeof setTimeout> | null = null
 function onScroll() {
   const y = window.scrollY
   if (y > lastY) {
-    if (!timer) timer = setTimeout(() => { hidden.value = true; timer = null }, 300)
+    if (!timer)
+      timer = setTimeout(() => {
+        hidden.value = true
+        timer = null
+      }, 300)
   } else {
-    if (timer) { clearTimeout(timer); timer = null }
+    if (timer) {
+      clearTimeout(timer)
+      timer = null
+    }
     hidden.value = false
   }
   lastY = y
@@ -30,13 +33,10 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   <header class="site-header" :class="{ 'header-hidden': hidden }">
     <div class="header-inner">
       <a class="site-logo" href="/">{{ title }}</a>
-      <ul v-if="tags.length">
+      <ul>
         <a href="/tags">标签</a>
         <a href="/projects">项目</a>
         <a href="/friends">友链</a>
-        <li v-for="tag in tags" :key="tag.name">
-          <a :href="getTagLink(tag.name)">{{ tag.name }}</a>
-        </li>
       </ul>
     </div>
   </header>
@@ -57,8 +57,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   display: flex;
   padding: 16px 32px;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 2rem;
 }
 
 .site-logo {
@@ -69,7 +68,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .site-header ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .site-header a {
@@ -85,6 +84,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   .header-inner {
     align-items: flex-start;
     flex-direction: column;
+    gap: 0.75rem;
   }
 }
 
