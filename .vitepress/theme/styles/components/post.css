@@ -184,13 +184,13 @@
 }
 
 .post-view tr {
-  background-color: var(--color-surface-container-higher);
+  background-color: var(--color-bg-subtle);
   border-top: 1px solid var(--vp-c-divider);
   transition: background-color 0.5s;
 }
 
 .post-view tr:nth-child(2n) {
-  background-color: var(--color-surface-container-high);
+  background-color: var(--color-bg-elevated);
 }
 
 .post-view th,
@@ -203,7 +203,7 @@
   text-align: left;
   font-size: 14px;
   font-weight: 600;
-  background-color: var(--color-primary-container);
+  background-color: var(--color-accent-tint);
 }
 
 .post-view td {
@@ -218,7 +218,7 @@
 
 .post-view :not(pre, h1, h2, h3, h4, h5, h6) > code {
   font-size: var(--vp-code-font-size, 0.875em);
-  background: var(--color-surface-container-highest);
+  background: var(--color-bg-subtle);
   border-radius: 4px;
 }
 
@@ -240,7 +240,7 @@
   position: relative;
   margin: 16px -24px;
   padding-top: 36px;
-  background-color: var(--color-surface-container-high);
+  background-color: var(--color-bg-elevated);
   overflow-x: auto;
   transition: background-color 0.25s;
 }
@@ -252,7 +252,7 @@
   left: 0;
   right: 0;
   height: 36px;
-  background: var(--color-surface-container-higher);
+  background: var(--color-bg-subtle);
   z-index: 1;
 }
 

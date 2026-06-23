@@ -41,6 +41,8 @@ import Projects from '../icons/8/Projects.vue'
   display: grid;
   gap: 24px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .home-view-header {
@@ -70,7 +72,6 @@ import Projects from '../icons/8/Projects.vue'
 
 .article-list {
   width: 100%;
-  max-width: 1200px;
   margin-inline: auto;
 }
 

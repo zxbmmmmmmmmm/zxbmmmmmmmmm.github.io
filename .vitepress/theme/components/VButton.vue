@@ -37,16 +37,17 @@ const component = computed(() => {
 .Button {
   display: inline-block;
   padding: 0.45rem 1rem;
-  color: var(--vp-c-text-1);
+  color: var(--color-text);
+  font-weight: 600;
   text-align: center;
-  background: var(--color-surface-container-higher);
+  background: var(--color-bg-subtle);
   border-radius: var(--border-radius-control);
   transition: transform 0.2s ease;
 }
 
 .Button:hover {
-  color: var(--vp-c-text-1);
-  background: var(--color-surface-container-highest);
+  color: var(--color-text);
+  background: var(--color-bg-elevated);
 }
 
 .Button :deep(svg) {
@@ -55,14 +56,13 @@ const component = computed(() => {
 }
 
 .Button.accent {
-  color: var(--color-on-primary);
-  background: var(--color-primary);
-  border-color: var(--color-on-primary);
+  color: var(--color-accent-fg);
+  background: var(--color-accent);
 }
 
 .Button.accent:hover {
-  color: var(--color-on-primary);
-  background: var(--color-inverse-primary);
+  color: var(--color-accent-fg);
+  background: var(--color-accent-hover);
 }
 
 .Button:active {

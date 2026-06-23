@@ -3,13 +3,9 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { data as posts } from '../posts.data'
 import { getTagLink, getTopTags } from '../shared/tags'
 
-const tags = computed(() => {
-  return getTopTags(posts)
-})
+const tags = computed(() => getTopTags(posts))
 
-defineProps<{
-  title: string
-}>()
+defineProps<{ title: string }>()
 
 const hidden = ref(false)
 let lastY = 0
@@ -18,16 +14,9 @@ let timer: ReturnType<typeof setTimeout> | null = null
 function onScroll() {
   const y = window.scrollY
   if (y > lastY) {
-    if (!timer)
-      timer = setTimeout(() => {
-        hidden.value = true
-        timer = null
-      }, 300)
+    if (!timer) timer = setTimeout(() => { hidden.value = true; timer = null }, 300)
   } else {
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
-    }
+    if (timer) { clearTimeout(timer); timer = null }
     hidden.value = false
   }
   lastY = y
@@ -39,18 +28,17 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
 <template>
   <header class="site-header" :class="{ 'header-hidden': hidden }">
-    <a class="site-logo" href="/">{{ title }}</a>
-    <ul v-if="tags.length">
-      <a href="/tags">标签</a>
-      <a href="/projects">项目</a>
-      <a href="/friends">友链</a>
-
-      <li v-for="tag in tags" :key="tag.name">
-        <a :href="getTagLink(tag.name)">
-          {{ tag.name }}
-        </a>
-      </li>
-    </ul>
+    <div class="header-inner">
+      <a class="site-logo" href="/">{{ title }}</a>
+      <ul v-if="tags.length">
+        <a href="/tags">标签</a>
+        <a href="/projects">项目</a>
+        <a href="/friends">友链</a>
+        <li v-for="tag in tags" :key="tag.name">
+          <a :href="getTagLink(tag.name)">{{ tag.name }}</a>
+        </li>
+      </ul>
+    </div>
   </header>
 </template>
 
@@ -60,11 +48,17 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   top: 0;
   z-index: 10;
   background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
+  padding: 16px 32px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 1rem 1.25rem;
 }
 
 .site-logo {
@@ -88,16 +82,16 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 @media (max-width: 640px) {
-  .site-header {
+  .header-inner {
     align-items: flex-start;
     flex-direction: column;
   }
 }
+
 @media (max-height: 900px) {
   .site-header {
     transition: transform 0.3s ease;
   }
-
   .site-header.header-hidden {
     transform: translateY(-100%);
   }

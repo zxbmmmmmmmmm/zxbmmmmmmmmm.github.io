@@ -1,132 +1,133 @@
 :root {
   color-scheme: light;
 
-  --color-primary: #098a94;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #d0f8fb;
-  --color-on-primary-container: #002023;
-  --color-inverse-primary: #0aa5a9;
+  /* === Accent / Brand === */
+  --color-accent: #098a94;
+  --color-accent-fg: #ffffff;
+  --color-accent-hover: #0aa5a9;
+  --color-accent-tint: #d0f8fb;
+  --color-accent-tint-fg: #002023;
 
+  /* === Secondary === */
   --color-secondary: #526365;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #d5e7e9;
-  --color-on-secondary-container: #0f1f21;
+  --color-secondary-fg: #ffffff;
+  --color-secondary-tint: #d5e7e9;
+  --color-secondary-tint-fg: #0f1f21;
 
+  /* === Tertiary === */
   --color-tertiary: #5a5d7e;
-  --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #e0e0ff;
-  --color-on-tertiary-container: #171936;
+  --color-tertiary-fg: #ffffff;
+  --color-tertiary-tint: #e0e0ff;
+  --color-tertiary-tint-fg: #171936;
 
-  --color-background: #eaedee;
-  --color-on-background: #000000de;
-  --color-surface: #ffffff;
-  --color-on-surface: #000000de;
-  --color-surface-variant: #ffffff;
-  --color-on-surface-variant: #00000099;
-  --color-surface-tint: var(--color-primary);
-  --color-inverse-surface: #212121;
-  --color-inverse-on-surface: #ffffff;
+  /* === Backgrounds === */
+  --color-bg-page: #f0f2f3;
+  --color-bg-card: #ffffff;
+  --color-bg-card-alt: #ffffff;
+  --color-bg-elevated: #e8eaeb;
+  --color-bg-subtle: #dedede;
+  --color-bg-sunken: #ffffff;
+  /* Navigation — always dark (Metro signature) */
+  --color-bg-nav: #1a1a1a;
 
+  /* === Text === */
+  --color-text: rgba(0, 0, 0, 0.87);
+  --color-text-muted: rgba(0, 0, 0, 0.6);
+  --color-text-faint: rgba(0, 0, 0, 0.38);
+  --color-nav-fg: #d2d2d2;
+
+  /* === Semantic === */
   --color-warning: #ffb300;
-  --color-on-warning: #000000;
-  --color-warning-container: #ffdfba;
-  --color-on-warning-container: #331900;
-
+  --color-warning-fg: #000000;
+  --color-warning-tint: #ffdfba;
+  --color-warning-tint-fg: #331900;
   --color-error: #ba1a1a;
-  --color-on-error: #ffffff;
-  --color-error-container: #ffdad6;
-  --color-on-error-container: #410002;
+  --color-error-fg: #ffffff;
+  --color-error-tint: #ffdad6;
+  --color-error-tint-fg: #410002;
 
-  --color-outline: #0000002e;
-  --color-outline-variant: #0000001f;
-  --color-scrim: #000000a6;
+  /* === Borders === */
+  --color-border: rgba(0, 0, 0, 0.18);
+  --color-divider: rgba(0, 0, 0, 0.12);
+  --color-scrim: rgba(0, 0, 0, 0.65);
 
-  --color-surface-bright: var(--color-surface);
-  --color-surface-dim: #eef1f4;
-  --color-surface-container: #ffffff;
-  --color-surface-container-high: #eaedee;
-  --color-surface-container-higher: #dddddd;
-  --color-surface-container-highest: #d8d8d8;
-  --color-surface-container-low: #ffffff;
-  --color-surface-container-lowest: var(--color-surface);
+  /* === Inverse === */
+  --color-bg-inverse: #212121;
+  --color-fg-inverse: #ffffff;
 
-  --color-primary-fixed: var(--color-primary-container);
-  --color-primary-fixed-dim: #9beef3;
-  --color-on-primary-fixed: var(--color-on-primary-container);
-  --color-on-primary-fixed-variant: #004f56;
-  --color-secondary-fixed: var(--color-secondary-container);
-  --color-secondary-fixed-dim: #b9cbcd;
-  --color-on-secondary-fixed: var(--color-on-secondary-container);
-  --color-on-secondary-fixed-variant: #3b4b4d;
-  --color-tertiary-fixed: var(--color-tertiary-container);
-  --color-tertiary-fixed-dim: #c3c4eb;
-  --color-on-tertiary-fixed: var(--color-on-tertiary-container);
-  --color-on-tertiary-fixed-variant: #424666;
-
+  /* === Layout === */
   --header-height: 56px;
   --border-radius-control: 0px;
   --border-radius-overlay: 0px;
 
+  /* === Typography (Metro: Segoe UI first) === */
   --vp-font-family-base:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Segoe UI', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     sans-serif;
   --vp-font-family-mono:
-    ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
-  --vp-c-bg: var(--color-background);
-  --vp-c-bg-alt: var(--color-surface-container-high);
-  --vp-c-bg-soft: var(--color-surface-container-low);
-  --vp-c-bg-elv: var(--color-surface);
-  --vp-c-text-1: var(--color-on-surface);
-  --vp-c-text-2: var(--color-on-surface-variant);
-  --vp-c-text-3: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
-  --vp-c-border: var(--color-outline);
-  --vp-c-divider: var(--color-outline-variant);
-  --vp-c-gutter: var(--color-outline-variant);
-  --vp-c-brand-1: var(--color-primary);
-  --vp-c-brand-2: var(--color-inverse-primary);
-  --vp-c-brand-3: var(--color-primary-container);
+    'Cascadia Code', ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono',
+    monospace;
+
+  /* === VitePress compat aliases === */
+  --vp-c-bg: var(--color-bg-page);
+  --vp-c-bg-alt: var(--color-bg-elevated);
+  --vp-c-bg-soft: var(--color-bg-card);
+  --vp-c-bg-elv: var(--color-bg-card);
+  --vp-c-text-1: var(--color-text);
+  --vp-c-text-2: var(--color-text-muted);
+  --vp-c-text-3: var(--color-text-faint);
+  --vp-c-border: var(--color-border);
+  --vp-c-divider: var(--color-divider);
+  --vp-c-gutter: var(--color-divider);
+  --vp-c-brand-1: var(--color-accent);
+  --vp-c-brand-2: var(--color-accent-hover);
+  --vp-c-brand-3: var(--color-accent-tint);
 }
 
 html.dark {
   color-scheme: dark;
 
-  --color-primary-container: #004f56;
-  --color-on-primary-container: #d0f8fb;
-  --color-inverse-primary: #0cc0c5;
+  --color-accent: #098a94;
+
+  --color-accent-hover: #0aa5a9;
+  --color-accent-tint: #004f56;
+  --color-accent-tint-fg: #d0f8fb;
+
   --color-secondary: #b9cbcd;
-  --color-on-secondary: #243336;
-  --color-secondary-container: #3b4b4d;
-  --color-on-secondary-container: #d5e7e9;
+  --color-secondary-fg: #243336;
+  --color-secondary-tint: #3b4b4d;
+  --color-secondary-tint-fg: #d5e7e9;
+
   --color-tertiary: #c3c4eb;
-  --color-on-tertiary: #2c2f4d;
-  --color-tertiary-container: #424666;
-  --color-on-tertiary-container: #e0e0ff;
-  --color-background: #1d1d1d;
-  --color-on-background: #ffffffde;
-  --color-surface: #000000;
-  --color-on-surface: #ffffffde;
-  --color-surface-variant: #131313;
-  --color-on-surface-variant: #ffffff99;
-  --color-inverse-surface: #ffffff;
-  --color-inverse-on-surface: #000000;
+  --color-tertiary-fg: #2c2f4d;
+  --color-tertiary-tint: #424666;
+  --color-tertiary-tint-fg: #e0e0ff;
 
-  --color-warning: #ffb300;
-  --color-on-warning: #000000;
-  --color-warning-container: #6d5002;
-  --color-on-warning-container: #f7c392;
+  --color-bg-page: #141414;
+  --color-bg-card: #222222;
+  --color-bg-card-alt: #1e1e1e;
+  --color-bg-elevated: #2a2a2a;
+  --color-bg-subtle: #333333;
+  --color-bg-sunken: #111111;
+  --color-bg-nav: #0d0d0d;
 
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-text-faint: rgba(255, 255, 255, 0.38);
+  --color-nav-fg: #d2d2d2;
+
+  --color-warning-tint: #6d5002;
+  --color-warning-tint-fg: #f7c392;
   --color-error: #ffb4ab;
-  --color-on-error: #690005;
-  --color-error-container: #93000a;
-  --color-on-error-container: #ffdad6;
+  --color-error-fg: #690005;
+  --color-error-tint: #93000a;
+  --color-error-tint-fg: #ffdad6;
 
-  --color-outline: #ffffff;
-  --color-outline-variant: #7a7a7a;
-  --color-surface-container: #0d0d0d;
-  --color-surface-container-high: #1a1a1a;
-  --color-surface-container-higher: #2c2c2c;
-  --color-surface-container-highest: #ffffff21;
-  --color-surface-container-low: #00000000;
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-divider: rgba(255, 255, 255, 0.08);
+
+  --color-bg-inverse: #ffffff;
+  --color-fg-inverse: #000000;
 }
 
 @media (forced-colors: active) {
@@ -134,37 +135,37 @@ html.dark {
   html.dark {
     color-scheme: light dark;
 
-    --color-primary: Highlight;
-    --color-on-primary: HighlightText;
-    --color-primary-container: Highlight;
-    --color-on-primary-container: HighlightText;
-    --color-inverse-primary: LinkText;
+    --color-accent: Highlight;
+    --color-accent-fg: HighlightText;
+    --color-accent-tint: Highlight;
+    --color-accent-tint-fg: HighlightText;
+    --color-accent-hover: LinkText;
     --color-secondary: ButtonText;
-    --color-on-secondary: ButtonFace;
-    --color-secondary-container: ButtonFace;
-    --color-on-secondary-container: ButtonText;
+    --color-secondary-fg: ButtonFace;
+    --color-secondary-tint: ButtonFace;
+    --color-secondary-tint-fg: ButtonText;
     --color-tertiary: ButtonText;
-    --color-on-tertiary: ButtonFace;
-    --color-tertiary-container: ButtonFace;
-    --color-on-tertiary-container: ButtonText;
-    --color-background: Canvas;
-    --color-on-background: CanvasText;
-    --color-surface: Canvas;
-    --color-on-surface: CanvasText;
-    --color-surface-variant: Canvas;
-    --color-on-surface-variant: CanvasText;
-    --color-inverse-surface: CanvasText;
-    --color-inverse-on-surface: Canvas;
+    --color-tertiary-fg: ButtonFace;
+    --color-tertiary-tint: ButtonFace;
+    --color-tertiary-tint-fg: ButtonText;
+    --color-bg-page: Canvas;
+    --color-bg-card: Canvas;
+    --color-bg-card-alt: Canvas;
+    --color-bg-elevated: ButtonFace;
+    --color-bg-subtle: ButtonFace;
+    --color-bg-sunken: Canvas;
+    --color-bg-nav: Canvas;
+    --color-text: CanvasText;
+    --color-text-muted: CanvasText;
+    --color-text-faint: GrayText;
+    --color-nav-fg: CanvasText;
     --color-error: CanvasText;
-    --color-on-error: Canvas;
-    --color-error-container: CanvasText;
-    --color-on-error-container: Canvas;
-    --color-outline: CanvasText;
-    --color-outline-variant: CanvasText;
+    --color-error-fg: Canvas;
+    --color-error-tint: CanvasText;
+    --color-error-tint-fg: Canvas;
+    --color-border: CanvasText;
+    --color-divider: CanvasText;
     --color-scrim: Canvas;
-    --color-surface-container: Canvas;
-    --color-surface-container-highest: ButtonFace;
-    --color-surface-container-low: Canvas;
     --vp-c-text-3: GrayText;
   }
 }

@@ -27,7 +27,7 @@ defineProps<{ friend: Friend }>()
 .friend-card {
   display: flex;
   flex-direction: row;
-  background: var(--color-surface-variant);
+  background: var(--color-bg-card-alt);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;

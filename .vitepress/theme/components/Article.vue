@@ -38,12 +38,13 @@ const getArticleLink = (url: string) => normalizeLink(url)
   min-width: 0;
   gap: 0.5rem;
   padding: 1.75rem;
-  color: var(--vp-c-text-1);
-  background: var(--color-surface-variant);
+  color: var(--color-text);
+  background: var(--color-bg-card);
   border-radius: var(--border-radius-overlay);
+  border-left: 3px solid transparent;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .article:has(.card-overlay:active):not(:has(.article-tag:active))
@@ -68,7 +69,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
 }
 
 .article-excerpt {
-  color: var(--vp-c-text-2);
+  color: var(--color-text-muted);
   line-height: 1.75;
   overflow-x: clip;
   min-width: 0;
@@ -97,24 +98,23 @@ const getArticleLink = (url: string) => normalizeLink(url)
   align-items: center;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: var(--color-surface-container-higher);
+  background: var(--color-bg-subtle);
   font-size: 0.875rem;
   text-decoration: none;
   border: 0;
 }
 
 .article-tag:hover {
-  background: var(--color-outline-variant);
+  background: var(--color-bg-elevated);
 }
 
 .article:hover:not(:active):not(:has(.card-overlay:active)) {
-  transform: translateY(-2px);
-  box-shadow: var(--app-shadow-elevation-medium);
+  border-left-color: var(--color-accent);
 }
 
 .article-date {
   margin: 0;
-  color: var(--vp-c-text-3);
+  color: var(--color-text-faint);
 }
 
 .article-meta {

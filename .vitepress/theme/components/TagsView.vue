@@ -90,9 +90,9 @@ onBeforeUnmount(() => {
 }
 
 .tag-button {
-  background: var(--color-surface-container);
+  background: var(--color-bg-sunken);
 }
 .page-view{
-  background: var(--color-surface-variant);
+  background: var(--color-bg-card-alt);
 }
 </style>

@@ -35,7 +35,7 @@ import VButton from './VButton.vue'
 
 <style scoped>
 .about-card {
-  background-color: var(--color-surface);
+  background-color: var(--color-bg-card);
   container-type: inline-size;
   container-name: about-card;
   display: flex;
@@ -70,7 +70,7 @@ import VButton from './VButton.vue'
   background-color: var(--color-secondary);
   width: 100%;
   height: 100%;
-  color: var(--color-on-secondary);
+  color: var(--color-secondary-fg);
   position: relative;
 }
 
@@ -89,7 +89,7 @@ import VButton from './VButton.vue'
   bottom: 16px;
   height: 96px;
   width: 96px;
-  color: var(--color-on-secondary);
+  color: var(--color-secondary-fg);
   z-index: 0;
   opacity: 0.2;
   pointer-events: none;
@@ -105,18 +105,13 @@ import VButton from './VButton.vue'
   gap: 12px;
   padding: 0.5rem 1rem;
   align-items: center;
-  background: var(--color-surface-container);
-  color: var(--color-on-surface);
-}
-
-html.dark .social-button:not(:hover) {
-  background: #ffffff16;
-  color: #ffffff;
+  background: var(--color-secondary-tint);
+  color: var(--color-secondary-tint-fg);
 }
 
 html.dark .about-content-layer {
-  background-color: var(--color-secondary-container);
-  color: var(--color-on-secondary-container);
+  background-color: var(--color-secondary-tint);
+  color: var(--color-secondary-tint-fg);
 }
 
 @container about-card (max-width: 500px) {

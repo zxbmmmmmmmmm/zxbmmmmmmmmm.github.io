@@ -65,15 +65,15 @@ const { frontmatter } = useData()
   padding: 12px 48px 48px 48px;
 }
 .post-header.has-bg {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
 }
 .post-view.has-bg {
-  background: var(--color-surface-variant);
+  background: var(--color-bg-card-alt);
 }
 .tag-button {
-  background: var(--color-surface);
-  color: var(--color-on-surface);
+  background: var(--color-bg-card);
+  color: var(--color-text);
 }
 @media (max-width: 720px) {
   .post-content.has-bg,

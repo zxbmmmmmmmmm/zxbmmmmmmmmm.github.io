@@ -328,7 +328,7 @@ function stopDragging(event: PointerEvent) {
 .mermaid-viewer {
   position: relative;
   margin: 16px 0;
-  background: var(--color-surface-container-high);
+  background: var(--color-bg-elevated);
   overflow: hidden;
 }
 
@@ -338,7 +338,7 @@ function stopDragging(event: PointerEvent) {
   justify-content: flex-end;
   gap: 4px;
   color: var(--vp-c-text-1);
-  background: var(--color-surface-container-higher);
+  background: var(--color-bg-subtle);
 }
 
 .mermaid-tool-button {

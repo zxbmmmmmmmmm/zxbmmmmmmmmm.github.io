@@ -40,7 +40,7 @@ defineProps<{
 .project-card {
   position: relative;
   display: grid;
-  background: var(--color-surface-variant);
+  background: var(--color-bg-card-alt);
   color: var(--vp-c-text-1);
   overflow: hidden;
   transition:
@@ -93,7 +93,7 @@ defineProps<{
 
 .project-tag {
   border-radius: 999px;
-  background: var(--color-surface-container-higher);
+  background: var(--color-bg-subtle);
   font-size: 0.875rem;
   border: 0;
   z-index: 2;
