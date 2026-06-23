@@ -108,6 +108,8 @@ import Projects from '../icons/8/Projects.vue'
     align-items: start;
   }
   .home-view-header {
+    position: sticky;
+    top: calc(var(--header-height) + 24px);
     grid-column: 3;
     grid-template-columns: repeat(3, 108px);
     grid-template-rows: 216px repeat(2, 108px);
