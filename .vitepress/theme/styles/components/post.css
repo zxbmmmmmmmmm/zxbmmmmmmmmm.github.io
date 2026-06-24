@@ -29,7 +29,7 @@
 .post-view h5,
 .post-view h6 {
   position: relative;
-  font-weight: 600;
+  font-weight: 200;
   outline: none;
   scroll-margin-top: calc(var(--header-height, 56px) + 16px);
 }
