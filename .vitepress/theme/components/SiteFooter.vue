@@ -21,9 +21,11 @@ const year = new Date().getFullYear()
         <div class="footer-nav-group">
           <h3 class="footer-nav-title">导航</h3>
           <ul>
-            <li><a href="/tags">所有标签</a></li>
+            <li><a href="/about">关于</a></li>
+            <li><a href="/tags">标签</a></li>
             <li><a href="/projects">项目</a></li>
             <li><a href="/friends">友链</a></li>
+            <li><a href="/board">留言板</a></li>
           </ul>
         </div>
         <div class="footer-nav-group">
@@ -78,7 +80,7 @@ const year = new Date().getFullYear()
 .site-footer {
   background: var(--color-bg-nav);
   color: #8e8e8e;
-  font-size: 0.8125rem;
+  font-size: 0.825rem;
   margin-top: auto;
 }
 
@@ -99,7 +101,7 @@ const year = new Date().getFullYear()
 
 .footer-inner:first-child {
   display: flex;
-  gap: 128px;
+  gap: 4rem;
   padding-top: 2.5rem;
   padding-bottom: 2rem;
 }
@@ -125,16 +127,19 @@ const year = new Date().getFullYear()
 
 .footer-nav {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
 
 .footer-nav-group ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-rows: repeat(3,1fr);
+  grid-auto-flow: column;
+  
+  gap: 0.5rem 2rem;
 }
 
 .footer-nav-title {
@@ -167,9 +172,6 @@ const year = new Date().getFullYear()
 @media (max-width: 640px) {
   .footer-inner:first-child {
     flex-direction: column;
-    gap: 1.5rem;
-  }
-  .footer-nav {
     gap: 2rem;
   }
 }
