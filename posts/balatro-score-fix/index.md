@@ -10,9 +10,9 @@ tag:
 
 ---
 
-> 给没玩过的科普一下：小丑牌的分数数据使用double类型存储，一旦获得的分数超出了double能存储的最大数值(1.797e308)，这次出牌的得分就会显示为nan，也就是所谓的“爆机”
+> 给没玩过的科普一下：小丑牌的分数数据使用双精度浮点(`double`)类型存储，一旦获得的分数超出了`double`能存储的最大数值(`1.797e308`)，这次出牌的得分就会显示为`nan`，也就是所谓的“爆机”
 >
-> 在无尽模式中，筹码所需要的分数是呈指数型增长的，到了39底注时，回合的至少得分也超出了double的数据上限，彻底无法打败，某种意义上算是无尽的终点
+> 在无尽模式中，筹码所需要的分数是呈指数型增长的，到了39底注时，回合的至少得分也超出了`double`的数据上限，彻底无法打败，某种意义上算是无尽的终点
 
 小丑牌没有做任何加密/混淆措施，你可以直接找到其源码进行修改
 
@@ -52,7 +52,7 @@ function check_and_set_high_score(score, amt)
   if not amt or type(amt) ~= 'number' then return end
   if G.GAME.round_scores[score] then
     local round_amt = G.GAME.round_scores[score].amt
-    if type(round_amt) == 'number' and round_amt == round_amt and math.floor(amt) > round_amt then -- 仅在round_amt为非nan值时进行比较
+    if type(round_amt) == 'number' and round_amt == round_amt and math.floor(amt) > round_amt then --仅在round_amt为非nan值时进行比较
       G.GAME.round_scores[score].amt = math.floor(amt)
     end
   end
@@ -69,12 +69,12 @@ function check_and_set_high_score(score, amt)
 end
 ```
 
-将源文件的函数替换后，在39注之前就不用再去控分防止爆机导致存档损坏了——随意爆机！
+将源文件的函数替换后，在39注之前就不用再去特意控分防止爆机导致存档损坏了！
 
 ---
 
 在这附一张前两天打的39注爆机：
 
-~~X1.5倍率！再来一次！~~
+~~X1.5倍率！再来一次！爽！~~
 
 ![](/01.jpg)

@@ -35,7 +35,7 @@ const year = new Date().getFullYear()
           </ul>
         </div>
         <div class="footer-nav-group">
-          <h3 class="footer-nav-title">关于</h3>
+          <h3 class="footer-nav-title">链接</h3>
           <ul>
             <li>
               <a
@@ -43,6 +43,22 @@ const year = new Date().getFullYear()
                 target="_blank"
                 rel="noreferrer"
                 >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.zhihu.com/people/bettafish"
+                target="_blank"
+                rel="noreferrer"
+                >知乎</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.cnblogs.com/BettaFish"
+                target="_blank"
+                rel="noreferrer"
+                >博客园</a
               >
             </li>
           </ul>
