@@ -12,23 +12,31 @@ import ArrowRight from '../icons/8/ArrowRight.vue'
 
 <template>
   <div class="layout">
-    <div class="header">
-      <div class="content">
+    <div class="section header">
+      <div class="section-content">
         <h1>Betta_Fish</h1>
         <h2>zxbmmmmmmmmm</h2>
       </div>
     </div>
-    <div class="social-media">
-      <div class="social-media-items content">
-        <ArrowRight class="social-media-icon" />
-        <div class="social-media-description">
-          <h2>BLOG</h2>
-          <h4>进入</h4>
+    <div class="section posts">
+      <div class="section-content">
+        <div>
+          <h2>文章</h2>
+          <ul class="posts-list">
+            <li v-for="post in posts">
+              <div>
+                <h4>
+                  {{ post.title }}
+                </h4>
+                <div class="post-excerpt"
+                  v-if="post.excerpt"
+                  v-html="post.excerpt"
+                ></div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-    <div class="content">
-      <ArticleList class="article-list" :posts="posts" />
     </div>
   </div>
 </template>
@@ -36,18 +44,20 @@ import ArrowRight from '../icons/8/ArrowRight.vue'
 .layout {
   display: grid;
 }
-.header-img {
-  inset: 0;
-  object-fit: cover;
-  width: 100%;
+.posts-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 24px;
 }
-.header {
+.section {
   min-height: clamp(200px, 25vh, 300px);
-  background: var(--color-accent);
   padding: 24px 64px;
   align-content: center;
 }
-.content {
+.header {
+  background: var(--color-accent);
+}
+.section-content {
   display: grid;
   padding: 24px;
 
@@ -55,29 +65,19 @@ import ArrowRight from '../icons/8/ArrowRight.vue'
   max-width: 1200px;
   margin: 0 auto;
 }
-.article-list {
-  width: 100%;
-  margin-inline: auto;
-}
 .social-media {
-  background: var(--color-accent-tint、
-  
-  
-  、);
-  min-height: 100px;
-  align-content: center;
+  background: #ff1769;
 }
 .social-media-items {
   display: flex;
   align-content: center;
   gap: 24px;
 }
-.social-media-description{
-  color:var(--color-accent-tint);
+.social-media-description {
+  color: white;
 }
 .social-media-icon {
   height: 80px;
   width: 80px;
-  fill: var(--color-accent-tint);
 }
 </style>
