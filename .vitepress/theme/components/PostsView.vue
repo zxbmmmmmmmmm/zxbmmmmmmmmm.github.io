@@ -12,21 +12,6 @@ import ArrowRight from '../icons/8/ArrowRight.vue'
 
 <template>
   <div class="layout">
-    <div class="header">
-      <div class="content">
-        <h1>Betta_Fish</h1>
-        <h2>zxbmmmmmmmmm</h2>
-      </div>
-    </div>
-    <div class="social-media">
-      <div class="social-media-items content">
-        <ArrowRight class="social-media-icon" />
-        <div class="social-media-description">
-          <h2>BLOG</h2>
-          <h4>进入</h4>
-        </div>
-      </div>
-    </div>
     <div class="content">
       <ArticleList class="article-list" :posts="posts" />
     </div>
@@ -49,7 +34,6 @@ import ArrowRight from '../icons/8/ArrowRight.vue'
 }
 .content {
   display: grid;
-  padding: 24px;
 
   width: 100%;
   max-width: 1200px;

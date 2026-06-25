@@ -22,6 +22,7 @@ const year = new Date().getFullYear()
           <h3 class="footer-nav-title">导航</h3>
           <ul>
             <li><a href="/about">关于</a></li>
+            <li><a href="/posts">文章</a></li>
             <li><a href="/tags">标签</a></li>
             <li><a href="/projects">项目</a></li>
             <li><a href="/friends">友链</a></li>
@@ -136,9 +137,9 @@ const year = new Date().getFullYear()
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-rows: repeat(3,1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-auto-flow: column;
-  
+
   gap: 0.5rem 2rem;
 }
 
