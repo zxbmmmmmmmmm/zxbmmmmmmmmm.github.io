@@ -3,11 +3,22 @@ import AboutCard from './AboutCard.vue'
 import ArticleList from './ArticleList.vue'
 import Tile from './Tile.vue'
 import { data as posts } from '../posts.data'
+import Github from '../icons/Github.vue'
+
 import People from '../icons/8/People.vue'
 import Tags from '../icons/8/Tags.vue'
 import Bookmark from '../icons/8/Bookmark.vue'
 import Projects from '../icons/8/Projects.vue'
 import ArrowRight2 from '../icons/8/ArrowRight2.vue'
+import {
+  findTagBySlug,
+  getTagGroups,
+  getTagSlugFromPath,
+  getTagLink
+} from '../shared/tags.ts'
+import { computed } from 'vue'
+import VButton from './VButton.vue'
+const tags = computed(() => getTagGroups(posts))
 </script>
 
 <template>
@@ -16,13 +27,24 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
       <div class="section-content">
         <h1>Betta_Fish</h1>
         <h2>zxbmmmmmmmmm</h2>
+        <ul class="social-buttons">
+          <VButton href="https://github.com/zxbmmmmmmmmm" class="social-button" theme="accent">
+            <Github />
+            Github
+          </VButton>
+        </ul>
       </div>
     </div>
     <div class="section">
       <div class="section-content first-post">
-        <h3>
-          {{ posts[0].title }}
-        </h3>
+        <h5>
+          {{ posts[0].date.string }}
+        </h5>
+        <a :href="posts[0].url">
+          <h3>
+            {{ posts[0].title }}
+          </h3>
+        </a>
         <div v-if="posts[0].excerpt" v-html="posts[0].excerpt"></div>
         <a class="continue-reading" :href="posts[0].url">
           <ArrowRight2 />
@@ -35,7 +57,9 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
       <ul class="section-content posts-section-content">
         <li v-for="post in posts.slice(2, 5)">
           <div class="post-item">
-            <h4>{{ post.title }}</h4>
+            <a :href="post.url">
+              <h4>{{ post.title }}</h4>
+            </a>
             <div
               class="post-item-excerpt"
               v-if="post.excerpt"
@@ -49,11 +73,48 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
         </li>
       </ul>
     </div>
+    <div class="section">
+      <div class="section-content section-content-tags">
+        <h2>标签</h2>
+        <ul class="tags-list">
+          <li v-for="tag in tags">
+            <a :href="getTagLink(tag.name)">
+              <h3>
+                {{ tag.name }}
+              </h3>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
+.social-buttons{
+  margin-top: 12px;
+  gap: 12px;
+}
+.social-button{
+
+}
 .layout {
   display: grid;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  row-gap: 8px;
+}
+.tags-list a {
+  color: var(--color-text);
+}
+.tag-button {
+  color: transparent;
+}
+.section-content-tags {
+  gap: 1rem;
 }
 .posts-section {
   background: #ff1769;
@@ -83,7 +144,12 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
   align-items: center;
 }
 .header {
-  background: var(--color-accent);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../assets//header.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: clamp(400px, 50vh, 800px);
 }
 
 .section-content {
@@ -95,6 +161,9 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
 }
 .first-post {
   gap: 1rem;
+}
+.first-post :deep(a) {
+  color: var(--color-text);
 }
 .post-item {
   display: flex;
@@ -110,8 +179,13 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
   line-clamp: 3;
   word-break: break-word;
 }
-.post-item-excerpt :deep(a) {
+.post-item :deep(a) {
   color: white;
+}
+@media (max-width: 720px) {
+  .section {
+    padding: 24px 16px;
+  }
 }
 @media (min-width: 720px) {
   .posts-section-content {

@@ -35,7 +35,8 @@ const component = computed(() => {
 
 <style scoped>
 .Button {
-  display: inline-block;
+  display: inline-flex;
+  gap: 12px;
   padding: 0.45rem 1rem;
   color: var(--color-text);
   font-weight: 600;
