@@ -3,6 +3,8 @@ import AboutCard from './AboutCard.vue'
 import ArticleList from './ArticleList.vue'
 import Tile from './Tile.vue'
 import { data as posts } from '../posts.data'
+import { data as projects } from '../projects.data'
+
 import Github from '../icons/Github.vue'
 
 import People from '../icons/8/People.vue'
@@ -10,6 +12,7 @@ import Tags from '../icons/8/Tags.vue'
 import Bookmark from '../icons/8/Bookmark.vue'
 import Projects from '../icons/8/Projects.vue'
 import ArrowRight2 from '../icons/8/ArrowRight2.vue'
+import ProjectCard from './ProjectCard.vue'
 import {
   findTagBySlug,
   getTagGroups,
@@ -28,7 +31,11 @@ const tags = computed(() => getTagGroups(posts))
         <h1>Betta_Fish</h1>
         <h2>zxbmmmmmmmmm</h2>
         <ul class="social-buttons">
-          <VButton href="https://github.com/zxbmmmmmmmmm" class="social-button" theme="accent">
+          <VButton
+            href="https://github.com/zxbmmmmmmmmm"
+            class="social-button"
+            theme="accent"
+          >
             <Github />
             Github
           </VButton>
@@ -87,15 +94,36 @@ const tags = computed(() => getTagGroups(posts))
         </ul>
       </div>
     </div>
+    <div class="section section-projects">
+      <div class="section-content section-content-projects">
+        <h2>项目</h2>
+        <ul class="projects-grid">
+          <li v-for="project in projects" :key="project.url">
+            <ProjectCard v-bind="project" />
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
-.social-buttons{
+.section-projects {
+  background: var(--color-accent);
+}
+.section-content-projects{
+  gap:24px;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.social-buttons {
   margin-top: 12px;
   gap: 12px;
-}
-.social-button{
-
 }
 .layout {
   display: grid;
