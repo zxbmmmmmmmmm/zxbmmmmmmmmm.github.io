@@ -47,6 +47,9 @@ defineProps<{
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
+.project-card img{
+  image-rendering: -webkit-optimize-contrast;
+}
 
 .project-card:hover {
   transform: translateY(-2px);

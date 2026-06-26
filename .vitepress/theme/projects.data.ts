@@ -18,7 +18,12 @@ export default createContentLoader('projects/**/*.md', {
       name: frontmatter.name,
       url,
       description: frontmatter.description,
-      headerImage: frontmatter['header-image'],
+      headerImage: (() => {
+        const img = frontmatter['header-image']
+        if (!img || !img.startsWith('./')) return img
+        const dir = url.endsWith('/') ? url : url + '/'
+        return dir + img.slice(2)
+      })(),
       repository: frontmatter.repository,
       tags: Array.isArray(frontmatter.tag)
         ? frontmatter.tag
