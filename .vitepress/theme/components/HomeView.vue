@@ -1,18 +1,75 @@
 <script setup lang="ts">
-
 import { data as posts } from '../posts.data'
 import { data as projects } from '../projects.data'
+import { nextTick, onUnmounted, ref } from 'vue'
 
 import Github from '../icons/Github.vue'
 import ArrowRight2 from '../icons/8/ArrowRight2.vue'
 import ProjectCard from './ProjectCard.vue'
-import {
-  getTagGroups,
-  getTagLink
-} from '../shared/tags.ts'
-import { computed } from 'vue'
+import { getTagGroups, getTagLink } from '../shared/tags.ts'
+import { computed, onMounted } from 'vue'
 import VButton from './VButton.vue'
+import ArrowLeft2 from '../icons/8/ArrowLeft2.vue'
 const tags = computed(() => getTagGroups(posts))
+
+let resizeObserver: ResizeObserver | undefined = undefined
+const carousel = ref<HTMLElement | null>(null)
+const carouselContainer = ref<HTMLElement | null>(null)
+const cardWidth = ref(0)
+const minCardWidth = 300
+const gap = 16
+
+const updateLayout = (containerWidth: number) => {
+  let cardsCount = Math.max(
+    1,
+    Math.floor((containerWidth + gap) / (minCardWidth + gap))
+  )
+  cardWidth.value = (containerWidth - gap * (cardsCount - 1)) / cardsCount
+  nextTick(updateScrollState)
+}
+
+const canScrollPrev = ref(false)
+const canScrollNext = ref(false)
+
+const updateScrollState = () => {
+  const el = carousel.value
+  if (!el) return
+  canScrollPrev.value = el.scrollLeft > 0
+  canScrollNext.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 1
+}
+
+const scrollPrev = () => {
+  const el = carousel.value
+  if (!el) return
+  el.scrollBy({ left: -(cardWidth.value + gap), behavior: 'smooth' })
+  canScrollPrev.value = el.scrollLeft - (cardWidth.value + gap) > 0
+  canScrollNext.value = true
+}
+const scrollNext = () => {
+  const el = carousel.value
+  if (!el) return
+  el.scrollBy({ left: cardWidth.value + gap, behavior: 'smooth' })
+  canScrollPrev.value = true
+  canScrollNext.value = el.scrollLeft + (cardWidth.value + gap) + el.clientWidth < el.scrollWidth - 1
+}
+
+onMounted(() => {
+  if (carouselContainer.value) {
+    resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        updateLayout(entry.contentRect.width)
+      }
+    })
+    resizeObserver.observe(carouselContainer.value)
+  }
+  carousel.value?.addEventListener('scrollend', updateScrollState, { passive: true })
+})
+onUnmounted(() => {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+  }
+  carousel.value?.removeEventListener('scrollend', updateScrollState)
+})
 </script>
 
 <template>
@@ -87,12 +144,32 @@ const tags = computed(() => getTagGroups(posts))
     </div>
     <div class="section section-projects">
       <div class="section-content section-content-projects">
-        <h2>项目</h2>
-        <ul class="projects-grid">
-          <li v-for="project in projects" :key="project.url">
-            <ProjectCard class="project-card" v-bind="project" />
-          </li>
-        </ul>
+        <div class="carousel-header">
+          <h2>项目</h2>
+          <div class="carousel-controls">
+            <button
+              class="carousel-btn"
+              :disabled="!canScrollPrev"
+              @click="scrollPrev"
+            >
+              <ArrowLeft2 />
+            </button>
+            <button
+              class="carousel-btn"
+              :disabled="!canScrollNext"
+              @click="scrollNext"
+            >
+              <ArrowRight2 />
+            </button>
+          </div>
+        </div>
+        <div class="carousel-container" ref="carouselContainer">
+          <ul class="projects-grid" ref="carousel">
+            <li v-for="project in projects" :key="project.url">
+              <ProjectCard v-bind="project" />
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -101,18 +178,46 @@ const tags = computed(() => getTagGroups(posts))
 .section-projects {
   background: var(--color-accent);
 }
-.section-content-projects{
-  gap:24px;
+.section-content-projects {
+  gap: 24px;
+}
+.carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.carousel-controls {
+  display: flex;
+  gap: 16px;
+}
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.carousel-btn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.carousel-container {
+  overflow: hidden;
 }
 .projects-grid {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
-.project-card{
-  width:320;
+.projects-grid::-webkit-scrollbar {
+  display: none;
+}
+.projects-grid li {
+  flex: 0 0 v-bind('cardWidth + "px"');
 }
 .social-buttons {
   margin-top: 12px;
