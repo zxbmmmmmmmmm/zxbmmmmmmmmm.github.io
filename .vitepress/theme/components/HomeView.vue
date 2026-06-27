@@ -254,7 +254,7 @@ onUnmounted(() => {
   overflow-x: auto;
 }
 .section {
-  min-height: clamp(200px, 25vh, 300px);
+  min-height: clamp(200px, 25svh, 300px);
   padding: 24px 64px;
   align-content: center;
 }
@@ -275,7 +275,9 @@ onUnmounted(() => {
     url(../assets//header.jpg);
   background-size: cover;
   background-position: center;
-  min-height: clamp(400px, 50vh, 800px);
+  background-attachment: fixed;
+
+  min-height: clamp(400px, 50svh, 800px);
 }
 
 .section-content {
