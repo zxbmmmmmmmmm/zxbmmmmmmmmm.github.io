@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData, Content } from 'vitepress'
+import { useData, useRoute, Content } from 'vitepress'
 import PostOutline from './PostOutline.vue'
 import VButton from './VButton.vue'
 import { getTagLink } from '../shared/tags'
@@ -7,6 +7,7 @@ import { formatDate } from '../shared/utils.ts'
 import GiscusComments from './GiscusComments.vue'
 
 const { frontmatter } = useData()
+const route = useRoute()
 </script>
 
 <template>
@@ -31,7 +32,7 @@ const { frontmatter } = useData()
       </div>
 
       <Content class="post-content" :class="{ 'has-bg': frontmatter.date }"/>
-      <GiscusComments class="comments"/>
+      <GiscusComments v-if="frontmatter.date || frontmatter.comment" :key="route.path" class="comments"/>
     </div>
     <aside class="post-aside">
       <PostOutline />

@@ -1,5 +1,6 @@
 ---
 title: 友链
+comment: true
 ---
 
 :::info 申请
