@@ -36,6 +36,7 @@
   list-style: none;
   padding-inline-start: 0;
   margin: 0;
+  z-index: 3;
 }
 .card .tag-list li+li{
   margin-top: 0;

@@ -14,7 +14,7 @@ const props = defineProps<{
 const getArticleLink = (url: string) => normalizeLink(url)
 </script>
 <template>
-  <article class="card article" role="button">
+  <article class="card card-lift article" role="button">
     <a v-if="url" :href="getArticleLink(url)" class="card-overlay"></a>
     <h1 class="article-title">
       <p>{{ title }}</p>
@@ -40,7 +40,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
   color: var(--color-text);
   background: var(--color-bg-card);
   border-radius: var(--border-radius-overlay);
-  border-left: 3px solid transparent;
   transition:
     border-color 0.2s ease,
     transform 0.2s ease;
