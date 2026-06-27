@@ -13,6 +13,14 @@
   position: relative;
 }
 
+.normal-list{
+  list-style: none;
+}
+
+.normal-list li+li{
+  margin-top: 0;
+}
+
 /* Cards with lift-on-hover effect */
 @media (hover: hover) {
   .card-lift:hover {
@@ -20,9 +28,15 @@
   }
 }
 
-/* Flex tag list (base.css already resets margin/padding/list-style on ul) */
-.tag-list {
+/* Flex tag list — .card scope raises specificity above .vp-doc ul */
+.card .tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+.card .tag-list li+li{
+  margin-top: 0;
 }
