@@ -18,11 +18,12 @@
 .description{
   margin: auto 0;
 }
+.akrin{
+  max-width: 600x;
+  max-height: 600px;
+}
 .description h1{
   font-size: 56px;
-}
-.akrin{
-  height: 500px;
 }
 @media (max-width:960px){
   .description h1{
@@ -33,6 +34,9 @@
   }
   .layout{
     flex-direction: column;
+  }
+  .akrin{
+    margin: 0 auto;
   }
 }
 @media (prefers-color-scheme: dark) {
