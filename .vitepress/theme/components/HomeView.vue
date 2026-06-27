@@ -177,6 +177,7 @@ onUnmounted(() => {
 <style scoped>
 .section-projects {
   background: var(--color-accent);
+  color:white
 }
 .section-content-projects {
   gap: 24px;
@@ -244,6 +245,7 @@ onUnmounted(() => {
 }
 .posts-section {
   background: #ff1769;
+  color:white;
   width: 100%;
 }
 .posts-section-content {
@@ -278,6 +280,7 @@ onUnmounted(() => {
   background-attachment: fixed;
 
   min-height: clamp(400px, 50svh, 800px);
+  color: white;
 }
 
 .section-content {
