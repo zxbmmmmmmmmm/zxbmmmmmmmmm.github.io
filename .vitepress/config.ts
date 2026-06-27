@@ -131,15 +131,16 @@ function copyPostAssets() {
     name: 'copy-post-assets',
     closeBundle() {
       const srcDir = process.cwd()
-      const postsDir = join(srcDir, 'posts')
       const outDir = join(srcDir, '.vitepress', 'dist')
 
-      if (!existsSync(postsDir)) return
-
-      for (const file of getPostAssetFiles(postsDir, mediaFileRE)) {
-        const target = join(outDir, relative(srcDir, file))
-        mkdirSync(dirname(target), { recursive: true })
-        copyFileSync(file, target)
+      for (const subDir of ['posts', 'projects']) {
+        const dir = join(srcDir, subDir)
+        if (!existsSync(dir)) continue
+        for (const file of getPostAssetFiles(dir, mediaFileRE)) {
+          const target = join(outDir, relative(srcDir, file))
+          mkdirSync(dirname(target), { recursive: true })
+          copyFileSync(file, target)
+        }
       }
     }
   }
