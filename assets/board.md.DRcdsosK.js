@@ -1,0 +1,1 @@
+import{h as e,b as t,c as a}from"./chunks/framework.Umc73qbk.js";const _=JSON.parse('{"title":"留言板","description":"","frontmatter":{"title":"留言板","comment":true},"headers":[],"relativePath":"board.md","filePath":"board.md"}'),r={name:"board.md"};function o(c,n,s,d,i,m){return t(),a("div")}const f=e(r,[["render",o]]);export{_ as __pageData,f as default};

@@ -1,1 +1,0 @@
-import{g as e,b as t,c as a}from"./chunks/framework.PHY5Hq9q.js";const m=JSON.parse('{"title":"留言板","description":"","frontmatter":{"title":"留言板"},"headers":[],"relativePath":"board.md","filePath":"board.md"}'),r={name:"board.md"};function o(s,c,n,d,i,p){return t(),a("div")}const f=e(r,[["render",o]]);export{m as __pageData,f as default};
