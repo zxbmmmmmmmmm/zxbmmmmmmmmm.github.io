@@ -27,6 +27,7 @@ defineProps<{ friend: Friend }>()
 .friend-card {
   display: flex;
   flex-direction: row;
+  position: relative;
   background: var(--color-bg-card-alt);
   transition:
     transform 0.2s ease,
@@ -55,6 +56,7 @@ defineProps<{ friend: Friend }>()
   margin: 0;
 }
 .card-overlay {
+  position: absolute;
   inset: 0;
   z-index: 1;
 }

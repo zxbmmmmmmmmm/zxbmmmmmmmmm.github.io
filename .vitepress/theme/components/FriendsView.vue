@@ -11,7 +11,7 @@ interface Friend {
 const friends: Friend[] = [
   {
     name: '扑克',
-    avatar: 'https://poker-sang.github.io/avatar.png',
+    avatar: 'https://avatars.githubusercontent.com/u/62325494',
     link: 'https://poker-sang.github.io/'
   },
   {
