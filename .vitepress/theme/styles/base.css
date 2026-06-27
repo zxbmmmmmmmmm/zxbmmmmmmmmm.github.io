@@ -55,10 +55,6 @@
     text-spacing-trim: normal;
   }
 
-  a, button {
-    -webkit-tap-highlight-color: transparent;
-}
-
   main {
     display: block;
   }

@@ -21,7 +21,10 @@ import VButton from './VButton.vue'
         </p>
         <ul>
           <li class="social-buttons">
-            <VButton href="https://github.com/zxbmmmmmmmmm" class="social-button">
+            <VButton
+              href="https://github.com/zxbmmmmmmmmm"
+              class="social-button"
+            >
               <Github />
               Github
             </VButton>
@@ -42,6 +45,7 @@ import VButton from './VButton.vue'
   position: relative;
   transition: transform 0.2s ease;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .about-card:hover {
@@ -119,5 +123,4 @@ html.dark .about-content-layer {
     display: none;
   }
 }
-
 </style>

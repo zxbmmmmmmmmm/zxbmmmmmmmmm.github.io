@@ -32,10 +32,14 @@ defineProps<{ friend: Friend }>()
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.friend-card:hover {
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .friend-card:hover {
+    transform: translateY(-2px);
+  }
 }
+
 .friend-card:active {
   transform: scale(0.98);
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getTagLink } from '../shared/tags'
-import { normalizeLink } from '../shared/utils'
+import { getTagLink } from '../shared/tags.ts'
+import { normalizeLink } from '../shared/utils.ts'
 import VButton from './VButton.vue'
 
 const props = defineProps<{
@@ -47,8 +47,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
     transform 0.2s ease;
 }
 
-.article:has(.card-overlay:active):not(:has(.article-tag:active))
-{
+.article:has(.card-overlay:active):not(:has(.article-tag:active)) {
   transform: scale(0.99);
 }
 
@@ -104,8 +103,10 @@ const getArticleLink = (url: string) => normalizeLink(url)
   border: 0;
 }
 
-.article-tag:hover {
-  background: var(--color-bg-elevated);
+@media (hover: hover) {
+  .article-tag:hover {
+    background: var(--color-bg-elevated);
+  }
 }
 
 .article:hover:not(:active):not(:has(.card-overlay:active)) {

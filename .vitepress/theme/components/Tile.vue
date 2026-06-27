@@ -18,7 +18,6 @@ const props = withDefaults(defineProps<Props>(), {
   </VButton>
 </template>
 <style scoped>
-
 .tile-button {
   font-size: 1.5rem;
   display: flex;
@@ -30,9 +29,12 @@ const props = withDefaults(defineProps<Props>(), {
   padding: 32px;
   user-select: none;
 }
-.tile-button:hover {
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .tile-button:hover {
+    transform: translateY(-2px);
+  }
 }
+
 .tile-button:active {
   transform: scale(0.99);
 }

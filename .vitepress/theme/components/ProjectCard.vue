@@ -46,14 +46,16 @@ defineProps<{
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.project-card img{
+.project-card img {
   image-rendering: -webkit-optimize-contrast;
 }
 
-.project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--app-shadow-elevation-medium);
+@media (hover: hover) {
+  .project-card:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .project-card:has(.card-overlay:active) {
@@ -109,4 +111,5 @@ defineProps<{
 }
 .layout li + li {
   margin-top: 0;
-}</style>
+}
+</style>

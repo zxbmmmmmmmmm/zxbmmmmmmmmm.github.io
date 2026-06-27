@@ -44,11 +44,14 @@ const component = computed(() => {
   background: var(--color-bg-subtle);
   border-radius: var(--border-radius-control);
   transition: transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.Button:hover {
-  color: var(--color-text);
-  background: var(--color-bg-elevated);
+@media (hover: hover) {
+  .Button:hover {
+    color: var(--color-text);
+    background: var(--color-bg-elevated);
+  }
 }
 
 .Button :deep(svg) {
@@ -69,7 +72,7 @@ const component = computed(() => {
 .Button:active {
   transform: scale(0.96);
 }
-.Button{
+.Button {
   text-decoration: none;
 }
 </style>
