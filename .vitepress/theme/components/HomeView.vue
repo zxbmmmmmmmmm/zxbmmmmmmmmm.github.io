@@ -50,7 +50,9 @@ const scrollNext = () => {
   if (!el) return
   el.scrollBy({ left: cardWidth.value + gap, behavior: 'smooth' })
   canScrollPrev.value = true
-  canScrollNext.value = el.scrollLeft + (cardWidth.value + gap) + el.clientWidth < el.scrollWidth - 1
+  canScrollNext.value =
+    el.scrollLeft + (cardWidth.value + gap) + el.clientWidth <
+    el.scrollWidth - 1
 }
 
 onMounted(() => {
@@ -62,7 +64,9 @@ onMounted(() => {
     })
     resizeObserver.observe(carouselContainer.value)
   }
-  carousel.value?.addEventListener('scrollend', updateScrollState, { passive: true })
+  carousel.value?.addEventListener('scrollend', updateScrollState, {
+    passive: true
+  })
 })
 onUnmounted(() => {
   if (resizeObserver) {
@@ -177,7 +181,7 @@ onUnmounted(() => {
 <style scoped>
 .section-projects {
   background: var(--color-accent);
-  color:white
+  color: white;
 }
 .section-content-projects {
   gap: 24px;
@@ -242,7 +246,7 @@ onUnmounted(() => {
 }
 .posts-section {
   background: #ff1769;
-  color:white;
+  color: white;
   width: 100%;
 }
 .posts-section-content {
@@ -274,7 +278,6 @@ onUnmounted(() => {
     url(../assets//header.jpg);
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
 
   min-height: clamp(400px, 50svh, 800px);
   color: white;
@@ -319,6 +322,9 @@ onUnmounted(() => {
   .posts-section-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+  .header {
+    background-attachment: fixed;
   }
   .post-item {
     height: 100%;

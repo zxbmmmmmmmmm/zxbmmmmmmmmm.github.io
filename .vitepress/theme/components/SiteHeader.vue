@@ -38,6 +38,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
         <a href="/tags">标签</a>
         <a href="/projects">项目</a>
         <a href="/friends">友链</a>
+        <a href="/board">留言板</a>
       </ul>
     </div>
   </header>
