@@ -77,7 +77,7 @@ onUnmounted(() => {
     <div class="section header">
       <div class="section-content">
         <h1>Betta_Fish</h1>
-        <h2>zxbmmmmmmmmm</h2>
+        <h3>zxbmmmmmmmmm</h3>
         <ul class="social-buttons">
           <VButton
             href="https://github.com/zxbmmmmmmmmm"
