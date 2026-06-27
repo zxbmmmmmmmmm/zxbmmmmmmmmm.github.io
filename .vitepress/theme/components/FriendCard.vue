@@ -4,7 +4,7 @@ import VButton from './VButton.vue'
 export interface Friend {
   name: string
   avatar: string
-  description: string
+  description?: string
   link: string
 }
 defineProps<{ friend: Friend }>()
@@ -15,7 +15,7 @@ defineProps<{ friend: Friend }>()
     <a :href="friend.link" class="card-overlay" />
     <div class="friend-content">
       <h1 class="friend-name">{{ friend.name }}</h1>
-      <p>{{ friend.description }}</p>
+      <p v-if="friend.description">{{ friend.description }}</p>
     </div>
   </article>
 </template>

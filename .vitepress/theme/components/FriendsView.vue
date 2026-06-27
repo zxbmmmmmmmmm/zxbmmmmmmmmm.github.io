@@ -3,23 +3,21 @@ import FriendCard from './FriendCard.vue'
 
 interface Friend {
   name: string
-  description: string
+  description?: string
   avatar: string
   link: string
 }
 
 const friends: Friend[] = [
   {
-    name: '111',
-    description: 'Hello World!',
-    avatar: 'https://avatars.githubusercontent.com/u/96322503?v=4',
-    link: 'https://github.com/zxbmmmmmmmmm'
+    name: '扑克',
+    avatar: 'https://poker-sang.github.io/avatar.png',
+    link: 'https://poker-sang.github.io/'
   },
   {
-    name: '222',
-    description: 'Hello World!',
-    avatar: 'https://avatars.githubusercontent.com/u/96322503?v=4',
-    link: 'https://github.com/zxbmmmmmmmmm'
+    name: 'Raspberry Kan',
+    avatar: 'https://avatars.githubusercontent.com/u/59819050',
+    link: 'https://blog.raspberrykan.dev/'
   }
 ]
 </script>
