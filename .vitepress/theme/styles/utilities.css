@@ -1,0 +1,28 @@
+/* Shared utility styles used across multiple components */
+
+/* Card overlay link covering the entire card */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Card base: shared positioning and touch behavior */
+.card {
+  position: relative;
+}
+
+/* Cards with lift-on-hover effect */
+@media (hover: hover) {
+  .card-lift:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Flex tag list (base.css already resets margin/padding/list-style on ul) */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

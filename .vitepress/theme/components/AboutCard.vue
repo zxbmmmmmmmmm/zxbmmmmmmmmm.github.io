@@ -5,7 +5,7 @@ import VButton from './VButton.vue'
 </script>
 
 <template>
-  <div class="about-card">
+  <div class="card card-lift about-card">
     <img
       class="avatar"
       src="https://avatars.githubusercontent.com/u/96322503?v=4"
@@ -42,14 +42,8 @@ import VButton from './VButton.vue'
   container-type: inline-size;
   container-name: about-card;
   display: flex;
-  position: relative;
   transition: transform 0.2s ease;
   overflow: hidden;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.about-card:hover {
-  transform: translateY(-2px);
 }
 
 .about-card:active:not(:has(.social-button:active)) {

@@ -237,9 +237,6 @@ onUnmounted(() => {
 .tags-list a {
   color: var(--color-text);
 }
-.tag-button {
-  color: transparent;
-}
 .section-content-tags {
   gap: 1rem;
 }

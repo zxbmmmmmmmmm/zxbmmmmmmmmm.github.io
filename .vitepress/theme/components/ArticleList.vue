@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Post } from '../shared/tags'
-import Article from './Article.vue'
+import Article from './ArticleCard.vue'
 
 defineProps<{
   heading?: string
@@ -30,9 +30,5 @@ defineProps<{
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.article-list li + li {
-  margin-top: 0;
 }
 </style>

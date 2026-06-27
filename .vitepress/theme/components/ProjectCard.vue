@@ -11,7 +11,7 @@ defineProps<{
 }>()
 </script>
 <template>
-  <article class="card project-card" role="button">
+  <article class="card card-lift project-card" role="button">
     <a
       v-if="repository"
       :href="repository"
@@ -28,9 +28,9 @@ defineProps<{
     <div class="project-body">
       <h1 class="project-title">{{ name }}</h1>
       <p v-if="description" class="project-desc">{{ description }}</p>
-      <ul v-if="tags?.length" class="project-tags">
+      <ul v-if="tags?.length" class="tag-list">
         <li v-for="tag in tags" :key="tag">
-          <VButton class="project-tag" :text="tag" />
+          <VButton class="tag-pill" :text="tag" />
         </li>
       </ul>
     </div>
@@ -38,24 +38,17 @@ defineProps<{
 </template>
 <style scoped>
 .project-card {
-  position: relative;
   display: grid;
   background: var(--color-bg-card-alt);
-  color: var(--vp-c-text-1);
+  color: var(--color-text);
   overflow: hidden;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-.project-card img {
-  image-rendering: -webkit-optimize-contrast;
 }
 
-@media (hover: hover) {
-  .project-card:hover {
-    transform: translateY(-2px);
-  }
+.project-card img {
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .project-card:has(.card-overlay:active) {
@@ -83,33 +76,13 @@ defineProps<{
 
 .project-desc {
   margin: 0;
-  color: var(--vp-c-text-2);
+  color: var(--color-text-muted);
   line-height: 1.75;
 }
 
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.project-tag {
+/* Scoped override: reshape VButton into a pill */
+.tag-pill {
+  padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: var(--color-bg-subtle);
-  font-size: 0.875rem;
-  border: 0;
-  z-index: 2;
-}
-
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-.layout li + li {
-  margin-top: 0;
 }
 </style>

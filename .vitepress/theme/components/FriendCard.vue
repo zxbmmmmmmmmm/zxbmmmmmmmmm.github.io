@@ -10,7 +10,7 @@ export interface Friend {
 defineProps<{ friend: Friend }>()
 </script>
 <template>
-  <article class="card friend-card">
+  <article class="card card-lift friend-card">
     <img class="avatar" :src="friend.avatar" />
     <a :href="friend.link" class="card-overlay" />
     <div class="friend-content">
@@ -27,25 +27,16 @@ defineProps<{ friend: Friend }>()
 .friend-card {
   display: flex;
   flex-direction: row;
-  position: relative;
   background: var(--color-bg-card-alt);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-@media (hover: hover) {
-  .friend-card:hover {
-    transform: translateY(-2px);
-  }
 }
 
 .friend-card:active {
   transform: scale(0.98);
 }
-.h1 {
-  padding: 0;
-}
+
 .friend-content {
   padding: 12px 24px;
   display: flex;
@@ -55,13 +46,9 @@ defineProps<{ friend: Friend }>()
   align-items: flex-start;
   justify-content: center;
 }
+
 .friend-content p {
   line-height: normal;
   margin: 0;
-}
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
 }
 </style>

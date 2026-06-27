@@ -45,6 +45,7 @@ const component = computed(() => {
   border-radius: var(--border-radius-control);
   transition: transform 0.2s ease;
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
 }
 
 @media (hover: hover) {
@@ -71,8 +72,5 @@ const component = computed(() => {
 
 .Button:active {
   transform: scale(0.96);
-}
-.Button {
-  text-decoration: none;
 }
 </style>

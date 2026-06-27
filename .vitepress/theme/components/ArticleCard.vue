@@ -14,7 +14,7 @@ const props = defineProps<{
 const getArticleLink = (url: string) => normalizeLink(url)
 </script>
 <template>
-  <article class="article" role="button">
+  <article class="card article" role="button">
     <a v-if="url" :href="getArticleLink(url)" class="card-overlay"></a>
     <h1 class="article-title">
       <p>{{ title }}</p>
@@ -23,9 +23,9 @@ const getArticleLink = (url: string) => normalizeLink(url)
       <p class="article-date">{{ date }}</p>
     </div>
     <div v-if="excerpt" class="article-excerpt" v-html="excerpt"></div>
-    <ul v-if="tags?.length" class="article-tags">
-      <li v-for="tag in tags" :key="tag" class="article-tag-item">
-        <VButton class="article-tag" :text="tag" :href="getTagLink(tag)" />
+    <ul v-if="tags?.length" class="tag-list">
+      <li v-for="tag in tags" :key="tag">
+        <VButton class="tag-pill" :text="tag" :href="getTagLink(tag)" />
       </li>
     </ul>
   </article>
@@ -33,7 +33,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
 
 <style scoped>
 .article {
-  position: relative;
   display: grid;
   min-width: 0;
   gap: 0.5rem;
@@ -47,8 +46,12 @@ const getArticleLink = (url: string) => normalizeLink(url)
     transform 0.2s ease;
 }
 
-.article:has(.card-overlay:active):not(:has(.article-tag:active)) {
+.article:has(.card-overlay:active):not(:has(.tag-pill:active)) {
   transform: scale(0.99);
+}
+
+.article:hover:not(:active):not(:has(.card-overlay:active)) {
+  border-left-color: var(--color-accent);
 }
 
 .article-title {
@@ -62,11 +65,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
   line-height: inherit;
 }
 
-.article-link {
-  color: inherit;
-  text-decoration: none;
-}
-
 .article-excerpt {
   color: var(--color-text-muted);
   line-height: 1.75;
@@ -78,39 +76,10 @@ const getArticleLink = (url: string) => normalizeLink(url)
   margin: 0;
 }
 
-.article-tags {
+.article-meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.625rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.article-tag-item {
-  margin: 0;
-  z-index: 2;
-}
-
-.article-tag {
-  display: inline-flex;
   align-items: center;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  background: var(--color-bg-subtle);
-  font-size: 0.875rem;
-  text-decoration: none;
-  border: 0;
-}
-
-@media (hover: hover) {
-  .article-tag:hover {
-    background: var(--color-bg-elevated);
-  }
-}
-
-.article:hover:not(:active):not(:has(.card-overlay:active)) {
-  border-left-color: var(--color-accent);
+  gap: 1rem;
 }
 
 .article-date {
@@ -118,19 +87,10 @@ const getArticleLink = (url: string) => normalizeLink(url)
   color: var(--color-text-faint);
 }
 
-.article-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+/* Scoped override: reshape VButton into a pill */
+.tag-pill {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
 }
 
 @media (max-width: 640px) {

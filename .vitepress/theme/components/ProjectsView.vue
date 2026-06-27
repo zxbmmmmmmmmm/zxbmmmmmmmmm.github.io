@@ -20,7 +20,5 @@ import ProjectCard from './ProjectCard.vue'
   padding: 0;
   margin: 0;
 }
-.layout li + li {
-  margin-top: 0;
-}
+
 </style>
