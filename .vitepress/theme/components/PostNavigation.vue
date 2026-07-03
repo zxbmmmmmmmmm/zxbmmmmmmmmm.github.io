@@ -149,7 +149,7 @@ a.post-nav-item:hover .nav-direction {
 @media (max-width: 720px) {
   .post-nav {
     flex-direction: column;
-    margin: 0 24px 24px;
+    margin: 0 12px 12px;
   }
 
   .post-nav-item.prev {
