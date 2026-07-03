@@ -5,6 +5,7 @@ import VButton from './VButton.vue'
 import { getTagLink } from '../shared/tags'
 import { formatDate } from '../shared/utils.ts'
 import GiscusComments from './GiscusComments.vue'
+import PostNavigation from './PostNavigation.vue'
 
 const { frontmatter } = useData()
 const route = useRoute()
@@ -32,6 +33,7 @@ const route = useRoute()
       </div>
 
       <Content class="post-content" :class="{ 'has-bg': frontmatter.date }"/>
+      <PostNavigation />
       <GiscusComments v-if="frontmatter.date || frontmatter.comment" :key="route.path" class="comments"/>
     </div>
     <aside class="post-aside">
