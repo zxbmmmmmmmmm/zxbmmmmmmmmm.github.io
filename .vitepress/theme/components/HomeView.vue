@@ -245,7 +245,7 @@ onUnmounted(() => {
   gap: 1rem;
 }
 .posts-section {
-  background: #ff1769;
+  background: #5c2d91;
   color: white;
   width: 100%;
 }

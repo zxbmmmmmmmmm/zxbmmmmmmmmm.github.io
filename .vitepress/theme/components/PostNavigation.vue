@@ -29,18 +29,18 @@ const nextPost = computed(() =>
     class="post-nav"
     aria-label="文章导航"
   >
-    <a v-if="nextPost" class="post-nav-item prev" :href="nextPost.url">
-      <span class="nav-direction">下一篇</span>
-      <span class="nav-title">{{ nextPost.title }}</span>
+    <a v-if="prevPost" class="post-nav-item prev" :href="prevPost.url">
+      <span class="nav-direction">上一篇</span>
+      <span class="nav-title">{{ prevPost.title }}</span>
       <ArrowLeft2 class="icon icon-left" />
     </a>
     <span v-else class="post-nav-item" />
 
-    <a v-if="prevPost" class="post-nav-item next" :href="prevPost.url">
+    <a v-if="nextPost" class="post-nav-item next" :href="nextPost.url">
       <ArrowRight2 class="icon icon-right" />
 
-      <span class="nav-direction">上一篇</span>
-      <span class="nav-title">{{ prevPost.title }}</span>
+      <span class="nav-direction">下一篇</span>
+      <span class="nav-title">{{ nextPost.title }}</span>
     </a>
     <span v-else class="post-nav-item" />
   </nav>
