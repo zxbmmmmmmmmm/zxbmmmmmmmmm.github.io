@@ -12,13 +12,11 @@ const currentIndex = computed(() =>
   posts.findIndex((p) => p.url === route.path)
 )
 
-// 上一篇: the older post (higher index in newest-first array)
-const prevPost = computed(() =>
+const nextPost = computed(() =>
   currentIndex.value < posts.length - 1 ? posts[currentIndex.value + 1] : null
 )
 
-// 下一篇: the newer post (lower index in newest-first array)
-const nextPost = computed(() =>
+const prevPost = computed(() =>
   currentIndex.value > 0 ? posts[currentIndex.value - 1] : null
 )
 </script>

@@ -20,5 +20,7 @@ import ProjectCard from './ProjectCard.vue'
   padding: 0;
   margin: 0;
 }
-
+.projects-grid li + li {
+  margin-top: 0;
+}
 </style>
