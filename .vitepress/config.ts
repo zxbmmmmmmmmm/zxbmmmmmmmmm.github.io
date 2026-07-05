@@ -19,6 +19,7 @@ export default withMermaid(defineConfig({
   title: "Betta_Fish",
   description: "Betta_Fish's Blog",
   ignoreDeadLinks: ['./692041'],
+  head: [['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }]],
   mermaid: {
     architecture: scrollableMermaidDiagram,
     block: scrollableMermaidDiagram,
