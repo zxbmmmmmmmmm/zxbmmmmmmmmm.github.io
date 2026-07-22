@@ -130,6 +130,8 @@ Surface Pen再配上OneNote就是王炸组合，记笔记/写作业非常舒爽
 
 这样改其实不无道理。为了可拆卸的平板形态，Surface Book做了太多的妥协：将处理器等核心部分转移到屏幕，导致散热困难；塞入大量精密的机械结构，使其彻底丧失可维护性；铰链制造成本极高，价格始终下不来……而分离后烂透了的续航，又很难让人觉得这笔交易值得
 
-再后来，Laptop Studio系列也被砍掉，Surface家族只剩下二合一平板和普通的笔记本。就连最新出的Surface Laptop Ultra，也是普通笔记本的设计。Surface Book算是彻底消失在了历史长河中
+再后来，Laptop Studio系列也被砍掉，Surface家族只剩下二合一平板和普通的笔记本。就连最新出的Surface Laptop Ultra，也是普通笔记本的设计
+
+![](laptop-ultra.png)
 
 ——假如在另一个不同的世界线，Surface Book撑到了Lunar Lake发布，在这个Windows笔记本也能实现真正的低能耗、长续航的时代，它的结局是否又会有所改变呢？
