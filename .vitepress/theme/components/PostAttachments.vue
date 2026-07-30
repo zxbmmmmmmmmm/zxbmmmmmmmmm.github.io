@@ -51,19 +51,16 @@ function typeLabel(type: 'file' | 'zip', fileName: string): string {
 
 <style scoped>
 .attachments {
-  background: var(--color-bg-card);
   color: var(--color-text);
 }
 
 .attachments-header {
-  padding: 16px 16px 12px;
-  background: var(--color-accent);
+  padding: 0px 0px 12px;
 }
 
 .attachments-title {
   margin: 0;
   font-size: 16px;
-  font-weight: 600;
 }
 
 .attachment-list .attachment-item {
@@ -79,13 +76,14 @@ function typeLabel(type: 'file' | 'zip', fileName: string): string {
 }
 
 .attachment-list {
+
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .attachment-item {
-  border-top: 1px solid var(--color-divider);
+  background: var(--color-bg-card);
   padding: 14px 16px 16px;
 }
 

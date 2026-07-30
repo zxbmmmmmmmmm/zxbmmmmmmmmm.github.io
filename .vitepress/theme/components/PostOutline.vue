@@ -19,6 +19,7 @@ useActiveAnchor(container, marker)
 
 <template>
   <nav v-if="headers.length" class="outline" ref="container" aria-label="On this page">
+    <h2 class="outline-title">目录</h2>
     <div class="outline-content">
       <ul class="outline-list">
         <li v-for="item in headers" :key="item.link">
@@ -46,9 +47,14 @@ useActiveAnchor(container, marker)
   margin: 0;
   position: relative;
   z-index: 1;
-  gap:  1.25rem;
+  gap:  16PX;
   display: flex;
   flex-direction: column;
+}
+
+.outline-title{
+  font-size: 16px;
+  padding: 0px 0px 20px;
 }
 
 .outline-link {
