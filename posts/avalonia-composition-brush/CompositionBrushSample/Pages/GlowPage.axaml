@@ -1,5 +1,5 @@
 <ContentPage
-    x:Class="CompositionBrushSample.Pages.BasicPage"
+    x:Class="CompositionBrushSample.Pages.GlowPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,14 +9,22 @@
     mc:Ignorable="d">
     <Grid Margin="32">
         <StackPanel
-            MaxWidth="560"
+            MaxWidth="620"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Spacing="20">
-            <Border
-                x:Name="BrushHost"
-                Width="420"
-                Height="240" />
+            Spacing="24">
+            <Panel
+                Width="520"
+                Height="280"
+                Margin="24">
+
+                <Border
+                    x:Name="BrushHost"
+                    Margin="18"
+                    Padding="44"
+                    Background="#181A20"
+                    BorderThickness="1" />
+            </Panel>
         </StackPanel>
     </Grid>
 </ContentPage>
