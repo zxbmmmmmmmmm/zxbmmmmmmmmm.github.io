@@ -1,12 +1,15 @@
 {
   "type": "module",
   "devDependencies": {
+    "@types/archiver": "^8.0.0",
+    "archiver": "^8.0.0",
     "mermaid": "^11.15.0",
     "vitepress": "^2.0.0-alpha.17",
     "vitepress-plugin-mermaid": "^2.0.17",
     "vue": "^3.5.38"
   },
   "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

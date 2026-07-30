@@ -11,15 +11,24 @@ import {
 import { dirname, join, relative } from 'node:path'
 import { vsLight, vsDark } from './shiki-themes'
 import { light, dark } from './theme/shared/colors'
+import { AttachmentManager } from './attachments'
 
 const scrollableMermaidDiagram = { useMaxWidth: false }
+const attachments = new AttachmentManager()
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
   title: "Betta_Fish",
   description: "Betta_Fish's Blog",
+  srcExclude: ['posts/*/!(index).md', 'posts/*/*/**'],
   ignoreDeadLinks: ['./692041'],
   head: [['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }]],
+  transformPageData(pageData) {
+    return attachments.transformPageData(pageData)
+  },
+  async buildEnd(siteConfig) {
+    await attachments.writeAll(siteConfig.outDir)
+  },
   mermaid: {
     architecture: scrollableMermaidDiagram,
     block: scrollableMermaidDiagram,
@@ -45,7 +54,7 @@ export default withMermaid(defineConfig({
     xyChart: scrollableMermaidDiagram
   },
   vite: {
-    plugins: [copyPostAssets(), generateGiscusThemes()],
+    plugins: [attachments.vitePlugin(), copyPostAssets(), generateGiscusThemes()],
     optimizeDeps: {
       include: ['mermaid']
     }

@@ -16,9 +16,34 @@
   width: 256px;
 }
 
+.post-aside-sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-height: calc(100dvh - var(--header-height) - 64px);
+  overflow-y: auto;
+}
+
+.post-attachments-mobile {
+  display: none;
+}
+
 @media (max-width: calc(1120px)) {
   .post-aside {
     display: none;
+  }
+
+  .post-attachments-mobile {
+    display: block;
+    margin: 0 48px 48px;
+  }
+}
+
+@media (max-width: 720px) {
+  .post-attachments-mobile {
+    margin: 0 24px 24px;
   }
 }
 

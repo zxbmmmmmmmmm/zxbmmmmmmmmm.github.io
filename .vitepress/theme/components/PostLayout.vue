@@ -6,6 +6,7 @@ import { getTagLink } from '../shared/tags'
 import { formatDate } from '../shared/utils.ts'
 import GiscusComments from './GiscusComments.vue'
 import PostNavigation from './PostNavigation.vue'
+import PostAttachments from './PostAttachments.vue'
 
 const { frontmatter } = useData()
 const route = useRoute()
@@ -33,11 +34,15 @@ const route = useRoute()
       </div>
 
       <Content class="post-content" :class="{ 'has-bg': frontmatter.date }"/>
+      <PostAttachments class="post-attachments-mobile" />
       <PostNavigation />
       <GiscusComments v-if="frontmatter.date || frontmatter.comment" :key="route.path" class="comments"/>
     </div>
     <aside class="post-aside">
-      <PostOutline />
+      <div class="post-aside-sticky">
+        <PostAttachments class="post-attachments-desktop" />
+        <PostOutline />
+      </div>
     </aside>
   </section>
 </template>

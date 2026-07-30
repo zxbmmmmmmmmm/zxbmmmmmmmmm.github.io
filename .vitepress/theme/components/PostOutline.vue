@@ -35,11 +35,6 @@ useActiveAnchor(container, marker)
 </template>
 
 <style scoped>
-.outline {
-  position: sticky;
-  top: calc(var(--header-height) + 32px);
-}
-
 .outline-content {
   position: relative;
   padding-left: 8px;

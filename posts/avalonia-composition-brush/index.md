@@ -1,21 +1,22 @@
 ---
 title: Avalonia 12.2新特性：Composition Brush（合成笔刷）
 date: 2026-7-30
-tag:	
+attachments:
+  items:
+    - path: ./CompositionBrushSample
+      title: 示例
+      description: 本文演示使用的示例源码
+tag:
   - Avalonia
   - Composition
 ---
-
 上一篇文章中我们介绍了Avalonia中`CompositionAnimation`（合成动画）的使用方法与优势
 
 先前的版本中，合成动画只能在`Visual`的部分属性上使用。但在Avalonia 12.2中实现了`CompositionBrush`（合成笔刷），这将允许我们在笔刷上也能使用合成动画，从而更方便地实现一些高级笔刷效果
 
-
 > 此功能的实现由我编写，实现细节可以在[PR #20181](https://github.com/AvaloniaUI/Avalonia/pull/20181)中查看
->
 
 ---
-
 
 ## 基本用法
 

@@ -4,7 +4,7 @@ import type { Post } from './shared/tags'
 declare const data: Post[]
 export { data }
 
-export default createContentLoader('posts/**/*.md', {
+export default createContentLoader('posts/*/index.md', {
   excerpt: true,
   transform(raw): Post[] {
     return raw
