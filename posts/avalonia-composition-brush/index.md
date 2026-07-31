@@ -9,6 +9,7 @@ attachments:
 tag:
   - Avalonia
   - Composition
+  - C#
 ---
 上一篇文章中我们介绍了Avalonia中`CompositionAnimation`（合成动画）的使用方法与优势
 
@@ -127,7 +128,6 @@ BrushHost.BorderBrush = brush;
 先创建一个`LinearGradientBrush`，通过透明渐变来实现骨架屏的光带效果：
 
 ```csharp
-var compositor = ElementComposition.GetElementVisual(BrushHost)!.Compositor;
 var brush = compositor.CreateLinearGradientBrush();
 brush.StartPoint = new RelativePoint(0, 0.5, RelativeUnit.Relative);
 brush.EndPoint = new RelativePoint(1, 0.5, RelativeUnit.Relative);
