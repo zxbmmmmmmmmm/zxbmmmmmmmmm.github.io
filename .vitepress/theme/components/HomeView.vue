@@ -114,7 +114,7 @@ onUnmounted(() => {
 
     <div class="section posts-section">
       <ul class="section-content posts-section-content">
-        <li v-for="post in posts.slice(2, 5)">
+        <li v-for="post in posts.slice(1, 4)">
           <div class="post-item">
             <a :href="post.url">
               <h4>{{ post.title }}</h4>
