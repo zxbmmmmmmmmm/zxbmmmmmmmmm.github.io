@@ -36,10 +36,7 @@ function typeLabel(type: 'file' | 'zip', fileName: string): string {
             {{ item.description }}
           </p>
         </div>
-        <a
-          class="attachment-download"
-          :href="withBase(item.url)"
-          :download="item.download"
+        <a class="attachment-download" :href="withBase(item.url)" :download="item.download"
           :aria-label="`下载 ${item.title}`">
           <span class="attachment-download-label">下载</span>
           <span class="attachment-type">{{ typeLabel(item.type, item.download) }}</span>
@@ -129,7 +126,7 @@ function typeLabel(type: 'file' | 'zip', fileName: string): string {
 
 .attachment-type {
   background: var(--color-bg-subtle);
-
+  color: var(--color-text);
   font-size: 12px;
   letter-spacing: 0.04em;
 }

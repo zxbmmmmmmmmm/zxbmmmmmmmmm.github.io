@@ -1,5 +1,4 @@
 ---
-title: Projects
+title: 项目
 ---
-
 <ProjectsView />
