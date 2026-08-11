@@ -6,11 +6,6 @@ import VButton from './VButton.vue'
 
 <template>
   <div class="card card-lift about-card">
-    <img
-      class="avatar"
-      src="https://avatars.githubusercontent.com/u/96322503?v=4"
-      alt="Avatar"
-    />
     <div class="about-content-layer">
       <div class="about-content">
         <h2>Betta_Fish</h2>
@@ -21,10 +16,7 @@ import VButton from './VButton.vue'
         </p>
         <ul>
           <li class="social-buttons">
-            <VButton
-              href="https://github.com/zxbmmmmmmmmm"
-              class="social-button"
-            >
+            <VButton href="https://github.com/zxbmmmmmmmmm" class="social-button">
               <Github />
               Github
             </VButton>
@@ -56,11 +48,6 @@ import VButton from './VButton.vue'
   -webkit-line-clamp: 3;
   line-clamp: 3;
   overflow: hidden;
-}
-
-.avatar {
-  height: 100%;
-  object-fit: cover;
 }
 
 .about-content-layer {

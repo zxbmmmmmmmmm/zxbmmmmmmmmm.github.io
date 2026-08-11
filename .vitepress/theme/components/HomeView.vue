@@ -9,7 +9,9 @@ import ProjectCard from './ProjectCard.vue'
 import { getTagGroups, getTagLink } from '../shared/tags.ts'
 import { computed, onMounted } from 'vue'
 import VButton from './VButton.vue'
+import AboutCard from './AboutCard.vue'
 import ArrowLeft2 from '../icons/8/ArrowLeft2.vue'
+import HomeTiles from './HomeTiles.vue'
 const tags = computed(() => getTagGroups(posts))
 
 let resizeObserver: ResizeObserver | undefined = undefined
@@ -80,18 +82,7 @@ onUnmounted(() => {
   <div class="layout">
     <div class="section header">
       <div class="section-content">
-        <h1>Betta_Fish</h1>
-        <h3>zxbmmmmmmmmm</h3>
-        <ul class="social-buttons">
-          <VButton
-            href="https://github.com/zxbmmmmmmmmm"
-            class="social-button"
-            theme="accent"
-          >
-            <Github />
-            Github
-          </VButton>
-        </ul>
+        <HomeTiles/>
       </div>
     </div>
     <div class="section">
@@ -119,11 +110,7 @@ onUnmounted(() => {
             <a :href="post.url">
               <h4>{{ post.title }}</h4>
             </a>
-            <div
-              class="post-item-excerpt"
-              v-if="post.excerpt"
-              v-html="post.excerpt"
-            ></div>
+            <div class="post-item-excerpt" v-if="post.excerpt" v-html="post.excerpt"></div>
             <a class="continue-reading" :href="post.url">
               <ArrowRight2 />
               <p>继续阅读</p>
@@ -151,18 +138,10 @@ onUnmounted(() => {
         <div class="carousel-header">
           <h2>项目</h2>
           <div class="carousel-controls">
-            <button
-              class="carousel-btn"
-              :disabled="!canScrollPrev"
-              @click="scrollPrev"
-            >
+            <button class="carousel-btn" :disabled="!canScrollPrev" @click="scrollPrev">
               <ArrowLeft2 />
             </button>
-            <button
-              class="carousel-btn"
-              :disabled="!canScrollNext"
-              @click="scrollNext"
-            >
+            <button class="carousel-btn" :disabled="!canScrollNext" @click="scrollNext">
               <ArrowRight2 />
             </button>
           </div>
@@ -183,22 +162,27 @@ onUnmounted(() => {
   background: var(--color-accent);
   color: white;
 }
+
 .section-content-projects {
   gap: 24px;
 }
+
 .carousel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .carousel-controls {
   display: flex;
   gap: 16px;
 }
+
 .carousel-btn:disabled {
   opacity: 0.3;
   cursor: default;
 }
+
 .carousel-btn {
   width: 32px;
   height: 32px;
@@ -206,9 +190,11 @@ onUnmounted(() => {
   cursor: pointer;
   font-size: 1rem;
 }
+
 .carousel-container {
   overflow: hidden;
 }
+
 .projects-grid {
   display: flex;
   gap: 16px;
@@ -218,16 +204,20 @@ onUnmounted(() => {
   overflow-x: auto;
   scrollbar-width: none;
 }
+
 .projects-grid::-webkit-scrollbar {
   display: none;
 }
+
 .projects-grid li {
   flex: 0 0 v-bind('cardWidth + "px"');
 }
+
 .social-buttons {
   margin-top: 12px;
   gap: 12px;
 }
+
 .layout {
   display: grid;
 }
@@ -238,17 +228,21 @@ onUnmounted(() => {
   column-gap: 32px;
   row-gap: 8px;
 }
+
 .tags-list a {
   color: var(--color-text);
 }
+
 .section-content-tags {
   gap: 1rem;
 }
+
 .posts-section {
   background: #5c2d91;
   color: white;
   width: 100%;
 }
+
 .posts-section-content {
   display: flex;
   flex-direction: row;
@@ -256,15 +250,18 @@ onUnmounted(() => {
   gap: 4rem;
   overflow-x: auto;
 }
+
 .section {
   min-height: clamp(200px, 25svh, 300px);
   padding: 24px 64px;
   align-content: center;
 }
+
 .continue-reading svg {
   height: 24px;
   width: 24px;
 }
+
 .continue-reading {
   display: flex;
   gap: 12px;
@@ -272,6 +269,7 @@ onUnmounted(() => {
   font-size: larger;
   align-items: center;
 }
+
 .header {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -290,18 +288,22 @@ onUnmounted(() => {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .first-post {
   gap: 1rem;
 }
+
 .first-post :deep(a) {
   color: var(--color-text);
 }
+
 .post-item {
   display: flex;
   flex-direction: column;
   max-height: 196px;
   gap: 0.75rem;
 }
+
 .post-item-excerpt {
   overflow: hidden;
   display: -webkit-box;
@@ -310,25 +312,31 @@ onUnmounted(() => {
   line-clamp: 3;
   word-break: break-word;
 }
+
 .post-item :deep(a) {
   color: white;
 }
+
 @media (max-width: 720px) {
   .section {
     padding: 24px 16px;
   }
 }
+
 @media (min-width: 720px) {
   .posts-section-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
+
   .header {
     background-attachment: fixed;
   }
+
   .post-item {
     height: 100%;
   }
+
   .post-item .continue-reading {
     margin-top: auto;
   }
