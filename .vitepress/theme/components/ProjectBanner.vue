@@ -171,7 +171,7 @@ onUnmounted(() => {
           v-for="(project, index) in slides"
           :key="`${project.url}-${index}`"
           class="project-slide"
-          :href="project.url"
+          :href="project.repository"
           :aria-hidden="
             projects.length > 1 && (index === 0 || index === slides.length - 1)
           "
@@ -370,12 +370,12 @@ onUnmounted(() => {
     box-shadow: inset 0 0 0 2px white;
   }
 
-  .project-banner:hover .edge-control,
+  .project-banner:hover:not(:active) .edge-control,
   .edge-control:focus-visible {
     opacity: 0.55;
   }
 
-  .edge-control:hover,
+  .edge-control:hover:not(:active),
   .edge-control:focus-visible {
     opacity: 1;
   }

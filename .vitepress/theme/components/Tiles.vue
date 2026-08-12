@@ -1,32 +1,32 @@
 <script setup lang="ts">
-import ArrowRight from '../icons/8/ArrowRight.vue'
-import Github from '../icons/Github.vue'
-import VButton from './VButton.vue'
 import People from '../icons/8/People.vue'
 import Chat from '../icons/8/Chat.vue'
 import GithubContributions from './GithubContributions.vue'
 import ProjectBanner from './ProjectBanner.vue'
+import Tile from './Tile.vue'
 </script>
 
 <template>
   <div class="tiles">
-    <ProjectBanner class="tile tile-banner" />
+    <Tile class="tile-banner">
+      <ProjectBanner />
+    </Tile>
     <div class="tiles-content">
-      <div class="tile tile-articles">
+      <Tile href="/posts">
         <h4>文章</h4>
-      </div>
-      <div class="tile tile-github">
+      </Tile>
+      <Tile href="https://github.com/zxbmmmmmmmmm">
         <h4>Github</h4>
         <GithubContributions class="github-contributions" />
-      </div>
-      <div class="tile">
+      </Tile>
+      <Tile href="/friends">
         <h4>友链</h4>
         <People class="tile-icon tile-icon-friends" />
-      </div>
-      <div class="tile">
+      </Tile>
+      <Tile href="/board">
         <h4>留言板</h4>
         <Chat class="tile-icon" />
-      </div>
+      </Tile>
     </div>
   </div>
 </template>
@@ -49,6 +49,7 @@ import ProjectBanner from './ProjectBanner.vue'
     );
   column-gap: var(--tile-gap);
 }
+
 .tiles-content {
   position: relative;
   display: grid;
@@ -57,35 +58,34 @@ import ProjectBanner from './ProjectBanner.vue'
   row-gap: var(--tile-gap);
   column-gap: var(--tile-gap);
 }
-.tile {
-  padding: 16px 20px;
-  background-color: var(--color-secondary-fg);
-  color: var(--color-text);
-  position: relative;
-  transition: border-color scale 0.4s ease;
-  box-shadow:
-    inset 0 0 0 0 white,
-    0 0 0 0 black;
-  transition: 0.25s ease;
-}
+
 .tile-banner {
   min-width: 0;
   padding: 0;
-}
-.tile h4 {
-  letter-spacing: 0.02em;
-}
-.tile-github {
-  grid-column: 2 / 4;
   overflow: hidden;
 }
-.tile-articles {
+
+.tile-banner > :deep(*) {
+  height: 100%;
+}
+
+.tiles-content h4 {
+  letter-spacing: 0.02em;
+}
+
+.tiles-content > :first-child {
+  --tile-color: white;
   grid-row: 1 / 3;
   background-image: url('../assets/image.png');
   background-position: center center;
   background-size: cover;
-  color: white;
 }
+
+.tiles-content > :nth-child(2) {
+  grid-column: 2 / 4;
+  overflow: hidden;
+}
+
 .tile-icon {
   position: absolute;
   width: 50%;
@@ -95,22 +95,16 @@ import ProjectBanner from './ProjectBanner.vue'
   opacity: 0.15;
   fill: var(--color-secondary);
 }
+
 .tile-icon-friends {
   height: 60%;
   width: 60%;
 }
+
 .github-contributions {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
-@media (hover: hover) {
-  .tile:hover {
-    scale: 1.05;
-    z-index: 1;
-    box-shadow: inset 0 0 0 2px white,
-    0 10px 25px -5px black;
-  }
+  bottom: 0;
+  right: 0;
 }
 
 @media (max-width: 1000px) {
@@ -128,14 +122,6 @@ import ProjectBanner from './ProjectBanner.vue'
 @media (max-width: 520px) {
   .tiles {
     --tile-size: 118px;
-  }
-
-  .tile {
-    padding: 12px;
-  }
-
-  .tile-banner {
-    padding: 0;
   }
 }
 </style>

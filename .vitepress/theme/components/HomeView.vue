@@ -8,10 +8,9 @@ import ArrowRight2 from '../icons/8/ArrowRight2.vue'
 import ProjectCard from './ProjectCard.vue'
 import { getTagGroups, getTagLink } from '../shared/tags.ts'
 import { computed, onMounted } from 'vue'
-import VButton from './VButton.vue'
 import AboutCard from './AboutCard.vue'
 import ArrowLeft2 from '../icons/8/ArrowLeft2.vue'
-import HomeTiles from './HomeTiles.vue'
+import Tiles from './Tiles.vue'
 const tags = computed(() => getTagGroups(posts))
 
 let resizeObserver: ResizeObserver | undefined = undefined
@@ -82,7 +81,7 @@ onUnmounted(() => {
   <div class="layout">
     <div class="section header">
       <div class="section-content">
-        <HomeTiles/>
+        <Tiles />
       </div>
     </div>
     <div class="section">

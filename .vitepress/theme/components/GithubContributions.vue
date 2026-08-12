@@ -174,17 +174,9 @@ onMounted(fetchContributions)
   opacity: 0.6;
 }
 .is-loading .contribution-day {
-  animation: contribution-pulse 1.2s ease-in-out infinite alternate;
+  opacity: 0.12;
 }
 .is-failed .contribution-day {
   opacity: 0.45;
-}
-@keyframes contribution-pulse {
-  from {
-    opacity: 0.35;
-  }
-  to {
-    opacity: 0.8;
-  }
 }
 </style>

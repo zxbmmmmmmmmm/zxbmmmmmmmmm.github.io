@@ -1,54 +1,53 @@
 <script setup lang="ts">
-import VButton from './VButton.vue'
-interface Props {
-  text?: string
-  theme?: 'default' | 'accent'
+defineProps<{
   href?: string
-}
-const props = withDefaults(defineProps<Props>(), {
-  text: 'Text',
-  theme: 'default',
-  size: 'medium'
-})
+}>()
 </script>
+
 <template>
-  <VButton type="button" class="tile-button" :theme="theme" :href="href">
-    <slot class="tile-content"></slot>
-    <p class="tile-text">{{ text }}</p>
-  </VButton>
+  <component :is="href ? 'a' : 'div'" class="tile" :href="href">
+    <slot />
+  </component>
 </template>
+
 <style scoped>
-.tile-button {
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.tile {
+  display: block;
+  padding: 16px 20px;
+  background-color: var(--color-secondary-fg);
+  color: var(--tile-color, var(--color-text));
   position: relative;
-  transition: transform 0.2s ease;
-  padding: 32px;
-  user-select: none;
+  box-shadow:
+    inset 0 0 0 0 white,
+    0 0 0 0 black;
+  transition:
+    scale 0.25s ease,
+    box-shadow 0.25s ease;
+  text-decoration: none;
 }
+
+.tile:active {
+  z-index: 1;
+  scale: 1.03;
+  box-shadow:
+    inset 0 0 0 2px white,
+    0 10px 25px -5px black;
+}
+
 @media (hover: hover) {
-  .tile-button:hover {
-    transform: translateY(-2px);
+  .tile:hover:not(:active) {
+    color: var(--tile-color, var(--color-text));
+    scale: 1.05;
+    z-index: 1;
+    box-shadow:
+      inset 0 0 0 2px white,
+      0 10px 25px -5px black;
   }
 }
 
-.tile-button:active {
-  transform: scale(0.99);
-}
-
-.tile-content {
-  grid-area: 1 / 1 / 2 / 2;
-  align-self: center;
-  justify-self: center;
-}
-
-.tile-text {
-  font-size: 0.8rem;
-  position: absolute;
-  right: 0.4rem;
-  bottom: 0.2rem;
+@media (max-width: 520px) {
+  .tile {
+    padding: 12px;
+  }
 }
 </style>
