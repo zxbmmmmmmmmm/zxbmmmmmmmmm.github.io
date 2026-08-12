@@ -16,7 +16,7 @@ import GithubContributions from './GithubContributions.vue'
       </div>
       <div class="tile tile-github">
         <h4>Github</h4>
-        <GithubContributions class="github-contributions"/>
+        <GithubContributions class="github-contributions" />
       </div>
       <div class="tile">
         <h4>友链</h4>
@@ -70,6 +70,9 @@ import GithubContributions from './GithubContributions.vue'
 }
 .tile-articles {
   grid-row: 1 / 3;
+  background-image: url('../assets/image.png');
+  background-position: center center;
+  background-size: cover;
 }
 .tile-icon {
   position: absolute;
@@ -80,13 +83,13 @@ import GithubContributions from './GithubContributions.vue'
   bottom: 12px;
   opacity: 0.15;
 }
-.tile-icon-friends{
+.tile-icon-friends {
   height: 60%;
   width: 60%;
 }
-.github-contributions{
+.github-contributions {
   position: absolute;
   bottom: 0px;
-  right: 0px
+  right: 0px;
 }
 </style>
