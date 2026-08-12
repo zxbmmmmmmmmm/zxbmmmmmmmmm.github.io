@@ -18,7 +18,7 @@ import Chat from '../icons/8/Chat.vue'
       </div>
       <div class="tile">
         <h4>友链</h4>
-        <People class="tile-icon" />
+        <People class="tile-icon tile-icon-friends" />
       </div>
       <div class="tile">
         <h4>留言板</h4>
@@ -73,8 +73,12 @@ import Chat from '../icons/8/Chat.vue'
   fill: white;
   width: 50%;
   height: 50%;
-  right: 12px;
+  right: 16px;
   bottom: 12px;
-  opacity: 0.1;
+  opacity: 0.15;
+}
+.tile-icon-friends{
+  height: 60%;
+  width: 60%;
 }
 </style>
