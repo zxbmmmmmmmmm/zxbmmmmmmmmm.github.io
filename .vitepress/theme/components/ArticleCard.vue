@@ -76,10 +76,12 @@ const getArticleLink = (url: string) => normalizeLink(url)
   color: var(--color-text-faint);
 }
 
-/* Scoped override: reshape VButton into a pill */
 .tag-pill {
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
+}
+.article:active {
+  scale: 1.01;
 }
 
 @media (max-width: 640px) {
@@ -89,6 +91,12 @@ const getArticleLink = (url: string) => normalizeLink(url)
 
   .article-title {
     font-size: 1.5rem;
+  }
+}
+
+@media (hover: hover) {
+  .article:not(:active):hover {
+    scale: 1.02;
   }
 }
 </style>
