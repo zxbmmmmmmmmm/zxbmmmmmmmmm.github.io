@@ -111,7 +111,7 @@ import Tile from './Tile.vue'
   .tiles {
     height: auto;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: clamp(240px, 42svh, 340px) calc(
+    grid-template-rows: clamp(180px, 24svh, 300px) calc(
         var(--tile-rows) * var(--tile-size) + (var(--tile-rows) - 1) *
           var(--tile-gap)
       );
