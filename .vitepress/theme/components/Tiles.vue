@@ -123,5 +123,8 @@ import Tile from './Tile.vue'
   .tiles {
     --tile-size: 118px;
   }
+  .tiles-content h4 {
+    font-size: 20px;
+  }
 }
 </style>
