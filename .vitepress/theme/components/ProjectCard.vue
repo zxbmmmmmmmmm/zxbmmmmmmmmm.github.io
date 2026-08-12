@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VButton from './VButton.vue'
+import Tile from './Tile.vue'
 
 defineProps<{
   name: string
@@ -11,8 +11,7 @@ defineProps<{
 }>()
 </script>
 <template>
-  <article class="card card-lift project-card" role="button">
-    <a v-if="repository" :href="repository" target="_blank" rel="noopener" class="card-overlay"></a>
+  <Tile :href="repository" class="project-card">
     <h3 class="project-title">{{ name }}</h3>
 
     <img v-if="headerImage" :src="headerImage" class="project-header-image" alt="" />
@@ -32,25 +31,19 @@ defineProps<{
 
     </div>
 
-  </article>
+  </Tile>
 </template>
 <style scoped>
 .project-card {
   display: grid;
+  padding: 0;
   background: var(--color-bg-card-alt);
   color: var(--color-text);
   overflow: hidden;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 .project-card img {
   image-rendering: -webkit-optimize-contrast;
-}
-
-.project-card:has(.card-overlay:active) {
-  transform: scale(0.99);
 }
 
 .project-header-image {
@@ -104,7 +97,7 @@ defineProps<{
   line-height: 1rem;
 }
 
-.card .tag-list {
+.project-card .tag-list {
   display: flex;
   gap: 0.25rem;
 }
@@ -136,13 +129,11 @@ defineProps<{
   z-index: -1;
 }
 
-.card-lift:has(.card-overlay:active) .bg,
-.card-lift:hover .bg {
+.project-card:hover .bg {
   transform: scale(2);
 }
 
-.card-lift:has(.card-overlay:active) .bg,
-.card-lift:hover .bg-2 {
+.project-card:hover .bg-2 {
   transform: scale(1.2);
 }
 

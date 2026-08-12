@@ -2,6 +2,7 @@
 import { getTagLink } from '../shared/tags.ts'
 import { normalizeLink } from '../shared/utils.ts'
 import VButton from './VButton.vue'
+import Tile from './Tile.vue'
 
 const props = defineProps<{
   title: string
@@ -14,8 +15,8 @@ const props = defineProps<{
 const getArticleLink = (url: string) => normalizeLink(url)
 </script>
 <template>
-  <article class="card card-lift article" role="button">
-    <a v-if="url" :href="getArticleLink(url)" class="card-overlay"></a>
+  <Tile class="article">
+    <a v-if="url" :href="getArticleLink(url)" class="tile-overlay"></a>
     <h1 class="article-title">
       <p>{{ title }}</p>
     </h1>
@@ -28,7 +29,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
         <VButton class="tag-pill" :text="tag" :href="getTagLink(tag)" />
       </li>
     </ul>
-  </article>
+  </Tile>
 </template>
 
 <style scoped>
@@ -40,17 +41,6 @@ const getArticleLink = (url: string) => normalizeLink(url)
   color: var(--color-text);
   background: var(--color-bg-card);
   border-radius: var(--border-radius-overlay);
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.article:has(.card-overlay:active):not(:has(.tag-pill:active)) {
-  transform: scale(0.99);
-}
-
-.article:hover:not(:active):not(:has(.card-overlay:active)) {
-  border-left-color: var(--color-accent);
 }
 
 .article-title {

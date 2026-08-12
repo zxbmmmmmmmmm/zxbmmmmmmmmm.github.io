@@ -17,21 +17,32 @@ defineProps<{
   background-color: var(--color-secondary-fg);
   color: var(--tile-color, var(--color-text));
   position: relative;
-  box-shadow:
-    inset 0 0 0 0 white,
-    0 0 0 0 black;
+  box-shadow: 0 0 0 0 black;
   transition:
     scale 0.25s ease,
     box-shadow 0.25s ease;
   text-decoration: none;
 }
 
+.tile::after {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  content: '';
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 0 white;
+  transition: box-shadow 0.25s ease;
+}
+
 .tile:active {
   z-index: 1;
   scale: 1.03;
-  box-shadow:
-    inset 0 0 0 2px white,
-    0 10px 25px -5px black;
+  box-shadow: 0 10px 25px -5px black;
+}
+
+.tile:active::after {
+  box-shadow: inset 0 0 0 2px white;
 }
 
 @media (hover: hover) {
@@ -39,9 +50,11 @@ defineProps<{
     color: var(--tile-color, var(--color-text));
     scale: 1.05;
     z-index: 1;
-    box-shadow:
-      inset 0 0 0 2px white,
-      0 10px 25px -5px black;
+    box-shadow: 0 10px 25px -5px black;
+  }
+
+  .tile:hover:not(:active)::after {
+    box-shadow: inset 0 0 0 2px white;
   }
 }
 

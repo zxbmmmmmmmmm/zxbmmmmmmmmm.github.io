@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VButton from './VButton.vue'
+import Tile from './Tile.vue'
 
 export interface Friend {
   name: string
@@ -10,14 +10,13 @@ export interface Friend {
 defineProps<{ friend: Friend }>()
 </script>
 <template>
-  <article class="card card-lift friend-card">
+  <Tile :href="friend.link" class="friend-card">
     <img class="avatar" :src="friend.avatar" />
-    <a :href="friend.link" class="card-overlay" />
     <div class="friend-content">
       <h1 class="friend-name">{{ friend.name }}</h1>
       <p v-if="friend.description">{{ friend.description }}</p>
     </div>
-  </article>
+  </Tile>
 </template>
 <style scoped>
 .avatar {
@@ -27,14 +26,8 @@ defineProps<{ friend: Friend }>()
 .friend-card {
   display: flex;
   flex-direction: row;
+  padding: 0;
   background: var(--color-bg-card-alt);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.friend-card:active {
-  transform: scale(0.98);
 }
 
 .friend-content {

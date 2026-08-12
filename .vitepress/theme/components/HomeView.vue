@@ -17,6 +17,9 @@ let resizeObserver: ResizeObserver | undefined = undefined
 const carousel = ref<HTMLElement | null>(null)
 const carouselContainer = ref<HTMLElement | null>(null)
 const cardWidth = ref(0)
+const visibleProjectCount = ref(1)
+const visibleProjectStart = ref(0)
+const isCarouselScrolling = ref(false)
 const minCardWidth = 300
 const gap = 16
 
@@ -25,6 +28,7 @@ const updateLayout = (containerWidth: number) => {
     1,
     Math.floor((containerWidth + gap) / (minCardWidth + gap))
   )
+  visibleProjectCount.value = cardsCount
   cardWidth.value = (containerWidth - gap * (cardsCount - 1)) / cardsCount
   nextTick(updateScrollState)
 }
@@ -35,8 +39,22 @@ const canScrollNext = ref(false)
 const updateScrollState = () => {
   const el = carousel.value
   if (!el) return
+  visibleProjectStart.value = Math.round(el.scrollLeft / (cardWidth.value + gap))
   canScrollPrev.value = el.scrollLeft > 0
   canScrollNext.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 1
+}
+
+const isProjectVisible = (index: number) =>
+  index >= visibleProjectStart.value &&
+  index < visibleProjectStart.value + visibleProjectCount.value
+
+const handleCarouselScroll = () => {
+  isCarouselScrolling.value = true
+}
+
+const handleCarouselScrollEnd = () => {
+  updateScrollState()
+  isCarouselScrolling.value = false
 }
 
 const scrollPrev = () => {
@@ -65,7 +83,10 @@ onMounted(() => {
     })
     resizeObserver.observe(carouselContainer.value)
   }
-  carousel.value?.addEventListener('scrollend', updateScrollState, {
+  carousel.value?.addEventListener('scroll', handleCarouselScroll, {
+    passive: true
+  })
+  carousel.value?.addEventListener('scrollend', handleCarouselScrollEnd, {
     passive: true
   })
 })
@@ -73,7 +94,8 @@ onUnmounted(() => {
   if (resizeObserver) {
     resizeObserver.disconnect()
   }
-  carousel.value?.removeEventListener('scrollend', updateScrollState)
+  carousel.value?.removeEventListener('scroll', handleCarouselScroll)
+  carousel.value?.removeEventListener('scrollend', handleCarouselScrollEnd)
 })
 </script>
 
@@ -145,9 +167,17 @@ onUnmounted(() => {
             </button>
           </div>
         </div>
-        <div class="carousel-container" ref="carouselContainer">
+        <div
+          class="carousel-container"
+          :class="{ 'is-scrolling': isCarouselScrolling }"
+          ref="carouselContainer"
+        >
           <ul class="projects-grid" ref="carousel">
-            <li v-for="project in projects" :key="project.url">
+            <li
+              v-for="(project, index) in projects"
+              :key="project.url"
+              :class="{ 'is-visible': isProjectVisible(index) }"
+            >
               <ProjectCard v-bind="project" />
             </li>
           </ul>
@@ -170,6 +200,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .carousel-controls {
@@ -191,17 +222,52 @@ onUnmounted(() => {
 }
 
 .carousel-container {
-  overflow: hidden;
+  --tile-overflow-inline: 32px;
+  --tile-overflow-block: 48px;
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  overflow: visible;
+}
+
+.carousel-container::before,
+.carousel-container::after {
+  position: absolute;
+  top: calc(-1 * var(--tile-overflow-block));
+  bottom: calc(-1 * var(--tile-overflow-block));
+  z-index: 2;
+  width: var(--tile-overflow-inline);
+  content: '';
+  background: var(--color-accent);
+}
+
+.carousel-container::before {
+  right: 100%;
+}
+
+.carousel-container::after {
+  left: 100%;
+}
+
+.carousel-container.is-scrolling::before,
+.carousel-container.is-scrolling::after {
+  z-index: 4;
 }
 
 .projects-grid {
   display: flex;
   gap: 16px;
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: var(--tile-overflow-block) var(--tile-overflow-inline);
+  margin: calc(-1 * var(--tile-overflow-block))
+    calc(-1 * var(--tile-overflow-inline));
   overflow-x: auto;
   scrollbar-width: none;
+}
+
+.projects-grid li.is-visible {
+  position: relative;
+  z-index: 3;
 }
 
 .projects-grid::-webkit-scrollbar {

@@ -1,16 +1,11 @@
 /* Shared utility styles used across multiple components */
 
-/* Card overlay link covering the entire card */
-.card-overlay {
+/* Overlay link used by tiles that also contain nested links. */
+.tile-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Card base: shared positioning and touch behavior */
-.card {
-  position: relative;
 }
 
 .normal-list{
@@ -21,15 +16,8 @@
   margin-top: 0;
 }
 
-/* Cards with lift-on-hover effect */
-@media (hover: hover) {
-  .card-lift:hover {
-    transform: translateY(-2px);
-  }
-}
-
-/* Flex tag list — .card scope raises specificity above .vp-doc ul */
-.card .tag-list {
+/* Tile scope raises specificity above .vp-doc ul. */
+.tile .tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -38,6 +26,6 @@
   margin: 0;
   z-index: 3;
 }
-.card .tag-list li+li{
+.tile .tag-list li+li{
   margin-top: 0;
 }

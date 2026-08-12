@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import ArrowRight from '../icons/8/ArrowRight.vue'
 import Github from '../icons/Github.vue'
+import Tile from './Tile.vue'
 import VButton from './VButton.vue'
 </script>
 
 <template>
-  <div class="card card-lift about-card">
+  <Tile class="about-card">
     <div class="about-content-layer">
       <div class="about-content">
         <h2>Betta_Fish</h2>
@@ -25,21 +26,17 @@ import VButton from './VButton.vue'
       </div>
       <ArrowRight class="arrow-icon" />
     </div>
-  </div>
+  </Tile>
 </template>
 
 <style scoped>
 .about-card {
-  background-color: var(--color-bg-card);
   container-type: inline-size;
   container-name: about-card;
   display: flex;
-  transition: transform 0.2s ease;
+  padding: 0;
+  background-color: var(--color-bg-card);
   overflow: hidden;
-}
-
-.about-card:active:not(:has(.social-button:active)) {
-  transform: scale(0.99);
 }
 
 .about-description {
