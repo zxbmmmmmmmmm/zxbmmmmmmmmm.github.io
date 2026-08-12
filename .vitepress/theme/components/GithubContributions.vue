@@ -158,20 +158,20 @@ onMounted(fetchContributions)
   display: block;
   aspect-ratio: 1;
   min-width: 2px;
-  background: #ffffff;
-  opacity: 0;
+  background: var(--color-secondary);
+  opacity: 0.04;
 }
 .contribution-day.level-1 {
-  opacity: 0.05;
+  opacity: 0.12;
 }
 .contribution-day.level-2 {
-  opacity: 0.15;
+  opacity: 0.24;
 }
 .contribution-day.level-3 {
-  opacity: 0.2;
+  opacity: 0.32;
 }
 .contribution-day.level-4 {
-  opacity: 0.3;
+  opacity: 0.6;
 }
 .is-loading .contribution-day {
   animation: contribution-pulse 1.2s ease-in-out infinite alternate;
