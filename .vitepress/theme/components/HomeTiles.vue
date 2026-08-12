@@ -66,7 +66,7 @@ import ProjectBanner from './ProjectBanner.vue'
   box-shadow:
     inset 0 0 0 0 white,
     0 0 0 0 black;
-  transition: 0.3s ease;
+  transition: 0.25s ease;
 }
 .tile-banner {
   min-width: 0;
