@@ -4,6 +4,7 @@ import Github from '../icons/Github.vue'
 import VButton from './VButton.vue'
 import People from '../icons/8/People.vue'
 import Chat from '../icons/8/Chat.vue'
+import GithubContributions from './GithubContributions.vue'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import Chat from '../icons/8/Chat.vue'
       </div>
       <div class="tile tile-github">
         <h4>Github</h4>
+        <GithubContributions class="github-contributions"/>
       </div>
       <div class="tile">
         <h4>友链</h4>
@@ -64,6 +66,7 @@ import Chat from '../icons/8/Chat.vue'
 }
 .tile-github {
   grid-column: 2 / 4;
+  overflow: hidden;
 }
 .tile-articles {
   grid-row: 1 / 3;
@@ -80,5 +83,10 @@ import Chat from '../icons/8/Chat.vue'
 .tile-icon-friends{
   height: 60%;
   width: 60%;
+}
+.github-contributions{
+  position: absolute;
+  bottom: 0px;
+  right: 0px
 }
 </style>
