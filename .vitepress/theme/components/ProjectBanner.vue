@@ -2,28 +2,58 @@
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { data as projects } from '../projects.data'
 
+const AUTO_PLAY_INTERVAL = 5000
+
 const viewport = ref<HTMLElement | null>(null)
 const physicalIndex = ref(projects.length > 1 ? 1 : 0)
+const activeIndex = ref(0)
 const isResetting = ref(false)
 
 let resizeObserver: ResizeObserver | undefined
 let settleTimer: ReturnType<typeof setTimeout> | undefined
+let autoPlayTimer: ReturnType<typeof setTimeout> | undefined
+let reduceMotionQuery: MediaQueryList | undefined
+let isPointerInside = false
+let isFocusInside = false
 
 const slides = computed(() => {
   if (projects.length < 2) return projects
   return [projects.at(-1)!, ...projects, projects[0]]
 })
 
-const activeIndex = computed(() => {
+const toLogicalIndex = (index: number) => {
   if (projects.length < 2) return 0
-  return (physicalIndex.value - 1 + projects.length) % projects.length
-})
+  return (index - 1 + projects.length) % projects.length
+}
+
+const stopAutoPlay = () => {
+  clearTimeout(autoPlayTimer)
+  autoPlayTimer = undefined
+}
+
+const canAutoPlay = () =>
+  projects.length > 1 &&
+  !document.hidden &&
+  !isPointerInside &&
+  !isFocusInside &&
+  !reduceMotionQuery?.matches
+
+const scheduleAutoPlay = () => {
+  stopAutoPlay()
+  if (!canAutoPlay()) return
+
+  autoPlayTimer = setTimeout(() => {
+    changeSlide(1)
+  }, AUTO_PLAY_INTERVAL)
+}
 
 const scrollToPhysical = (index: number, smooth = true) => {
+  physicalIndex.value = index
+  activeIndex.value = toLogicalIndex(index)
+
   const el = viewport.value
   if (!el) return
 
-  physicalIndex.value = index
   el.scrollTo({
     left: index * el.clientWidth,
     behavior: smooth ? 'smooth' : 'auto'
@@ -32,10 +62,13 @@ const scrollToPhysical = (index: number, smooth = true) => {
 
 const settle = () => {
   const el = viewport.value
-  if (!el || projects.length < 2) return
+  if (!el || !el.clientWidth || projects.length < 2) return
 
   const index = Math.round(el.scrollLeft / el.clientWidth)
   physicalIndex.value = index
+  activeIndex.value = toLogicalIndex(index)
+
+  scheduleAutoPlay()
 
   if (index !== 0 && index !== projects.length + 1) return
 
@@ -50,7 +83,7 @@ const handleScroll = () => {
   const el = viewport.value
   if (!el || isResetting.value) return
 
-  physicalIndex.value = Math.round(el.scrollLeft / el.clientWidth)
+  stopAutoPlay()
   clearTimeout(settleTimer)
   settleTimer = setTimeout(settle, 120)
 }
@@ -58,15 +91,47 @@ const handleScroll = () => {
 const changeSlide = (offset: number) => {
   if (projects.length < 2) return
   scrollToPhysical(physicalIndex.value + offset)
+  scheduleAutoPlay()
 }
 
 const selectSlide = (index: number) => {
   if (index === activeIndex.value) return
   scrollToPhysical(projects.length > 1 ? index + 1 : index)
+  scheduleAutoPlay()
 }
+
+const handlePointerEnter = () => {
+  isPointerInside = true
+  stopAutoPlay()
+}
+
+const handlePointerLeave = () => {
+  isPointerInside = false
+  scheduleAutoPlay()
+}
+
+const handleFocusIn = () => {
+  isFocusInside = true
+  stopAutoPlay()
+}
+
+const handleFocusOut = (event: FocusEvent) => {
+  const currentTarget = event.currentTarget as HTMLElement
+  if (currentTarget.contains(event.relatedTarget as Node | null)) return
+
+  isFocusInside = false
+  scheduleAutoPlay()
+}
+
+const handleVisibilityChange = () => scheduleAutoPlay()
 
 onMounted(() => {
   nextTick(() => scrollToPhysical(physicalIndex.value, false))
+
+  reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  reduceMotionQuery.addEventListener('change', scheduleAutoPlay)
+  document.addEventListener('visibilitychange', handleVisibilityChange)
+  scheduleAutoPlay()
 
   if (viewport.value) {
     resizeObserver = new ResizeObserver(() => {
@@ -79,13 +144,23 @@ onMounted(() => {
 
 onUnmounted(() => {
   clearTimeout(settleTimer)
+  stopAutoPlay()
   resizeObserver?.disconnect()
+  reduceMotionQuery?.removeEventListener('change', scheduleAutoPlay)
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
   viewport.value?.removeEventListener('scrollend', settle)
 })
 </script>
 
 <template>
-  <section class="project-banner" aria-roledescription="carousel">
+  <section
+    class="project-banner"
+    aria-roledescription="carousel"
+    @mouseenter="handlePointerEnter"
+    @mouseleave="handlePointerLeave"
+    @focusin="handleFocusIn"
+    @focusout="handleFocusOut"
+  >
     <div
       ref="viewport"
       class="project-banner-viewport"
@@ -165,6 +240,16 @@ onUnmounted(() => {
   background: var(--color-bg-inverse);
   color: white;
   isolation: isolate;
+}
+
+.project-banner::after {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  content: '';
+  pointer-events: none;
+  box-shadow: inset 0 0 0 0 transparent;
+  transition: box-shadow 300ms ease;
 }
 
 .project-banner-viewport {
@@ -281,6 +366,10 @@ onUnmounted(() => {
 }
 
 @media (hover: hover) {
+  .project-banner:hover::after {
+    box-shadow: inset 0 0 0 2px white;
+  }
+
   .project-banner:hover .edge-control,
   .edge-control:focus-visible {
     opacity: 0.55;
@@ -310,8 +399,7 @@ onUnmounted(() => {
   background: white;
   opacity: 0.32;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-  transition:
-   opacity 160ms ease,
+  transition: opacity 160ms ease;
 }
 
 .pip.active {
