@@ -68,6 +68,8 @@
     'Cascadia Code', ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono',
     monospace;
 
+  --color-shadow: rgba(0, 0, 0, 0.32);
+
   /* === VitePress compat aliases === */
   --vp-c-bg: var(--color-bg-page);
   --vp-c-bg-alt: var(--color-bg-elevated);
@@ -128,6 +130,7 @@ html.dark {
 
   --color-bg-inverse: #ffffff;
   --color-fg-inverse: #000000;
+  --color-shadow: black;
 }
 
 @media (forced-colors: active) {

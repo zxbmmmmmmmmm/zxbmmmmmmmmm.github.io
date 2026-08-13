@@ -23,7 +23,7 @@ defineProps<{
   background-color: var(--color-secondary-fg);
   color: var(--tile-color, var(--color-text));
   position: relative;
-  box-shadow: 0 0 0 0 black;
+  box-shadow: 0 0 0 0 var(--color-shadow);
   transition:
     scale 0.25s ease,
     box-shadow 0.25s ease;
@@ -56,7 +56,7 @@ defineProps<{
     color: var(--tile-color, var(--color-text));
     scale: 1.05;
     z-index: 1;
-    box-shadow: 0 10px 25px -5px black;
+    box-shadow: 0 10px 25px -5px var(--color-shadow);
   }
 
   .tile:hover:not(:active)::after {
