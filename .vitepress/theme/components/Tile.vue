@@ -44,6 +44,7 @@ defineProps<{
 
 .tile:active {
   scale: 0.98;
+  z-index: 1;
 }
 
 .tile:active::after {
