@@ -16,7 +16,13 @@ const getArticleLink = (url: string) => normalizeLink(url)
 </script>
 <template>
   <Tile class="article">
-    <a v-if="url" :href="getArticleLink(url)" class="tile-overlay"></a>
+    <a
+      v-if="url"
+      :href="getArticleLink(url)"
+      class="tile-overlay"
+      draggable="false"
+      @dragstart.prevent
+    ></a>
     <h1 class="article-title">
       <p>{{ title }}</p>
     </h1>
@@ -80,8 +86,8 @@ const getArticleLink = (url: string) => normalizeLink(url)
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
 }
-.article:active {
-  scale: 1.01;
+.tile:active {
+  scale: 0.98;
 }
 
 @media (max-width: 640px) {
@@ -97,6 +103,9 @@ const getArticleLink = (url: string) => normalizeLink(url)
 @media (hover: hover) {
   .article:not(:active):hover {
     scale: 1.02;
+  }
+  .article:active {
+    scale: 1.01;
   }
 }
 </style>

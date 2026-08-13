@@ -5,7 +5,13 @@ defineProps<{
 </script>
 
 <template>
-  <component :is="href ? 'a' : 'div'" class="tile" :href="href">
+  <component
+    :is="href ? 'a' : 'div'"
+    class="tile"
+    :href="href"
+    draggable="false"
+    @dragstart.prevent
+  >
     <slot />
   </component>
 </template>
@@ -22,6 +28,7 @@ defineProps<{
     scale 0.25s ease,
     box-shadow 0.25s ease;
   text-decoration: none;
+  -webkit-user-drag: none;
 }
 
 .tile::after {
@@ -36,9 +43,7 @@ defineProps<{
 }
 
 .tile:active {
-  z-index: 1;
-  scale: 1.03;
-  box-shadow: 0 10px 25px -5px black;
+  scale: 0.98;
 }
 
 .tile:active::after {
@@ -55,6 +60,9 @@ defineProps<{
 
   .tile:hover:not(:active)::after {
     box-shadow: inset 0 0 0 2px white;
+  }
+  .tile:active {
+    scale: 1.03;
   }
 }
 
