@@ -110,6 +110,10 @@ const postGroups = computed<YearGroup[]>(() => {
   line-height: 1;
 }
 
+.article-card :deep(.article-meta) {
+  display: none;
+}
+
 .article-month {
   font-weight: 200;
   font-size: 2rem;
@@ -131,6 +135,10 @@ const postGroups = computed<YearGroup[]>(() => {
   }
   .article-date{
     display: none;
+  }
+
+  .article-card :deep(.article-meta) {
+    display: flex;
   }
 }
 </style>

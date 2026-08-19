@@ -158,5 +158,8 @@ function getAriaLabel(tag: string): string {
   .tag-filter-mobile {
     display: block;
   }
+  .tag-filter-title{
+    display: none;
+  }
 }
 </style>
