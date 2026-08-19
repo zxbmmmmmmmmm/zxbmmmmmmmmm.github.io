@@ -7,7 +7,7 @@ import Tile from './Tile.vue'
 const props = defineProps<{
   title: string
   url?: string
-  date: string
+  date?: string
   excerpt?: string
   tags?: string[]
 }>()
@@ -26,7 +26,7 @@ const getArticleLink = (url: string) => normalizeLink(url)
     <h1 class="article-title">
       <p>{{ title }}</p>
     </h1>
-    <div class="article-meta">
+    <div v-if="date" class="article-meta">
       <p class="article-date">{{ date }}</p>
     </div>
     <div v-if="excerpt" class="article-excerpt" v-html="excerpt"></div>
