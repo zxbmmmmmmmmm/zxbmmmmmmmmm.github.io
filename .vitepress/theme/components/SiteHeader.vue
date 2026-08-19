@@ -35,7 +35,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
       <a class="site-logo" href="/">{{ title }}</a>
       <ul>
         <a href="/posts">文章</a>
-        <a href="/tags">标签</a>
         <a href="/projects">项目</a>
         <a href="/friends">友链</a>
         <a href="/board">留言板</a>

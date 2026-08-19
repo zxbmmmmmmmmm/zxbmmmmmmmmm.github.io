@@ -23,7 +23,6 @@ const year = new Date().getFullYear()
           <ul>
             <li><a href="/about">关于</a></li>
             <li><a href="/posts">文章</a></li>
-            <li><a href="/tags">标签</a></li>
             <li><a href="/projects">项目</a></li>
             <li><a href="/friends">友链</a></li>
             <li><a href="/board">留言板</a></li>

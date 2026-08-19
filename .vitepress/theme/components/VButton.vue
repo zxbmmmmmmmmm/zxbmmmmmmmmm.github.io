@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { withBase } from 'vitepress'
 import { EXTERNAL_URL_RE } from '../shared/utils'
 import { normalizeLink } from '../shared/utils'
 
@@ -8,9 +9,12 @@ interface Props {
   href?: string
   theme?: 'default' | 'accent'
   rel?: string
+  normalizeHref?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = withDefaults(defineProps<Props>(), {
+  normalizeHref: true
+})
 
 const isExternal = computed(
   () => props.href && EXTERNAL_URL_RE.test(props.href)
@@ -19,6 +23,11 @@ const isExternal = computed(
 const component = computed(() => {
   return props.href ? 'a' : 'button'
 })
+
+const resolvedHref = computed(() => {
+  if (!props.href) return undefined
+  return props.normalizeHref ? normalizeLink(props.href) : withBase(props.href)
+})
 </script>
 
 <template>
@@ -26,7 +35,7 @@ const component = computed(() => {
     :is="component"
     class="Button"
     :class="[theme]"
-    :href="href ? normalizeLink(href) : undefined"
+    :href="resolvedHref"
     :rel="props.rel ?? (isExternal ? 'noreferrer' : undefined)"
   >
     <slot>{{ text }}</slot>

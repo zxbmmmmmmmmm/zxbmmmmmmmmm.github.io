@@ -44,23 +44,20 @@ export function getTopTags(posts: Post[], limit = 3): TagGroup[] {
   return getTagGroups(posts).slice(0, limit)
 }
 
-export function slugifyTag(tag: string): string {
-  return tag
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-]/g, (c) => `_${c.charCodeAt(0).toString(16)}_`)
-}
-
 export function getTagLink(tag: string): string {
-  return `/tags/${slugifyTag(tag)}`
+  const query = new URLSearchParams({ tag })
+  return `/posts?${query.toString()}`
 }
 
-export function getTagSlugFromPath(pathname: string): string {
-  const match = pathname.match(/\/tags\/([^/?#]+?)\/?$/)
-  return match ? match[1].replace(/\.html$/, '') : ''
+export function getTagFromQuery(query: string, tags: readonly string[]): string {
+  const tag = new URLSearchParams(query).get('tag')
+  return tag && tags.includes(tag) ? tag : ''
 }
 
-export function findTagBySlug(tags: string[], slug: string): string | undefined {
-  return tags.find((tag) => slugifyTag(tag) === slug)
+export function getTagToggleLink(tag: string, activeTag: string): string {
+  return tag === activeTag ? '/posts' : getTagLink(tag)
+}
+
+export function filterPostsByTag(posts: Post[], tag: string): Post[] {
+  return tag ? posts.filter((post) => post.tags.includes(tag)) : posts
 }

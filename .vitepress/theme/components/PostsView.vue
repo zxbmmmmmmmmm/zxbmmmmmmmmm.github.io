@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import ArticleList from './ArticleList.vue'
-import { data as posts } from '../posts.data'
+import PostTagFilter from './PostTagFilter.vue'
+import { usePostTags } from '../composables/postTags'
+
+const { filteredPosts } = usePostTags()
 </script>
 
 <template>
   <div class="layout">
     <div class="content">
-      <ArticleList class="article-list" :posts="posts" />
+      <PostTagFilter variant="mobile" />
+      <ArticleList class="article-list" :posts="filteredPosts" />
     </div>
   </div>
 </template>

@@ -32,7 +32,12 @@ const getArticleLink = (url: string) => normalizeLink(url)
     <div v-if="excerpt" class="article-excerpt" v-html="excerpt"></div>
     <ul v-if="tags?.length" class="tag-list">
       <li v-for="tag in tags" :key="tag">
-        <VButton class="tag-pill" :text="tag" :href="getTagLink(tag)" />
+        <VButton
+          class="tag-pill"
+          :text="tag"
+          :href="getTagLink(tag)"
+          :normalize-href="false"
+        />
       </li>
     </ul>
   </Tile>

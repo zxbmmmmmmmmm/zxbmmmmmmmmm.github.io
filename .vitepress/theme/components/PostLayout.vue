@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useData, useRoute, Content } from 'vitepress'
 import PostOutline from './PostOutline.vue'
+import PostTagFilter from './PostTagFilter.vue'
 import VButton from './VButton.vue'
 import { getTagLink } from '../shared/tags'
 import { formatDate } from '../shared/utils.ts'
@@ -29,6 +30,7 @@ const route = useRoute()
             :key="tag"
             :text="tag"
             :href="getTagLink(tag)"
+            :normalize-href="false"
           />
         </div>
       </div>
@@ -39,9 +41,18 @@ const route = useRoute()
       <GiscusComments v-if="frontmatter.date || frontmatter.comment" :key="route.path" class="comments"/>
     </div>
     <aside class="post-aside">
-      <div class="post-aside-sticky">
-        <PostAttachments class="post-attachments-desktop" />
-        <PostOutline />
+      <div
+        class="post-aside-sticky"
+        :class="{ 'post-aside-sticky-tags': frontmatter.pageType === 'posts' }"
+      >
+        <PostTagFilter
+          v-if="frontmatter.pageType === 'posts'"
+          variant="sidebar"
+        />
+        <template v-else>
+          <PostAttachments class="post-attachments-desktop" />
+          <PostOutline />
+        </template>
       </div>
     </aside>
   </section>
@@ -75,7 +86,7 @@ const route = useRoute()
   padding: 24px 48px 48px 48px;
 }
 .post-content:not(.has-bg) {
-  padding: 12px 48px 48px 48px;
+  padding: 12px 12px 48px 48px;
 }
 .post-header.has-bg {
   background: var(--color-accent);
@@ -87,6 +98,15 @@ const route = useRoute()
 .tag-button {
   background: var(--color-bg-card);
   color: var(--color-text);
+}
+.post-aside-sticky-tags {
+  overflow: hidden;
+}
+@media (max-width: 1120px) {
+  .post-content.has-bg,
+  .post-content:not(.has-bg) {
+    padding: 12px 48px 48px 48px;
+  }
 }
 @media (max-width: 720px) {
   .post-content.has-bg,
